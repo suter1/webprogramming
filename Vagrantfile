@@ -12,8 +12,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "forwarded_port", guest: 4000, host: 4000
-  config.proxy.http     = "http://clientproxy.corproot.net:8079"
-  config.proxy.https    = "http://clientproxy.corproot.net:8079"
   config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
