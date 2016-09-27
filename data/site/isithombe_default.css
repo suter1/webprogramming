@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+.flex-container {
+	display: flex;
+	flex-flow: row wrap;
+	text-align: center;
+}
+
+.flex-container>* {
+	padding: 15px;
+	flex: 1 100%;
+}
+
+.aside_left {
+	text-align: left;
+}
+
+.aside_right {
+	text-align: left;
+}
+
+.section {
+	text-align: left;
+}
+
+.article {
+	text-align: left;
+}
+
+header {
+	background: black;
+	color: white;
+}
+
+footer {
+	background: #aaa;
+	color: white;
+}
+
+.nav {
+	background: #eee;
+}
+
+.nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.nav ul a {
+	text-decoration: none;
+}
+
+@media all and (min-width: 768px) {
+	.nav {
+		max-width: 100px;
+		text-align: left;
+		flex: 1 auto;
+		order: 1;
+	}
+	.aside_left {
+		flex: 1 auto;
+		order: 2;
+	}
+	.aside_right {
+		flex: 1 auto;
+		order: 5;
+	}
+	.section {
+		flex: 5 0px;
+		order: 3;
+	}
+	.article {
+		flex: 5 0px;
+		order: 3;
+	}
+	footer {
+		order: 6;
+	}
+}
