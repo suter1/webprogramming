@@ -1,9 +1,13 @@
 @CHARSET "UTF-8";
 
+body {
+  font: 15px Helvetica, sans-serif; 
+}
+
 .logo {
-  background: url('logo/logo_isithombe.jpg') no-repeat;
-  min-height: 140px;
-  min-width: 150px;
+  background: url('logo/logo_isithombe.png') no-repeat;
+  min-height: 103px;
+  min-width: 126px;
 }
 
 .flex-container {
@@ -34,8 +38,18 @@
 }
 
 header {
-	background: black;
+  border-radius: 3px;
+	background: linear-gradient(to left, rgba(71,71,71, 0.6), rgba(180,180,180, 1));
 	color: white;
+}
+header span {
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 2.5em;
+
 }
 
 footer {
