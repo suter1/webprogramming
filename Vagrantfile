@@ -24,6 +24,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update -y
     sudo apt-get upgrade -y
+    apt-get autoremove -y
     sudo apt-get install -y apache2 libapache2-mod-php php-gd
     debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
     debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
