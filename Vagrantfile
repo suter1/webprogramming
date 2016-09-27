@@ -19,20 +19,25 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 4000, host: 4000
   config.vm.network "forwarded_port", guest: 80, host: 8000
   config.vm.network "forwarded_port", guest: 8080, host: 8080
-  config.vm.synced_folder "./data", "/vagrant_data"
-
+  config.vm.provider :virtualbox do |vb|
+   vb.memory = 8192
+   vb.cpus = 2
+   vb.gui = true
+  end
+  config.vm.synced_folder "data", "/vagrant_data"
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update -y
     sudo apt-get upgrade -y
     apt-get autoremove -y
     sudo apt-get install -y apache2 libapache2-mod-php php-gd
-    debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-    debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-    sudo apt-get install -y mysql-server-5.5 
-    sudo apt-get install -y mysql-server 
+	debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+    sudo apt-get install -y mysql-server-5.5
+	sudo apt-get install -y mysql-server 
     sudo apt-get install -y git 
     sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
     sudo apt-get install php7.0 php7.0-fpm php7.0-mysql -y
+	sudo apt-get install -y ubuntu-desktop
   SHELL
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     vundle_dir="~/.vim/bundle"
@@ -47,4 +52,10 @@ Vagrant.configure(2) do |config|
     sudo service apache2 reload
   SHELL
   config.vm.provision "file", source: "~/.vimrc", destination: ".vimrc"
+  config.push.define "ftp" do |push|
+   push.host = "maestro02.ch:5544"
+   push.secure = true
+
+   push.dir = "./data"
+  end
 end
