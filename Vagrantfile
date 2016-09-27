@@ -11,6 +11,11 @@ Vagrant.configure(2) do |config|
   # https://docs.vagrantup.com.
 
   config.vm.box = "ubuntu/trusty64"
+  if(ENV.include?('HTTP_PROXY'))
+    proxy = ENV.fetch('HTTP_PROXY')
+    config.proxy.https    = proxy 
+    config.proxy.http    = proxy 
+  end
   config.vm.network "forwarded_port", guest: 4000, host: 4000
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.synced_folder "../data", "/vagrant_data"
