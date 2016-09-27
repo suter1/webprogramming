@@ -17,8 +17,10 @@ Vagrant.configure(2) do |config|
     config.proxy.http    = proxy 
   end
   config.vm.network "forwarded_port", guest: 4000, host: 4000
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.network "forwarded_port", guest: 80, host: 8000
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.synced_folder "./data", "/vagrant_data"
+
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update -y
     sudo apt-get upgrade -y
@@ -36,6 +38,12 @@ Vagrant.configure(2) do |config|
     if [ ! -d "$vundle_dir" ]; then
       git clone https://github.com/VundleVim/Vundle.vim.git "$vundle_dir/Vundle.vim"
     fi
+  SHELL
+  config.vm.provision "file", source: "isithombe.com.conf", destination: "/tmp/isithombe.com.conf"
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    sudo mv /tmp/isithombe.com.conf /etc/apache2/sites-available/
+    sudo a2ensite isithombe.com.conf
+    sudo service apache2 reload
   SHELL
   config.vm.provision "file", source: "~/.vimrc", destination: ".vimrc"
 end
