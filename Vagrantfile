@@ -52,6 +52,10 @@ Vagrant.configure(2) do |config|
     sudo service apache2 reload
   SHELL
   config.vm.provision "file", source: "~/.vimrc", destination: ".vimrc"
+  config.vm.provision "file", source: "data/server_configuration/php.ini", destination: "/tmp/php.ini"
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo mv /tmp/php.ini /etc/php/7.0/apache2/
+  SHELL
   config.push.define "ftp" do |push|
    push.host = "maestro02.ch:5544"
    push.secure = true
