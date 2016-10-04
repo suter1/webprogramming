@@ -51,15 +51,16 @@ Vagrant.configure(2) do |config|
     sudo a2ensite isithombe.com.conf
     sudo service apache2 reload
   SHELL
-  config.vm.provision "file", source: "~/.vimrc", destination: ".vimrc"
   config.vm.provision "file", source: "data/server_configuration/php.ini", destination: "/tmp/php.ini"
   config.vm.provision "shell", inline: <<-SHELL
     sudo mv /tmp/php.ini /etc/php/7.0/apache2/
   SHELL
+ # config.vm.provision "file", source: "~/.vimrc", destination: ".vimrc"
   config.push.define "ftp" do |push|
    push.host = "maestro02.ch:5544"
    push.secure = true
-
+   push.username = "wp2016.maestro02.ch"
+   push.password = "Web_2016"
    push.dir = "./data"
   end
 end
