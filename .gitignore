@@ -1,3 +1,4 @@
 .vagrant
 .msi
 Vagrant Commands.txt
+*.log
