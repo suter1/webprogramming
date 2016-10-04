@@ -1,15 +1,5 @@
 @CHARSET "UTF-8";
 
-body {
-  font: 15px Helvetica, sans-serif; 
-}
-
-.logo {
-  background: url('logo/logo_isithombe.png') no-repeat;
-  min-height: 103px;
-  min-width: 126px;
-}
-
 .flex-container {
 	display: flex;
 	flex-flow: row wrap;
@@ -31,6 +21,7 @@ body {
 
 .section {
 	text-align: left;
+	with: 100%
 }
 
 .article {
@@ -38,18 +29,8 @@ body {
 }
 
 header {
-  border-radius: 3px;
-	background: linear-gradient(to left, rgba(71,71,71, 0.6), rgba(180,180,180, 1));
+	background: black;
 	color: white;
-}
-header span {
-  vertical-align: middle;
-  text-align: center;
-  display: inline-block;
-  margin-top: 40px;
-  font-weight: bold;
-  font-size: 2.5em;
-
 }
 
 footer {
@@ -57,8 +38,31 @@ footer {
 	color: white;
 }
 
+img {
+	max-width: 300px;
+	float: right;
+	
+}
+
+img.wrap {
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
+img.align-left {
+	float: left;
+	margin-right: 30px;
+}
+
+.OptSize {
+	float: left;
+	width: 100%;
+	margin-top: 0 px;
+}
+
 .nav {
 	background: #eee;
+	float: left;
 }
 
 .nav ul {
