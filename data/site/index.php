@@ -11,6 +11,16 @@
 
     <?php include("navigation.php") ?>
 
+	<?php
+	$pages = ['home' => 'home.php',
+	          'detail' => 'detail.php'];
+	if(isset($_GET['site'])) $content = $_GET['site'];
+	if(isset($content) && in_array($content, $pages)){
+		include($content);
+	}else{
+		include('home.php');
+	}
+	?>
 	<aside class="aside_left">
 		<p>Article left aside</p>
 	</aside>
