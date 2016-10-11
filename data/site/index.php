@@ -18,10 +18,7 @@
 	<section class="section">
 		<h3>Header in Section</h3>
 		<p>Absatz in einer Section</p>
-		<article class="article">
-			<h4>Header in Article in Section</h4>
-			<p>Absatz in Article einer Section</p>
-		</article>
+        <?php include("articles.php") ?>
 	</section>
 
 	<aside class="aside_right">
