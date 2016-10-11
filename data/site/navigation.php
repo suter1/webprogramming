@@ -6,10 +6,14 @@
  * Time: 21:04
  */
 
-$categories = array("Home", "Detail", "Shit");
+include('functions.php');
+$lang = get_param('lang','de');
+$categories = ["Home", "Detail", "Shit"];
+$translation = yaml_parse_file ("languages.yml");
+$trans = $translation['languages'][$lang];
 $navigation = "<nav class='nav'><ul>";
 foreach($categories as $category){
-    $navigation = $navigation . "<li class='category'><a href='index.php?site=" . strtolower($category). "'>" . $category . "</a></li>";
+    $navigation = $navigation . "<li class='category'><a href='index.php?site=" . strtolower($category). "'>" . $trans[strtolower($category)] . "</a></li>";
 }
 
 $navigation = $navigation . "</ul></nav>";

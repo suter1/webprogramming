@@ -1,0 +1,11 @@
+languages:
+  en:
+    detail: "Details"
+    home: "Home"
+    shit: "CRAP"
+
+  de:
+    detail: "Detailansicht"
+    home: "Startseite"
+    shit: "Diarrhö"
+
