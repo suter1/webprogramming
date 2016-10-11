@@ -29,8 +29,30 @@
 }
 
 header {
-	background: black;
+	background: rgb(180,180,180);
 	color: white;
+}
+
+header a{
+
+	text-decoration: none;
+	font-family: "Helvetica", Arial, sans-serif;
+	font-size: 2.2em;
+}
+
+.headline {
+	display: block;
+	margin: auto 0;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	height: 103px;
+}
+
+.logo {
+	background: url('logo/logo_isithombe.png') no-repeat;
+	min-height: 103px;
+	min-width: 126px;
 }
 
 footer {
@@ -57,7 +79,6 @@ img.align-left {
 .OptSize {
 	float: left;
 	width: 100%;
-	margin-top: 0 px;
 }
 
 .nav {
