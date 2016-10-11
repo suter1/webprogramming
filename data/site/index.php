@@ -9,12 +9,7 @@
 <div class="flex-container">
 <?php include_once ("header.php");?>
 
-	<nav class="nav">
-		<ul>
-			<li><a href="./detail.html">Produktedetail</a></li>
-			<li>Listelement 2</li>
-		</ul>
-	</nav>
+    <?php include("navigation.php") ?>
 
 	<aside class="aside_left">
 		<p>Article left aside</p>
