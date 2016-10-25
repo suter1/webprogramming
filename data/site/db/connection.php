@@ -38,10 +38,10 @@ class Database
     public function disconnect() {
         if ($this->con) {
             // We have found a connection, try to close it
-            if ($this->con->close) {
-                $this->con = false;
-                return true;
-            }
+            $this->con->close();
+            $this->con = false;
+            return true;
+
         }
         return false;
     }
@@ -62,8 +62,8 @@ class Database
     public function rawSql($sql){
         $result = $this->con->query($sql);
         if (!$result) {
-            echo "Problem occurred with query execution $sql.\n";
-            echo "ErrorNo: $this->con->errno \n";
+            echo "Problem occurred with query execution $sql.<br>";
+            echo "ErrorNo: $this->con->errno <br>";
             echo "Error: $this->con-error";
             exit;
         }
@@ -91,6 +91,14 @@ class Database
         if($this->tableExists($table)) return $this->sql($query);
     }
 
+    /**
+     * does insert into like: INSERT INTO $TABLE ('name1', 'name2') VALUES ('value1', 'value2');
+     *
+     * @param $table
+     * @param array $params
+     * @return bool|mixed
+     *
+     */
     public function insert($table, $params = array()) {
 // Check to see if the table exists
         if ($this->tableExists($table)) {
@@ -101,6 +109,34 @@ class Database
             return $this->rawSql($sql);
         }
         return false; // Table does not exist
+    }
+
+
+    /*
+     *  CREATE TABLE whatever (
+     *  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+     *  firstname VARCHAR(30) NOT NULL,
+     *  lastname VARCHAR(30) NOT NULL,
+     *  email VARCHAR(50),
+     *  reg_date TIMESTAMP
+     *  )
+     */
+    public function create_table($table, $data_types, $override = false){
+        if($override && $this->tableExists($table)){
+            $sql = "DROP TABLE $table";
+            $this->rawSql($sql);
+        }elseif(!$this->tableExists($table)){
+            $sql = "CREATE TABLE $table (";
+            $counter = 0;
+            foreach ($data_types as $name => $definition){
+                $counter += 1;
+                $sql .= "$name $definition";
+                if($counter < sizeof($data_types)) $sql .= ", ";
+            }
+            $sql .= ")";
+            $this->rawSql($sql);
+        }
+
     }
 
 //Function to delete table or row(s) from database
@@ -147,7 +183,6 @@ class Database
 // Private function to check if table exists for use with queries
     private function tableExists($table)
     {
-            var_dump($this->con);
             $tablesInDb = $this->con->query('SHOW TABLES FROM ' . $this->db_name . ' LIKE "' . $table . '"');
 
         if ($tablesInDb) {

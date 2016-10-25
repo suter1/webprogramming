@@ -1,3 +1,4 @@
+<?php include_once('db/init_db.php');?>
 <!DOCTYPE html>
 <html>
 <head>

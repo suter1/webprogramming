@@ -5,6 +5,7 @@
  * Date: 18.10.2016
  * Time: 19:47
  */
+require_once('db/connection.php');
 if (isset($_FILES['upload'])) {
 	$path = "gallery/";
 	$file = $_FILES['upload'];
@@ -16,7 +17,7 @@ if (isset($_FILES['upload'])) {
 	$filename = $_FILES['upload']['name'];
 	$filetype = $_FILES['upload']['type'];
 	$fileTemp = $_FILES['upload']['tmp_name'];
-	$allowed = array('tif', 'tiff', 'jpg', 'jpeg');
+	$allowed = array('tif', 'tiff', 'jpg', 'jpeg', 'JPG');
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 	if (!in_array($ext, $allowed)) {
@@ -27,10 +28,12 @@ if (isset($_FILES['upload'])) {
 	do {
 		$pickFileName = md5(uniqid(rand())) . $ext;
 	} while (file_exists($path.$pickFileName));
+    chmod($fileTemp, 0700);
 
-	move_uploaded_file($pickFileName, $path);
+    $current_file = $path.$pickFileName;
+	move_uploaded_file($fileTemp, $current_file);
 
-	$exif = exif_read_data($fileTemp);
+    $exif = @exif_read_data($current_file);
 
 //	if (array_key_exists('Make',$exif)){
 //		$ecameraMake = $exif['Make'];
@@ -78,7 +81,19 @@ if (isset($_FILES['upload'])) {
 	echo "Date of creation: ".$edate."<br>";
 	echo "Lens: ".$elens."<br><br>";
 
-//	var_dump($exif);
-
-	@chmod($path, $pickFileName, 0700);
+    $database = new Database();
+    $database->connect();
+    $database->insert('images', [
+        'camera_model' => $ecameraModel,
+        'aperture' => $eaperture,
+        'exposure_time' => $eexposureTime,
+        'created_at' => $edate,
+        'path' => $path . $pickFileName,
+        'owner_id' => 1,
+        'width' => $ewidth,
+        'height' => $eheight,
+        'title' => 'whatever',
+        'id' => null
+    ]);
+    $database->disconnect();
 }
