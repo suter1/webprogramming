@@ -3,3 +3,4 @@
 Vagrant Commands.txt
 *.log
 data/site/.idea/*.xml
+data/site/gallery/*
