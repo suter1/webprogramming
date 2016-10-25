@@ -2,7 +2,7 @@ languages:
   en:
     detail: "Details"
     home: "Home"
-    shit: "CRAP"
+    shit: "Shit"
 
   de:
     detail: "Detailansicht"

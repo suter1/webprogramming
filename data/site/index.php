@@ -7,9 +7,9 @@
 </head>
 <body>
 <div class="flex-container">
-<?php include_once ("header.php");?>
+	<?php include_once("header.php"); ?>
 
-    <?php include("navigation.php") ?>
+	<?php include("navigation.php") ?>
 
 	<aside class="aside_left">
 		<p>Article left aside</p>
@@ -17,11 +17,11 @@
 
 	<?php
 	$pages = ['home' => 'home.php',
-	          'detail' => 'detail.php'];
-	if(isset($_GET['site'])) $content = $_GET['site'];
-	if(isset($content) && array_key_exists($content, $pages)){
+		'detail' => 'detail.php'];
+	if (isset($_GET['site'])) $content = $_GET['site'];
+	if (isset($content) && array_key_exists($content, $pages)) {
 		include($pages[$content]);
-	}else{
+	} else {
 		include('home.php');
 	}
 	?>
