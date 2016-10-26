@@ -88,12 +88,13 @@ if (isset($_FILES['upload'])) {
         'aperture' => $eaperture,
         'exposure_time' => $eexposureTime,
         'created_at' => $edate,
+        'uploaded_at' => date('Y-m-d H:i:s'),
         'path' => $path . $pickFileName,
         'owner_id' => 1,
         'width' => $ewidth,
         'height' => $eheight,
         'title' => 'whatever',
-        'id' => null
+        'id' => null,
     ]);
     $database->disconnect();
 }

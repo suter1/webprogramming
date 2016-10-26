@@ -63,8 +63,8 @@ class Database
         $result = $this->con->query($sql);
         if (!$result) {
             echo "Problem occurred with query execution $sql.<br>";
-            echo "ErrorNo: $this->con->errno <br>";
-            echo "Error: $this->con-error";
+            echo "ErrorNo: " .$this->con->errno . "<br>";
+            echo "Error:" . $this->con->error;
             exit;
         }
         return $result;
@@ -125,7 +125,8 @@ class Database
         if($override && $this->tableExists($table)){
             $sql = "DROP TABLE $table";
             $this->rawSql($sql);
-        }elseif(!$this->tableExists($table)){
+        }
+        if(!$this->tableExists($table)){
             $sql = "CREATE TABLE $table (";
             $counter = 0;
             foreach ($data_types as $name => $definition){
