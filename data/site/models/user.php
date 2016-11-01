@@ -1,5 +1,6 @@
 <?php
 class User extends Model {
+	private $id;
     private $first_name;
     private $last_name;
     private $email;
@@ -8,6 +9,7 @@ class User extends Model {
     private $username;
 
     function __construct($values){
+    	$this->id=$values('id');
         $this->first_name = $values['first_name'];
         $this->last_name = $values['last_name'];
         $this->email = $values['email'];
