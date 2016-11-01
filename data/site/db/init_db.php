@@ -47,8 +47,8 @@ $tables = [
     ],
 
     'pictures_orders' => [
-        'picture_id'        => $default_int . ' NOT NULL PRIMARY KEY',
-        'order_id'          => $default_int . ' NOT NULL PRIMARY KEY',
+        'picture_id'        => $default_int . ' NOT NULL',
+        'order_id'          => $default_int . ' NOT NULL',
         'size'              => $varchar,
         'price'             => $money,
         'FOREIGN KEY'       => '(picture_id) REFERENCES pictures(id), FOREIGN KEY (order_id) REFERENCES orders(id)',
@@ -61,10 +61,10 @@ $tables = [
     ],
 
     'offers_pictures' => [
-        'offer_id'          => $default_int . ' NOT NULL PRIMARY KEY',
-        'picture_id'        => $default_int . ' NOT NULL PRIMARY KEY',
+        'offer_id'          => $default_int . ' NOT NULL',
+        'picture_id'        => $default_int . ' NOT NULL',
         'new_price'         => $money,
-        'FOREIGN KEY'       => '(picture_id) REFERENCES pictures(id), FOREIGN KEY (offer_id) REFERENCES offers(id)'
+        'FOREIGN KEY'       => '(picture_id) REFERENCES pictures(id), FOREIGN KEY (offer_id) REFERENCES special_offers(id)'
     ],
 
     'payouts' => [
@@ -72,13 +72,13 @@ $tables = [
         'execution'         => "$datetime NOT NULL",
         'user_id'           => $default_int . ' NOT NULL',
         'total_payout'      => $money,
-        'state'             => 'enum',
+        'state'             => 'enum("full_size", "half_size", "thumbnail")',
         'FOREIGN KEY'       => '(user_id) REFERENCES users(id)',
     ],
 
     'ratings' => [
-        'picture_id'        => $default_int . ' NOT NULL PRIMARY KEY',
-        'user_id'           => $default_int . ' NOT NULL PRIMARY KEY',
+        'picture_id'        => $default_int . ' NOT NULL',
+        'user_id'           => $default_int . ' NOT NULL',
         'value'             => 'int(1) NOT NULL',
         'FOREIGN KEY'       => '(picture_id) REFERENCES pictures(id), FOREIGN KEY (user_id) REFERENCES users(id)'
     ],
