@@ -1,9 +1,8 @@
 <?php
-$require_once("db/connection.php");
+require_once("db/connection.php");
 $database = new Database();
 $database-> connect();
 
-$
 
 $categories = ["nature", "shit", "crap"];
 
