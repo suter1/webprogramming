@@ -1,23 +1,23 @@
 <?php
 require_once('connection.php');
-$drop = true;
+$drop = false;
 $database = new Database();
 $database->connect();
 $varchar = 'varchar(255)';
 $tables = [
-    'roles' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY', 'name' => 'varchar(255)'],
-
     'users' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',
         'first_name' => $varchar,
         'last_name' => $varchar,
         'email' => $varchar,
+        'email_confirmed' => 'boolean',
         'address' => $varchar,
         'sex' => $varchar,
-        'username' => $varchar,
-        'role_id' => 'int',
-        'FOREIGN KEY' => '(role_id) REFERENCES roles(id)'],
+        'budget' => 'money',
+        'paypal_address' => $varchar,
+        'is_admin' => 'boolean',
+        'username' => $varchar],
 
-    'images' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+    'pictures' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',
         'title' => $varchar . " NOT NULL",
         'path' => $varchar . " NOT NULL",
         'thumbnail_path' => $varchar . " NOT NULL",
@@ -30,7 +30,21 @@ $tables = [
         'created_at' => 'datetime NOT NULL',
         'uploaded_at' => 'datetime NOT NULL',
         'owner_id' => 'int' . " NOT NULL",
-        'FOREIGN KEY' => '(owner_id) REFERENCES users(id)']
+        'FOREIGN KEY' => '(owner_id) REFERENCES users(id)'],
+
+    'orders' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        '' => ''],
+
+    'pictures_orders' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+    ],
+
+    'special_offers' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',],
+
+    'offers_pictures' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',],
+
+    'payouts' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',],
+
+    'ratings' => ['id' => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',],
 ];
 
 foreach($tables as $table => $columns){

@@ -1,7 +1,6 @@
 <?php
 
-class Database
-{
+class Database {
     /*
     * Create variables for credentials to MySQL database
     * The variables have been declared as private. This
@@ -59,7 +58,7 @@ class Database
         }
     }
 
-    public function rawSql($sql){
+    public function rawSql($sql) {
         $result = $this->con->query($sql);
         if (!$result) {
             echo "Problem occurred with query execution $sql.<br>";
@@ -72,8 +71,7 @@ class Database
     }
 
 // Function to SELECT from the database
-    public function select($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null)
-    {
+    public function select($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
         $query = 'SELECT ' . $rows . ' FROM ' . $table;
         if ($join != null) {
             $query .= ' JOIN ' . $join;
@@ -182,8 +180,7 @@ class Database
     }
 
 // Private function to check if table exists for use with queries
-    private function tableExists($table)
-    {
+    private function tableExists($table) {
             $tablesInDb = $this->con->query('SHOW TABLES FROM ' . $this->db_name . ' LIKE "' . $table . '"');
 
         if ($tablesInDb) {
@@ -197,32 +194,28 @@ class Database
     }
 
 // Public function to return the data to the user
-    public function getResult()
-    {
+    public function getResult() {
         $val = $this->result;
         $this->result = array();
         return $val;
     }
 
 //Pass the SQL back for debugging
-    public function getSql()
-    {
+    public function getSql() {
         $val = $this->myQuery;
         $this->myQuery = array();
         return $val;
     }
 
 //Pass the number of rows back
-    public function numRows()
-    {
+    public function numRows() {
         $val = $this->numResults;
         $this->numResults = array();
         return $val;
     }
 
 // Escape your string
-    public function escapeString($data)
-    {
+    public function escapeString($data) {
         return $this->con->real_escape_string($data);
     }
 }

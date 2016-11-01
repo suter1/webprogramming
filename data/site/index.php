@@ -29,6 +29,7 @@
 
 	<aside class="aside_right">
 		<p>Aside rechts</p>
+		<img src="./gallery/0ca1d585c955e8f41c2782639b8aa061JPG" />
 	</aside>
 </div>
 </body>

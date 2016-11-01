@@ -5,7 +5,7 @@
  * Date: 18.10.2016
  * Time: 19:47
  */
-require_once('db/connection.php');
+require_once('models/image.php');
 if (isset($_FILES['upload'])) {
 	$path = "gallery/";
 	$file = $_FILES['upload'];
@@ -81,20 +81,16 @@ if (isset($_FILES['upload'])) {
 	echo "Date of creation: ".$edate."<br>";
 	echo "Lens: ".$elens."<br><br>";
 
-    $database = new Database();
-    $database->connect();
-    $database->insert('images', [
-        'camera_model' => $ecameraModel,
-        'aperture' => $eaperture,
-        'exposure_time' => $eexposureTime,
-        'created_at' => $edate,
-        'uploaded_at' => date('Y-m-d H:i:s'),
-        'path' => $path . $pickFileName,
-        'owner_id' => 1,
-        'width' => $ewidth,
-        'height' => $eheight,
-        'title' => 'whatever',
-        'id' => null,
-    ]);
-    $database->disconnect();
+    $image = Image.create([
+            'camera_model' => $ecameraModel,
+            'aperture' => $eaperture,
+            'exposure_time' => $eexposureTime,
+            'created_at' => $edate,
+            'uploaded_at' => date('Y-m-d H:i:s'),
+            'path' => $path . $pickFileName,
+            'owner_id' => 1,
+            'width' => $ewidth,
+            'height' => $eheight,
+            'title' => 'whatever',
+            'id' => null]);
 }

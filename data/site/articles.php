@@ -1,4 +1,10 @@
 <?php
+$require_once("db/connection.php");
+$database = new Database();
+$database-> connect();
+
+$
+
 $categories = ["nature", "shit", "crap"];
 
 $articles = "";
@@ -15,4 +21,5 @@ foreach ($categories as $category) {
 		$brs .
 		"</article>";
 }
+
 echo $articles;
