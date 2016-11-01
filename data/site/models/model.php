@@ -1,5 +1,6 @@
 <?php
 require_once("db/connection.php");
+require_once("models/model_structure.php");
 abstract class Model implements ModelStructure {
 
     /**
@@ -15,20 +16,25 @@ abstract class Model implements ModelStructure {
             if(++$index < sizeof($search_array)) $where .= ", ";
         }
         $db = new Database();
-        $db.connect();
-        $result = $db.select(self::getTableName(), '*', null, $where, null, 1);
-        $db.disconnect();
+        $db->connect();
+        $result = $db->select(static::getTableName(), '*', null, $where, null, 1);
+        $db->disconnect();
 
         if(sizeof($result) == 0) return null;
-        $class = "Class".self::getTableName();
+        $class = "Class".static::getTableName();
         return new $class($result[0]); //use the first one, because this method is built just to return the first
     }
 
     /**
      * @param $insert_array
+     * @return String
      */
     public static function create($insert_array){
-        $insert = "";
+        $db = new Database();
+        $db->connect();
+        $result = $db->insert(static::getTableName(), $insert_array);
+        $db->disconnect();
+        return $result;
     }
 
     /**
@@ -36,9 +42,9 @@ abstract class Model implements ModelStructure {
      */
     public static function all(){
         $db = new Database();
-        $db.connect();
-        $result = $db.select(self::getTableName());
-        $db.disconnect();
+        $db->connect();
+        $result = $db->select(static::getTableName());
+        $db->disconnect();
         $models = [];
         $class = "Class".self::getTableName();
         foreach($result as $result_set){

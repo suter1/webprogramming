@@ -5,13 +5,14 @@
  * Date: 18.10.2016
  * Time: 19:47
  */
-require_once('models/image.php');
+require_once('models/picture.php');
 if (isset($_FILES['upload'])) {
 	$path = "gallery/";
 	$file = $_FILES['upload'];
 	if ($file['error'] != 0) {
 		echo "There was an error uploading the file \n";
 		echo $file['error'];
+        echo var_dump($file);
 		exit;
 	}
 	$filename = $_FILES['upload']['name'];
@@ -81,7 +82,7 @@ if (isset($_FILES['upload'])) {
 	echo "Date of creation: ".$edate."<br>";
 	echo "Lens: ".$elens."<br><br>";
 
-    $image = Image.create([
+    $image = Picture::create([
             'camera_model' => $ecameraModel,
             'aperture' => $eaperture,
             'exposure_time' => $eexposureTime,
