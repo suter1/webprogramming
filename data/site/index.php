@@ -17,8 +17,12 @@
 	</aside>
 
 	<?php
-	$pages = ['home' => 'home.php',
-		'detail' => 'detail.php'];
+	$pages = [
+		'home' => 'home.php',
+		'detail' => 'detail.php',
+		'upload' => 'uploadFile.html',
+
+	];
 	if (isset($_GET['site'])) $content = $_GET['site'];
 	if (isset($content) && array_key_exists($content, $pages)) {
 		include($pages[$content]);

@@ -3,9 +3,11 @@ languages:
     detail: "Details"
     home: "Home"
     shit: "Shit"
+    upload: "Upload"
 
   de:
     detail: "Detailansicht"
     home: "Startseite"
     shit: "Diarrhö"
+    upload: "hochladen"
 
