@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="isithombe_default.css"/>
+	<link rel="stylesheet" type="text/css" href="styles/isithombe_default.css"/>
 	<meta charset="UTF-8"/>
 	<title>Insert title here</title>
 </head>
 <body>
 <div class="flex-container">
-	<?php include_once("header.php"); ?>
+	<?php include_once("page_grid/header.php"); ?>
 
-	<?php include("navigation.php") ?>
+	<?php include("page_grid/navigation.php") ?>
 
 	<aside class="aside_left">
 		<p>Article left aside</p>
@@ -20,7 +20,8 @@
 	$pages = [
 		'home' => 'home.php',
 		'detail' => 'detail.php',
-		'upload' => 'uploadFile.html',
+		'upload' => 'picture_upload/uploadFile.html',
+		'register' => 'registration/register.php'
 
 	];
 	if (isset($_GET['site'])) $content = $_GET['site'];

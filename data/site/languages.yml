@@ -4,10 +4,12 @@ languages:
     home: "Home"
     shit: "Shit"
     upload: "Upload"
+    register: "Register"
 
   de:
     detail: "Detailansicht"
     home: "Startseite"
     shit: "Diarrhö"
     upload: "hochladen"
+    register: "Registrieren"
 

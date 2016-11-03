@@ -110,14 +110,16 @@ class Database {
     }
 
 
-    /*
+    /**
      *  CREATE TABLE whatever (
      *  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
      *  firstname VARCHAR(30) NOT NULL,
      *  lastname VARCHAR(30) NOT NULL,
      *  email VARCHAR(50),
      *  reg_date TIMESTAMP
-     *  )
+     * @param $table
+     * @param $data_types
+     * @param bool $override
      */
     public function create_table($table, $data_types, $override = false){
         if($override && $this->tableExists($table)){
@@ -139,6 +141,11 @@ class Database {
     }
 
 //Function to delete table or row(s) from database
+    /**
+     * @param $table
+     * @param null $where String with key = 'value'
+     * @return bool
+     */
     public function delete($table, $where = null) {
         if ($this->tableExists($table)) {
             if ($where == null) {
@@ -159,6 +166,12 @@ class Database {
     }
 
 // Function to update row in database
+    /**
+     * @param $table String
+     * @param $where String
+     * @param array $params
+     * @return bool
+     */
     public function update($table, $where, $params = []) {
         if ($this->tableExists($table)) {
             $args = [];

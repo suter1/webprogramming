@@ -27,7 +27,7 @@ abstract class Model implements ModelStructure {
 
     /**
      * @param $insert_array
-     * @return String
+     * @return Model instance
      */
     public static function create($insert_array){
         $db = new Database();
@@ -54,11 +54,15 @@ abstract class Model implements ModelStructure {
     }
 
     /**
-     * @param $update_array
+     * @param $update_hash ('column' => 'value')
      * @return Boolean if worked or not
      */
-    public function update($update_array){
-
+    public function update($update_hash){
+        $db = new Database();
+        $db->connect();
+        $result = $db->update(static::getTableName(), "WHERE ID='$this->id'", $update_hash);
+        $db->disconnect();
+        return $result;
     }
 
     public static function first($limit = 1){

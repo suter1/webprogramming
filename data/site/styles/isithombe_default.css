@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+body{
+    font-family: "Helvetica", Arial, sans-serif;
+}
 
 .flex-container {
     display: flex;
@@ -50,7 +53,7 @@ header a {
 }
 
 .logo {
-    background: url('logo/logo_isithombe.png') no-repeat;
+    background: url('../logo/logo_isithombe.png') no-repeat;
     min-height: 103px;
     min-width: 126px;
 }

@@ -8,7 +8,7 @@
 
 include('functions.php');
 $lang = get_param('lang', 'de');
-$categories = ["Home", "Detail", "Shit", "Upload"];
+$categories = ["Home", "Detail", "Shit", "Upload", "Register"];
 $translation = yaml_parse_file("languages.yml");
 $trans = $translation['languages'][$lang];
 $navigation = "<nav class='nav'><ul>";
