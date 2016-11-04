@@ -21,4 +21,30 @@ class Rating extends Model {
 	{
 		return "ratings";
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getPictureId()
+    {
+        return $this->picture_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+
 }

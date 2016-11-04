@@ -91,13 +91,14 @@ abstract class Model implements ModelStructure {
     }
 
     private static function initModel($result){
-        $class = "Class".static::getTableName();
-        return new $class($result);
+        $class = static::class;
+        $object =  new $class($result);
+        return $object;
     }
 
     private static function initModels($result){
         $models = [];
-        foreach($result as $result_set) array_push($models, initModel($result_set));
+        foreach($result as $result_set) array_push($models, static::initModel($result_set));
         return $models;
     }
 }

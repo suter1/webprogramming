@@ -35,4 +35,110 @@ class Picture extends Model{
 	static function getTableName() {
     	return "pictures";
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailPath()
+    {
+        return $this->thumbnail_path;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCameraModel()
+    {
+        return $this->camera_model;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLens()
+    {
+        return $this->lens;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAperture()
+    {
+        return $this->aperture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExposureTime()
+    {
+        return $this->exposure_time;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUploadedAt()
+    {
+        return $this->uploaded_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOwnerId()
+    {
+        return $this->owner_id;
+    }
+
+
 }

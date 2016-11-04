@@ -73,20 +73,14 @@ class Database {
 // Function to SELECT from the database
     public function select($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
         $query = 'SELECT ' . $rows . ' FROM ' . $table;
-        if ($join != null) {
-            $query .= ' JOIN ' . $join;
+        if ($join != null)  $query .= ' JOIN ' . $join;
+        if ($where != null) $query .= ' WHERE ' . $where;
+        if ($order != null) $query .= ' ORDER BY ' . $order;
+        if ($limit != null) $query .= ' LIMIT ' . $limit;
+        if($this->tableExists($table)){
+            if($this->sql($query))  return $this->result;
         }
-        if ($where != null) {
-            $query .= ' WHERE ' . $where;
-        }
-        if ($order != null) {
-            $query .= ' ORDER BY ' . $order;
-        }
-        if ($limit != null) {
-            $query .= ' LIMIT ' . $limit;
-        }
-
-        if($this->tableExists($table)) return $this->sql($query);
+        return null;
     }
 
     /**
@@ -98,11 +92,11 @@ class Database {
      *
      */
     public function insert($table, $params = array()) {
-// Check to see if the table exists
+        // Check to see if the table exists
         if ($this->tableExists($table)) {
             $sql = 'INSERT INTO `' . $table . '` (`' . implode('`, `', array_keys($params)) . '`) VALUES ("' . implode('", "', $params) . '")';
             $this->myQuery = $sql; // Pass back the SQL
-// Make the query to insert to the database
+            // Make the query to insert to the database
 
             return $this->rawSql($sql);
         }

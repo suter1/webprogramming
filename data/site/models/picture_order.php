@@ -23,4 +23,38 @@ class Picture_order extends Model {
 	{
 		return "pictures_orders";
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getPictureId()
+    {
+        return $this->picture_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderId()
+    {
+        return $this->order_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+
 }

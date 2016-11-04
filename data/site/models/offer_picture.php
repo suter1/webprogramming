@@ -21,4 +21,30 @@ class Offer_picture extends Model {
 	{
 		return "offers_pictures";
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getOfferId()
+    {
+        return $this->offer_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPictureId()
+    {
+        return $this->picture_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNewPrice()
+    {
+        return $this->new_price;
+    }
+
+
 }
