@@ -41,7 +41,11 @@ header a {
     text-decoration: none;
     font-family: "Helvetica", Arial, sans-serif;
     font-size: 2.2em;
+    font-color: blue;
 }
+ header a:visited{
+     font-color: blue;
+ }
 
 .headline {
     display: block;
