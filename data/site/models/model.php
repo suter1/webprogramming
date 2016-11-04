@@ -19,10 +19,8 @@ abstract class Model implements ModelStructure {
         $db->connect();
         $result = $db->select(static::getTableName(), '*', null, $where, null, 1);
         $db->disconnect();
-
         if(sizeof($result) == 0) return null;
-        $class = "Class".static::getTableName();
-        return new $class($result[0]); //use the first one, because this method is built just to return the first
+        return static::initModel($result[0]); //use the first one, because this method is built just to return the first
     }
 
     /**
@@ -34,7 +32,7 @@ abstract class Model implements ModelStructure {
         $db->connect();
         $result = $db->insert(static::getTableName(), $insert_array);
         $db->disconnect();
-        return $result;
+        return static::initModel($result);
     }
 
     /**
@@ -45,12 +43,7 @@ abstract class Model implements ModelStructure {
         $db->connect();
         $result = $db->select(static::getTableName());
         $db->disconnect();
-        $models = [];
-        $class = "Class".self::getTableName();
-        foreach($result as $result_set){
-            array_push($models, new $class($result_set));
-        }
-        return $models;
+        return static::initModels($result);
     }
 
     /**
@@ -77,9 +70,9 @@ abstract class Model implements ModelStructure {
         if($result == null || sizeof($result) == 0) {
             return null;
         }else if($limit == 1){
-            return $result[0];
+            return static::initModel($result[0]);
         }else{
-            return $result;
+            return static::initModels($result);
         }
     }
 
@@ -91,9 +84,20 @@ abstract class Model implements ModelStructure {
         if($result == null || sizeof($result) == 0) {
             return null;
         }else if($limit == 1){
-            return $result[0];
+            return static::initModel($result[0]);
         }else{
-            return $result;
+            return static::initModels($result);
         }
+    }
+
+    private static function initModel($result){
+        $class = "Class".static::getTableName();
+        return new $class($result);
+    }
+
+    private static function initModels($result){
+        $models = [];
+        foreach($result as $result_set) array_push($models, initModel($result_set));
+        return $models;
     }
 }
