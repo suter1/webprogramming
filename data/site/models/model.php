@@ -65,11 +65,35 @@ abstract class Model implements ModelStructure {
         return $result;
     }
 
+    /**
+     * @param int $limit
+     * @return (array|Model|null)
+     */
     public static function first($limit = 1){
-
+        $db = new Database();
+        $db->connect();
+        $result = $db->select(static::getTableName(), "*", null, null, "id ASC", $limit);
+        $db->disconnect();
+        if($result == null || sizeof($result) == 0) {
+            return null;
+        }else if($limit == 1){
+            return $result[0];
+        }else{
+            return $result;
+        }
     }
 
     public static function last($limit = 1){
-
+        $db = new Database();
+        $db->connect();
+        $result = $db->select(static::getTableName(), "*", null, null, "id DESC", $limit);
+        $db->disconnect();
+        if($result == null || sizeof($result) == 0) {
+            return null;
+        }else if($limit == 1){
+            return $result[0];
+        }else{
+            return $result;
+        }
     }
 }
