@@ -12,9 +12,9 @@ class Rating extends Model {
 
 	function __construct($values)
 	{
-		$this->picture_id=$values('picture_id');
-		$this->user_id=$values('user_id');
-		$this->value=$values('value');
+		$this->picture_id=$values['picture_id'];
+		$this->user_id=$values['user_id'];
+		$this->value=$values['value'];
 	}
 
 	static function getTableName()

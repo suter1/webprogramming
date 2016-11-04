@@ -12,9 +12,9 @@ class Offer_picture extends Model {
 
 	function __construct($values)
 	{
-		$this->offer_id=$values('offer_id');
-		$this->picture_id=$values('picture_id');
-		$this->new_price=$values('new_price');
+		$this->offer_id=$values['offer_id'];
+		$this->picture_id=$values['picture_id'];
+		$this->new_price=$values['new_price'];
 	}
 
 	static function getTableName()

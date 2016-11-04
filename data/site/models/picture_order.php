@@ -13,10 +13,10 @@ class Picture_order extends Model {
 
 	function __construct($values)
 	{
-		$this->picture_id=$values('picture_id');
-		$this->order_id=$values('order_id');
-		$this->size=$values('size');
-		$this->price=$values('price');
+		$this->picture_id=$values['picture_id'];
+		$this->order_id=$values['order_id'];
+		$this->size=$values['size'];
+		$this->price=$values['price'];
 	}
 
 	static function getTableName()

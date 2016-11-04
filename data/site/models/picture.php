@@ -17,19 +17,19 @@ class Picture extends Model{
 
 	function __construct($values)
 	{
-		$this->id=$values('id');
-		$this->title=$values('title');
-		$this->path=$values('path');
-		$this->thumbnail_path=$values('thumbnail_path');
-		$this->camera_model=$values('camera_model');
-		$this->lens=$values('lens');
-		$this->width=$values('width');
-		$this->height=$values('height');
-		$this->aperture=$values('aperture');
-		$this->exposure_time=$values('exposure_time');
-		$this->created_at=$values('created_at');
-		$this->uploaded_at=$values('uploaded_at');
-		$this->owner_id=$values('owner_id');
+		$this->id=$values['id'];
+		$this->title=$values['title'];
+		$this->path=$values['path'];
+		$this->thumbnail_path=$values['thumbnail_path'];
+		$this->camera_model=$values['camera_model'];
+		$this->lens=$values['lens'];
+		$this->width=$values['width'];
+		$this->height=$values['height'];
+		$this->aperture=$values['aperture'];
+		$this->exposure_time=$values['exposure_time'];
+		$this->created_at=$values['created_at'];
+		$this->uploaded_at=$values['uploaded_at'];
+		$this->owner_id=$values['owner_id'];
 	}
 
 	static function getTableName() {

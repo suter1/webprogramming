@@ -13,10 +13,10 @@ class Order extends Model {
 
 	function __construct($values)
 	{
-		$this->id=$values('id');
-		$this->order_date=$values('order_date');
-		$this->user_id=$values('user_id');
-		$this->price=$values('price');
+		$this->id=$values['id'];
+		$this->order_date=$values['order_date'];
+		$this->user_id=$values['user_id'];
+		$this->price=$values['price'];
 	}
 
 	static function getTableName()

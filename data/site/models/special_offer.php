@@ -12,9 +12,9 @@ class Special_offer extends Model {
 
 	function __construct($values)
 	{
-		$this->id=$values('id');
-		$this->start=$values('start');
-		$this->end=$values('end');
+		$this->id=$values['id'];
+		$this->start=$values['start'];
+		$this->end=$values['end'];
 	}
 
 	static function getTableName()
