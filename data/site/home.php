@@ -14,13 +14,11 @@
 				if(file_exists($picture->getPath())) {
 					$title = $picture->getTitle();
 					$image = "<div class='image'><img src='" . $picture->getPath() . "' /> ";
-					$description = "<p>$title</p>";
-
-					var_dump($picture->tags());
+					$description = "<div class='description'><span>$title</span>";
 					foreach($picture->tags() as $tag){
-						$description .= "<p>" . $tag->getName() . "</p>";
+						$description .= "<span class='badge'>" . $tag->getName() . "</span>";
 					}
-					$description .= "</div>";
+					$description .= "</div></div>";
 					$pictures_html .= $image . $description;
 				}
 		echo $pictures_html;

@@ -91,7 +91,7 @@ class Database {
         if ($order != null) $query .= ' ORDER BY ' . $order;
         if ($limit != null) $query .= ' LIMIT ' . $limit;
         if($this->tableExists($table) && $this->sql($query)) return $this->result;
-        return null;
+        return [];
     }
 
     /**

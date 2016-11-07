@@ -20,12 +20,13 @@ abstract class Model implements ModelStructure {
 
         foreach ($this->has_and_belongs_to_many() as $association => $configuration){
             $func = function() use ($association, $configuration) {
+                $current_table = static::getTableName();
                 $db = new Database();
                 $db->connect();
-                $join =  $configuration['join_table'] . " ON " . $configuration['foreign_key'] . " = " . static::getTableName().".id"  .
+                $join =  $configuration['join_table'] . " ON " . $configuration['foreign_key'] . " = " . $current_table .".id"  .
                     " LEFT JOIN " . $association . " ON " . $configuration['association_key'] . " = " . $association . ".id ".
-                    " WHERE ". static::getTableName().".id = " . $this->getId();
-                $result = $db->select(static::getTableName(), "*", $join);
+                    " WHERE ". $current_table . ".id = " . $this->getId();
+                $result = $db->select($current_table, $association.".*", $join);
                 return static::initModels($result, $configuration['class_name']);
             };
             $this->addMethod($association, $func);

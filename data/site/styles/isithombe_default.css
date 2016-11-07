@@ -32,12 +32,36 @@ body{
     min-width: 605px;
 }
 
+.badge {
+    background-color: lightskyblue;
+    font-size: 0.8em;
+    border: 1px antiquewhite solid;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.description {
+    font-size: 0.8em;
+    padding: 3px;
+    display: block;
+    white-space: nowrap;
+}
+
+.description span {
+    margin-top: 2px;
+    margin-right: 5px;
+    display: block;
+}
+
 .image {
     display: inline-block;
     margin: 1px;
+    padding: 2px;
     border: 1px solid ghostwhite;
     border-radius: 3px;
+    max-width: 300px;
 }
+
 .article {
     text-align: left;
 }
@@ -80,8 +104,6 @@ footer {
 
 img {
     max-width: 300px;
-    float: right;
-
 }
 
 img.wrap {
