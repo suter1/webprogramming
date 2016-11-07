@@ -27,6 +27,17 @@ body{
     with: 100%
 }
 
+.images {
+    display: block;
+    min-width: 605px;
+}
+
+.image {
+    display: inline-block;
+    margin: 1px;
+    border: 1px solid ghostwhite;
+    border-radius: 3px;
+}
 .article {
     text-align: left;
 }

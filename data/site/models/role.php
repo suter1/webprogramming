@@ -9,4 +9,9 @@ class Role extends Model {
     static function getTableName(){
         return "roles";
     }
+
+    protected function has_and_belongs_to_many()
+    {
+        return [];
+    }
 }

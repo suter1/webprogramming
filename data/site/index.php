@@ -8,15 +8,9 @@
 </head>
 <body>
 <div class="flex-container">
-	<?php include_once("page_grid/header.php"); ?>
-
-	<?php include("page_grid/navigation.php") ?>
-
-	<aside class="aside_left">
-		<p>Article left aside</p>
-	</aside>
-
 	<?php
+	include_once("page_grid/header.php");
+	include("page_grid/navigation.php");
 	$pages = [
 		'home' => 'home.php',
 		'detail' => 'detail.php',
@@ -34,7 +28,6 @@
 
 	<aside class="aside_right">
 		<p>Aside rechts</p>
-		<img src="./gallery/0ca1d585c955e8f41c2782639b8aa061JPG" />
 	</aside>
 </div>
 </body>

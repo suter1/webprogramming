@@ -57,4 +57,8 @@ class Order extends Model {
     }
 
 
+    protected function has_and_belongs_to_many()
+    {
+        return [];
+    }
 }
