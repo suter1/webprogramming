@@ -5,6 +5,7 @@ class Tag extends Model {
 
     function __construct($values) {
         parent::__construct();
+        $this->id = $values['id'];
         $this->name = $values['name'];
     }
 
@@ -13,7 +14,12 @@ class Tag extends Model {
     }
 
     protected function has_and_belongs_to_many() {
-        return [];
+        return ["pictures" =>[
+            "class_name" => "Picture",
+            "join_table" => "pictures_tags",
+            "foreign_key" => "tag_id",
+            "association_key" => "picture_id"]
+        ];
     }
 
     /**
@@ -22,5 +28,13 @@ class Tag extends Model {
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }

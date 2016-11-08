@@ -143,11 +143,10 @@ class Picture extends Model{
     protected function has_and_belongs_to_many()
     {
        return ["tags" =>[
-           "class_name" => "Tag",
+            "class_name" => "Tag",
             "join_table" => "pictures_tags",
             "foreign_key" => "picture_id",
-            "association_key" => "tag_id"
-       ]
+            "association_key" => "tag_id"]
        ];
     }
 }
