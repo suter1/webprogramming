@@ -12,7 +12,7 @@ $lang = get_param('lang', 'de');
 $categories = ["Home", "Detail", "Shit", "Upload", "Register"];
 $translation = yaml_parse_file("languages.yml");
 $trans = $translation['languages'][$lang];
-$navigation = "<div class='nav-placeholder section'></div><nav class='nav'><ul>";
+$navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
 foreach ($categories as $category) {
 	$navigation .= "<li class='category'><a href='index.php?site=" . strtolower($category) . "&lang=$lang'>" . $trans[strtolower($category)] . "</a></li>";
 }
@@ -38,5 +38,5 @@ foreach($tags as $tag){
 $navigation .= "</ul></div>";
 
 
-$navigation .= "<a href='index.php?site=$site&lang=$clangShort'>$clang</a></nav>";
+$navigation .= "<br /><br /><a href='index.php?site=$site&lang=$clangShort'>$clang</a></nav>";
 echo $navigation;

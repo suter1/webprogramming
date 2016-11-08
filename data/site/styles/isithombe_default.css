@@ -121,7 +121,7 @@ img.align-left {
 }
 
 .nav-placeholder{
-    width: 160px;
+    width: 150px;
     height: 100%;
 }
 .nav {
@@ -159,8 +159,7 @@ img.align-left {
 
 
 @media all and (min-width: 768px) {
-    .nav {
-        max-width: 100px;
+    .navigation-placeholder {
         text-align: left;
         flex: 1 auto;
         order: 1;
@@ -177,7 +176,7 @@ img.align-left {
     }
 
     .section {
-        flex: 5 0px;
+        flex: 7 0px;
         order: 3;
     }
 
