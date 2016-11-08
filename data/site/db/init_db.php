@@ -82,6 +82,14 @@ $tables = [
         'value'             => 'int(1) NOT NULL',
         'FOREIGN KEY'       => '(picture_id) REFERENCES pictures(id), FOREIGN KEY (user_id) REFERENCES users(id)'
     ],
+    'tags' => [
+        'id'                => $default_int . ' NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        'name'              => $varchar . ' NOT NULL',
+    ],
+    'pictures_tags' => [
+        'tag_id'            => $default_int . ' NOT NULL',
+        'picture_id'        => $default_int . ' NOT NULL',
+    ],
 ];
 
 foreach($tables as $table => $columns){

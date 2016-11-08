@@ -1,5 +1,5 @@
 <?php
-require_once("models/model.php");
+require_once(__DIR__ . "/model.php");
 class Picture extends Model{
 	private $id;
 	private $title;
@@ -15,8 +15,8 @@ class Picture extends Model{
 	private $uploaded_at;
 	private $owner_id;
 
-	function __construct($values)
-	{
+	function __construct($values) {
+	    parent::__construct();
 		$this->id=$values['id'];
 		$this->title=$values['title'];
 		$this->path=$values['path'];
@@ -140,5 +140,13 @@ class Picture extends Model{
         return $this->owner_id;
     }
 
-
+    protected function has_and_belongs_to_many()
+    {
+       return ["tags" =>[
+            "class_name" => "Tag",
+            "join_table" => "pictures_tags",
+            "foreign_key" => "picture_id",
+            "association_key" => "tag_id"]
+       ];
+    }
 }

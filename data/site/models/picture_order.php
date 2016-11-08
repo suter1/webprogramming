@@ -5,7 +5,7 @@
  * Date: 01.11.2016
  * Time: 21:07
  */
-class Picture_order extends Model {
+class PictureOrder extends Model {
 	private $picture_id;
 	private $order_id;
 	private $size;
@@ -57,4 +57,8 @@ class Picture_order extends Model {
     }
 
 
+    protected function has_and_belongs_to_many()
+    {
+        return [];
+    }
 }

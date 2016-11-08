@@ -27,6 +27,40 @@ body{
     with: 100%
 }
 
+.images {
+    display: block;
+    min-width: 605px;
+}
+
+.badge {
+    background-color: lightskyblue;
+    font-size: 0.8em;
+    border: 1px antiquewhite solid;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.description {
+    font-size: 0.8em;
+    padding: 3px;
+    display: block;
+    white-space: nowrap;
+}
+
+.description span {
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.image {
+    display: inline-block;
+    margin: 1px;
+    padding: 2px;
+    border: 1px solid ghostwhite;
+    border-radius: 3px;
+    max-width: 300px;
+}
+
 .article {
     text-align: left;
 }
@@ -69,8 +103,6 @@ footer {
 
 img {
     max-width: 300px;
-    float: right;
-
 }
 
 img.wrap {
@@ -88,23 +120,46 @@ img.align-left {
     width: 100%;
 }
 
+.nav-placeholder{
+    width: 150px;
+    height: 100%;
+}
 .nav {
+    position: fixed;
     background: #eee;
     float: left;
+    width: 150px;
 }
 
 .nav ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
+    background-color: #f1f1f1;
+    height: 100%;
+    overflow: auto;
 }
 
-.nav ul a {
+.nav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
     text-decoration: none;
 }
 
+.nav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.nav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
 @media all and (min-width: 768px) {
-    .nav {
-        max-width: 100px;
+    .navigation-placeholder {
         text-align: left;
         flex: 1 auto;
         order: 1;
@@ -121,7 +176,7 @@ img.align-left {
     }
 
     .section {
-        flex: 5 0px;
+        flex: 7 0px;
         order: 3;
     }
 

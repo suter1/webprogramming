@@ -10,41 +10,39 @@ class Special_offer extends Model {
 	private $start;
 	private $end;
 
-	function __construct($values)
-	{
+	function __construct($values){
 		$this->id=$values['id'];
 		$this->start=$values['start'];
 		$this->end=$values['end'];
 	}
 
-	static function getTableName()
-	{
+	static function getTableName(){
 		return "special_offers";
 	}
 
     /**
      * @return mixed
      */
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
 
     /**
      * @return mixed
      */
-    public function getStart()
-    {
+    public function getStart(){
         return $this->start;
     }
 
     /**
      * @return mixed
      */
-    public function getEnd()
-    {
+    public function getEnd(){
         return $this->end;
     }
 
-
+    protected function has_and_belongs_to_many()
+    {
+        return [];
+    }
 }

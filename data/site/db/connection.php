@@ -53,11 +53,17 @@ class Database {
             return false;
         }else {
             $this->numResults = $result->num_rows;
-            array_push($this->result, $result->fetch_assoc());
+
+            while($row = $result->fetch_assoc())
+                array_push($this->result, $row);
             return true; // Query was successful
         }
     }
 
+    /**
+     * @param String $sql
+     * @return mixed $result
+     */
     public function rawSql($sql) {
         $result = $this->con->query($sql);
         if (!$result) {
@@ -67,20 +73,25 @@ class Database {
             exit;
         }
         return $result;
-
     }
 
-// Function to SELECT from the database
+    /**
+     * @param $table
+     * @param string $rows
+     * @param string $join
+     * @param string $where
+     * @param string|string $order (asc|desc)
+     * @param int $limit
+     * @return array|null
+     */
     public function select($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
         $query = 'SELECT ' . $rows . ' FROM ' . $table;
         if ($join != null)  $query .= ' JOIN ' . $join;
         if ($where != null) $query .= ' WHERE ' . $where;
         if ($order != null) $query .= ' ORDER BY ' . $order;
         if ($limit != null) $query .= ' LIMIT ' . $limit;
-        if($this->tableExists($table)){
-            if($this->sql($query))  return $this->result;
-        }
-        return null;
+        if($this->tableExists($table) && $this->sql($query)) return $this->result;
+        return [];
     }
 
     /**

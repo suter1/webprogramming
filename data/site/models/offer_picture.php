@@ -5,7 +5,7 @@
  * Date: 01.11.2016
  * Time: 21:17
  */
-class Offer_picture extends Model {
+class OfferPicture extends Model {
 	private $offer_id;
 	private $picture_id;
 	private $new_price;
@@ -47,4 +47,8 @@ class Offer_picture extends Model {
     }
 
 
+    protected function has_and_belongs_to_many()
+    {
+        return [];
+    }
 }
