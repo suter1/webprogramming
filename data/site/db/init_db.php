@@ -1,6 +1,6 @@
 <?php
 require_once('connection.php');
-$drop = false;
+$drop = true;
 $database = new Database();
 $database->connect();
 $varchar = 'varchar(255)';
@@ -28,6 +28,7 @@ $tables = [
         'thumbnail_path'    => $varchar . " NOT NULL",
         'camera_model'      => $varchar,
         'lens'              => $varchar,
+        'price'             => $money . "",
         'width'             => $default_int . " NOT NULL",
         'height'            => $default_int . " NOT NULL",
         'aperture'          => $varchar,

@@ -12,6 +12,8 @@
     if(sizeof($options['pictures']) > 0)
         foreach ($options['pictures'] as $picture)
             if(file_exists($picture->getPath())) {
+                $link_start = "<a href='/detail/" . $picture->getId() . "'>";
+                $link_end = "</a>";
                 $title = $picture->getTitle();
                 $image = "<div class='image'><img src='/" . $picture->getPath() . "' /> ";
                 $description = "<div class='description'><span>$title</span>";
@@ -19,7 +21,7 @@
                     $description .= "<span class='badge'>" . $tag->getName() . "</span>";
                 }
                 $description .= "</div></div>";
-                $pictures_html .= $image . $description;
+                $pictures_html .= $link_start . $image . $description . $link_end;
             }
     echo $pictures_html;
     ?>

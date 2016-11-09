@@ -5,6 +5,7 @@ class Picture extends Model{
 	private $title;
 	private $path;
 	private $thumbnail_path;
+    private $price;
 	private $camera_model;
 	private $lens;
 	private $width;
@@ -20,6 +21,7 @@ class Picture extends Model{
 		$this->id=$values['id'];
 		$this->title=$values['title'];
 		$this->path=$values['path'];
+        $this->price=$values['price'];
 		$this->thumbnail_path=$values['thumbnail_path'];
 		$this->camera_model=$values['camera_model'];
 		$this->lens=$values['lens'];
@@ -68,6 +70,13 @@ class Picture extends Model{
         return $this->thumbnail_path;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
     /**
      * @return mixed
      */
