@@ -1,4 +1,8 @@
 <?php
+/**
+ * @autor fluht1
+ * @param $className
+ */
 function __autoload($className){
     $directories = ['models', 'db', __DIR__, null];
     foreach ($directories as $dir) {

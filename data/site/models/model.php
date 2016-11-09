@@ -63,8 +63,11 @@ abstract class Model implements ModelStructure {
         $db = new Database();
         $db->connect();
         $result = $db->insert(static::getTableName(), $insert_array);
+        if($result === TRUE){
+            return static::last();//static::find_by($insert_array); //last or find by insert array (transaction would be better)
+        }
         $db->disconnect();
-        return static::initModel($result);
+        return null;
     }
 
     /**

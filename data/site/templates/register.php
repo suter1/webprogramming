@@ -1,3 +1,5 @@
+<?php require_once("templates/default/header.php") ?>
+<?php require_once("templates/default/navigation.php") ?>
 <section class="section">
 	<?php include_once('validate.php') ?>
 	<form method="post">
@@ -42,3 +44,4 @@
 		</div>
 	</form>
 </section>
+<?php require_once("templates/default/footer.php") ?>

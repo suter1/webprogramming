@@ -6,15 +6,13 @@
  * Time: 21:04
  */
 
-include('functions.php');
-include('autoload.php');
 $lang = get_param('lang', 'de');
 $categories = ["Home", "Detail", "Shit", "Upload", "Register"];
 $translation = yaml_parse_file("languages.yml");
 $trans = $translation['languages'][$lang];
 $navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
 foreach ($categories as $category) {
-	$navigation .= "<li class='category'><a href='index.php?site=" . strtolower($category) . "&lang=$lang'>" . $trans[strtolower($category)] . "</a></li>";
+	$navigation .= "<li class='category'><a href='/" . strtolower($category) . "'>" . $trans[strtolower($category)] . "</a></li>";
 }
 
 
@@ -38,5 +36,5 @@ foreach($tags as $tag){
 $navigation .= "</ul></div>";
 
 
-$navigation .= "<br /><br /><a href='index.php?site=$site&lang=$clangShort'>$clang</a></nav>";
+$navigation .= "<br /><br /><a href='old_index.php?site=$site&lang=$clangShort'>$clang</a></nav>";
 echo $navigation;
