@@ -17,6 +17,7 @@ if (sizeof($params) > 2 && in_array($params[2], $GLOBALS['languages'])) {
     $pageId = $params[1];
 }
 
+$pageId = explode("?", $pageId)[0];
 
 if (!empty($pageId) && in_array($pageId, $GLOBALS['pages'])) {
     $GLOBALS['page'] = $pageId;

@@ -4,7 +4,7 @@
     <d>
         <img src="/<?php echo $options['path'] ?>" class="wrap align-left" />
         <aside class="aside_right">
-            <p>Name: <?php echo $options['title'] ?></p>
+            <p>Title: <?php echo $options['title'] ?></p>
             <p>Price: <?php echo $options['price'] ?></p>
         </aside>
     </d>

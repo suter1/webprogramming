@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/styles/isithombe_default.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/styles/isithombe_default.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/styles/forms.css"/>
     <meta charset="UTF-8"/>
     <title>Insert title here</title>
 </head>

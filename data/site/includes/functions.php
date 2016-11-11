@@ -5,6 +5,7 @@ $pages = [
     'upload',
     'register',
     'tags',
+    'mail_sent',
 ];
 
 $languages = [
@@ -15,7 +16,7 @@ $languages = [
 $urlbase = 'http://localhost:8080/';
 $language = "de";
 
-function load_template($template, array $options) {
+function load_template($template, array $options = []) {
     $options["language"] = $GLOBALS['language'];
     $options["languages"] = $GLOBALS['languages'];
     $options["pages"] = $GLOBALS['pages'];
@@ -23,10 +24,15 @@ function load_template($template, array $options) {
     include $template;
 }
 
-function get_param($var, $default)
-{
-	if (isset($_GET[$var])) {
-		return urldecode($_GET[$var]);
+function get_param($var, $default = null, $type = "GET"){
+    if($type === "GET")
+        $method = $_GET;
+    elseif ($type === "POST")
+        $method = $_POST;
+ //   $method = constant('$_' . $type);
+ //  $method = ${'$_'.$type};
+	if (isset($method) && isset($method[$var])) {
+		return urldecode($method[$var]);
 	}
 	return $default;
 }
