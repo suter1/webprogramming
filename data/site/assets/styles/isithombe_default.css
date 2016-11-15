@@ -70,13 +70,6 @@ header {
     color: white;
 }
 
-header a {
-
-    text-decoration: none;
-    font-family: "Helvetica", Arial, sans-serif;
-    font-size: 2.2em;
-    font-color: blue;
-}
  header a:visited{
      font-color: blue;
  }
@@ -155,6 +148,22 @@ img.align-left {
 .nav li a:hover:not(.active) {
     background-color: #555;
     color: white;
+}
+
+
+.eqWrap { display: flex; }
+.eq { padding: 10px; }
+.equalHW { flex: 1; }
+.equalHWWide { flex: 2; }
+
+
+.search {
+    float: left;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
 }
 
 

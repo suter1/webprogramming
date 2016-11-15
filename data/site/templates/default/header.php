@@ -10,8 +10,18 @@
 <body>
     <div class="flex-container">
     <header>
-        <a href="index.php">
-            <div class="logo"></div>
-            <div class=headline><span>isithombe</span></div>
-        </a>
+        <div class="headline eqWrap">
+            <a href="index.php">
+                <div class="logo equalHW eq"></div>
+            </a>
+            <div class="equalHWWide eq">
+                <input type="text" name="search" class="search" placeholder="Suche..." class="search"/>
+            </div>
+            <div class="equalHW eq">
+                <a>Account &lt;Username&gt;</a>
+            </div>
+            <div class="equalHW eq">
+                Basket
+            </div>
+        </div>
     </header>
