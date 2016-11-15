@@ -26,17 +26,17 @@ Vagrant.configure(2) do |config|
   end
   config.vm.synced_folder "data", "/vagrant_data"
   config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update -y
-    sudo apt-get upgrade -y
-    apt-get autoremove -y
-    sudo apt-get install -y apache2 libapache2-mod-php php-gd
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
+  apt-get autoremove -y
+  sudo apt-get install -y apache2 libapache2-mod-php php-gd
 	debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-    sudo apt-get install -y mysql-server-5.5
+  sudo apt-get install -y mysql-server-5.5
 	sudo apt-get install -y mysql-server 
-    sudo apt-get install -y git 
-    sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
-    sudo apt-get install php7.0 php7.0-fpm php7.0-mysql -y
+  sudo apt-get install -y git 
+  sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+  sudo apt-get install -y php7.0 php7.0-fpm php7.0-mysql 
 	sudo apt-get install -y ubuntu-desktop
   SHELL
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
