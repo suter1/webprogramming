@@ -2,13 +2,19 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <?php
-    $css_files = glob(__DIR__ . '/assets/styles/*.{css}', GLOB_BRACE);
+    $default_path="/assets";
+    $styles="$default_path/styles/";
+    $javascripts = "$default_path/javascript/";
+    $css_files = glob('assets/styles/*.{css}', GLOB_BRACE);
     foreach ($css_files as $css) {
-        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$css\" />";
+        $path = $styles . basename($css);
+        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$path\" />";
     }
-    $javascript_files = glob(__DIR__ . '/assets/javascript/*.{js}', GLOB_BRACE);
+    $javascript_files = glob('assets/javascript/*.{js}', GLOB_BRACE);
     foreach ($javascript_files as $js){
-        echo "<script src=\"$js\"></script>";
+        $path = $javascripts . basename($js);
+
+        echo "<script src=\"$path\"></script>";
     }
     ?>
     <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css"
