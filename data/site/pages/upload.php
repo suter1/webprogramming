@@ -55,7 +55,6 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         if (array_key_exists('DateTimeOriginal', $exif)) $e_date = $exif['DateTimeOriginal'];
 
         if (array_key_exists('UndefinedTag:0xA434', $exif)) $e_lens = $exif['UndefinedTag:0xA434'];
-
         $image = Picture::create([
             'camera_model' => $e_camera_model,
             'aperture' => $e_aperture,
@@ -63,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
             'created_at' => $e_date,
             'uploaded_at' => date('Y-m-d H:i:s'),
             'path' => $composed_path,
-            'owner_id' => 1,
+            'owner_id' => current_user()->getId(),
             'width' => $e_width,
             'height' => $e_height,
             'title' => 'whatever',

@@ -7,7 +7,7 @@
  */
 require_once('database.php');
 require_once('autoload.php');
-$reinsert = true;
+$reinsert = false;
 $database = new Database();
 $database->connect();
 $languages = ['de' => [

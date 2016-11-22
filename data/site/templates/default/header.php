@@ -13,7 +13,6 @@
     $javascript_files = glob('assets/javascript/*.{js}', GLOB_BRACE);
     foreach ($javascript_files as $js){
         $path = $javascripts . basename($js);
-
         echo "<script src=\"$path\"></script>";
     }
     ?>
@@ -38,16 +37,7 @@
                     <div class="toggle_div hide">
                         <div class="arrow-up"></div>
                         <div class="popup">
-                            <?php
-                            if(isset($_SESSION['logged_in'])) "<p>yes.... logged in --- create a stupid object to render here</p>";
-                            else echo "<form action='./login' method='post'>" .
-                                    "<label for='username'>Username</label>" .
-                                    "<input type='text' autocomplete='false' required='required' name='username' />" .
-                                    "<label for='password'>Password</label>" .
-                                    "<input type='password' required='required' name='password' />" .
-                                    "<input type='submit' value='Login'>" .
-                                "</form>";
-                            ?>
+                            <?php require_once("templates/default/profile.php"); ?>
                         </div>
                     </div>
                 </span>
@@ -57,10 +47,7 @@
                 <div class="toggle_div hide">
                     <div class="arrow-up"></div>
                     <div class="popup">
-                        <?php
-                        if(isset($_SESSION['basket'])) $_SESSION['basket']->render();
-                        else echo "<p>Your basket is empty.</p>";
-                        ?>
+                        <?php require_once("templates/default/basket.php") ?>
                     </div>
                 </div>
                 </span>
