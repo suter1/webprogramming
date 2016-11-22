@@ -45,6 +45,6 @@ function redirect($url, $statusCode = 303) {
 }
 
 function current_user(){
-	if(isset($_SESSION['user_id'])) return User::find_by(['id' => $_SESSION['user_id']]);
+	if(isset($_SESSION['user'])) return unserialize($_SESSION['user']);
 	return null;
 }

@@ -31,7 +31,6 @@ foreach($tags as $tag){
 }
 
 $navigation .= "</ul></div>";
-
 $url = $_SERVER['REQUEST_URI'];
 $navigation .= "<br /><br /><a href='$url?site=$site&lang=$clangShort'>$clang</a></nav>";
 echo $navigation;
