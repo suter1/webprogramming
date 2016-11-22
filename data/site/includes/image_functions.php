@@ -5,9 +5,13 @@ function resize_image($path, $new_path) {
 	$x = getimagesize($path);
 	$width  = $x['0'];
 	$height = $x['1'];
-
-	$rs_width  = 300;//resize to half of the original width.
-	$rs_height = 300;//resize to half of the original height.
+	$rs_width  = 300;
+	$rs_height = 300;
+	$percentage = 300 * 100 / (($width > $height) ? $width : $height);
+	if($width > $height)
+		$rs_height = $height * $percentage / 100;
+	else
+		$rs_width = $width * $percentage / 100;
 
 	switch ($x['mime']) {
 		case "image/gif":
