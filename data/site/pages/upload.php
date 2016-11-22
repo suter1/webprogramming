@@ -5,10 +5,11 @@
  * Date: 18.10.2016
  * Time: 19:47
  */
-
+require_once "includes/image_functions.php";
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     if (($_FILES['upload'])) {
         $path = "gallery";
+		$thumbnail_path = "gallery/thumbnails";
         $file = $_FILES['upload'];
 
         if ($file['error'] != 0) {
@@ -55,6 +56,12 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         if (array_key_exists('DateTimeOriginal', $exif)) $e_date = $exif['DateTimeOriginal'];
 
         if (array_key_exists('UndefinedTag:0xA434', $exif)) $e_lens = $exif['UndefinedTag:0xA434'];
+		$thumbnail = resize_image($composed_path);
+		$thumb_path = $thumbnail_path . "/" . basename($composed_path);
+		$thumbnail_file = fopen($thumb_path, "w") or die(getcwd() . " Unable to open file! $thumb_path");
+		fwrite($thumbnail_file, $thumbnail);
+		fclose($thumbnail_file);
+
         $image = Picture::create([
             'camera_model' => $e_camera_model,
             'aperture' => $e_aperture,
@@ -62,6 +69,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
             'created_at' => $e_date,
             'uploaded_at' => date('Y-m-d H:i:s'),
             'path' => $composed_path,
+			'thumbnail_path' => $thumb_path,
             'owner_id' => current_user()->getId(),
             'width' => $e_width,
             'height' => $e_height,
