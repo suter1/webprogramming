@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <?php
-    $css_files = glob('assets/styles/*.{css}', GLOB_BRACE);
+    $css_files = glob('/assets/styles/*.{css}', GLOB_BRACE);
     foreach ($css_files as $css) {
         echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$css\" />";
     }
-    $javascript_files = glob('assets/javascript/*.{js}', GLOB_BRACE);
+    $javascript_files = glob('/assets/javascript/*.{js}', GLOB_BRACE);
     foreach ($javascript_files as $js){
         echo "<script src=\"$js\"></script>";
     }
