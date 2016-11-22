@@ -7,6 +7,7 @@ $pages = [
 	'tags',
 	'mail_sent',
 	'login',
+	'logout',
 ];
 
 $languages = [
