@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <?php
     $css_files = glob('assets/styles/*.{css}', GLOB_BRACE);
@@ -28,19 +28,36 @@
                 <input type="text" name="search" class="search" autocomplete="false" placeholder="Suche..." class="search"/>
             </div>
             <div class="equalHW eq">
-                <a>Account &lt;Username&gt;</a>
+                <span class="toggle"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <div class="toggle_div hide">
+                        <div class="arrow-up"></div>
+                        <div class="popup">
+                            <?php
+                            if(isset($_SESSION['loggedIn'])) $_SESSION['LoggedIn']->render();
+                            else echo "<form action='./login' method='post'>" .
+                                    "<label for='username'>Username</label>" .
+                                    "<input type='text' autocomplete='false' required='required' name='username' />" .
+                                    "<label for='password'>Password</label>" .
+                                    "<input type='password' required='required' name='password' />" .
+                                    "<input type='submit' value='Login'>" .
+                                "</form>";
+                            ?>
+                        </div>
+                    </div>
+                </span>
             </div>
             <div class="equalHW eq">
-                <span id="toggle_basket"><i class="fa fa-shopping-basket" aria-hidden="true"></i></span>
-                <div id="basket_div" class="hide">
+                <span class="toggle"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                <div class="toggle_div hide">
                     <div class="arrow-up"></div>
-                    <div class="basket">
+                    <div class="popup">
                         <?php
                         if(isset($_SESSION['basket'])) $_SESSION['basket']->render();
                         else echo "<p>Your basket is empty.</p>";
                         ?>
                     </div>
                 </div>
+                </span>
             </div>
         </div>
     </header>

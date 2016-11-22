@@ -1,6 +1,6 @@
 <?php
 require_once('connection.php');
-$drop = true;
+$drop = false;
 $database = new Database();
 $database->connect();
 $varchar = 'varchar(255)';
@@ -19,7 +19,9 @@ $tables = [
         'budget'            => $money,
         'paypal_address'    => $varchar,
         'is_admin'          => 'boolean',
-        'username'          => $varchar],
+        'username'          => $varchar,
+        'password_hash'     => $varchar,
+    ],
 
     'pictures' => [
         'id'                => "$default_int NOT NULL AUTO_INCREMENT PRIMARY KEY",
@@ -94,7 +96,7 @@ $tables = [
 ];
 
 foreach($tables as $table => $columns){
-    $database->create_table($table, $columns);
+    $database->create_table($table, $columns, $drop);
 }
 
 $database->disconnect();

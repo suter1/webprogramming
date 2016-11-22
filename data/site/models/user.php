@@ -7,15 +7,17 @@ class User extends Model {
     private $address;
     private $sex;
     private $username;
+    private $password_hash;
 
     function __construct($values){
-    	$this->id=$values('id');
+    	$this->id=$values['id'];
         $this->first_name = $values['first_name'];
         $this->last_name = $values['last_name'];
         $this->email = $values['email'];
         $this->address = $values['address'];
         $this->sex = $values['sex'];
         $this->username = $values['username'];
+        $this->password_hash = $values['password_hash'];
 
     }
 
@@ -79,6 +81,13 @@ class User extends Model {
         return $this->username;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPasswordHash()
+    {
+        return $this->password_hash;
+    }
 
     protected function has_and_belongs_to_many() {
         return [];

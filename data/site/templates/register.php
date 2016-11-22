@@ -6,10 +6,10 @@
 			<div class="divTableBody">
 				<div class="divTableRow">
 					<div class="divTableCell">
-						<label id="user">Username</label>
+						<label id="user" for="username">Username</label>
 					</div>
 					<div class="divTableCell">
-						<input type="text" name="name" required="required" value=""/>
+						<input type="text" name="username" required="required" value=""/>
 					</div>
 				</div>
 				<div class="divTableRow">

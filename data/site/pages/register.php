@@ -1,4 +1,5 @@
 <?php
+require_once "autoload.php";
 if($_SERVER['REQUEST_METHOD'] === "GET") {
     load_template("templates/register.php", []);
 }elseif ($_SERVER['REQUEST_METHOD'] === "POST"){
@@ -6,7 +7,31 @@ if($_SERVER['REQUEST_METHOD'] === "GET") {
     $email = get_param("email", null, "POST");
     $password = get_param("password", null, "POST");
     $password_confirm = get_param("password_confirm", null, "POST");
-    //TODO SEND EMAIL
-    //redirect to mail_sent
-    header('Location: ' . "/mail_sent");
+
+    if($password != $password_confirm){
+        //TODO passwords do not match
+        echo "fail";
+        load_template("templates/register.php", []);
+        die();
+    }
+    $user = User::find_by(['username' => $username]);
+    echo "user is: ". var_dump(!isset($user)) ." .<br>";
+    if(is_null($var) || !isset($user)) {
+        echo "user is null";
+        $created_user = User::create(['username' => $username, 'email' => $email, 'password_hash' => password_hash($password, PASSWORD_DEFAULT)]);
+        $header = 'From: webmaster@example.com' . "\r\n" .
+            'Reply-To: webmaster@example.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($created_user->getEmail(), "Please Confirm your Email.", "<p>Please Confirm your mail address here: https://whatever.ch/", $header);
+
+        //TODO SEND EMAIL
+        //redirect to mail_sent
+        redirect("mail_sent");
+    }else{
+        echo "username already taken";
+        load_template("templates/register.php", []);
+        die();
+        //TODO username already taken
+    }
 }

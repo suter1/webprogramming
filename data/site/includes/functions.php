@@ -6,6 +6,7 @@ $pages = [
     'register',
     'tags',
     'mail_sent',
+    'login',
 ];
 
 $languages = [
@@ -35,4 +36,10 @@ function get_param($var, $default = null, $type = "GET"){
 		return urldecode($method[$var]);
 	}
 	return $default;
+}
+
+function redirect($url, $statusCode = 303)
+{
+    header('Location: ' . $url, true, $statusCode);
+    die();
 }
