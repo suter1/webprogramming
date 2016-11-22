@@ -1,1 +1,46 @@
 [04-Oct-2016 19:16:12 UTC] PHP Parse error:  syntax error, unexpected 'in' (T_STRING) in /vagrant_data/site/navigation.php on line 11
+[22-Nov-2016 20:20:27 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'wp2016'@'localhost' (using password: YES) in /vagrant_data/site/db/database.php on line 26
+[22-Nov-2016 20:20:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on boolean in /vagrant_data/site/db/database.php:210
+Stack trace:
+#0 /vagrant_data/site/db/database.php(142): Database->tableExists('users')
+#1 /vagrant_data/site/db/init_db.php(107): Database->create_table('users', Array, false)
+#2 /vagrant_data/site/index.php(11): require_once('/vagrant_data/s...')
+#3 {main}
+  thrown in /vagrant_data/site/db/database.php on line 210
+[22-Nov-2016 20:20:27 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'wp2016'@'localhost' (using password: YES) in /vagrant_data/site/db/database.php on line 26
+[22-Nov-2016 20:20:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on boolean in /vagrant_data/site/db/database.php:210
+Stack trace:
+#0 /vagrant_data/site/db/database.php(142): Database->tableExists('users')
+#1 /vagrant_data/site/db/init_db.php(107): Database->create_table('users', Array, false)
+#2 /vagrant_data/site/index.php(11): require_once('/vagrant_data/s...')
+#3 {main}
+  thrown in /vagrant_data/site/db/database.php on line 210
+[22-Nov-2016 20:20:27 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'wp2016'@'localhost' (using password: YES) in /vagrant_data/site/db/database.php on line 26
+[22-Nov-2016 20:20:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on boolean in /vagrant_data/site/db/database.php:210
+Stack trace:
+#0 /vagrant_data/site/db/database.php(142): Database->tableExists('users')
+#1 /vagrant_data/site/db/init_db.php(107): Database->create_table('users', Array, false)
+#2 /vagrant_data/site/index.php(11): require_once('/vagrant_data/s...')
+#3 {main}
+  thrown in /vagrant_data/site/db/database.php on line 210
+[22-Nov-2016 20:29:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getValue() on null in /vagrant_data/site/templates/default/navigation.php:14
+Stack trace:
+#0 /vagrant_data/site/templates/home.php(2): require_once()
+#1 /vagrant_data/site/includes/functions.php(25): include('/vagrant_data/s...')
+#2 /vagrant_data/site/pages/home.php(5): load_template('templates/home....', Array)
+#3 /vagrant_data/site/index.php(31): require_once('/vagrant_data/s...')
+#4 {main}
+  thrown in /vagrant_data/site/templates/default/navigation.php on line 14
+[22-Nov-2016 20:29:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getValue() on null in /vagrant_data/site/templates/default/navigation.php:14
+Stack trace:
+#0 /vagrant_data/site/templates/home.php(2): require_once()
+#1 /vagrant_data/site/includes/functions.php(25): include('/vagrant_data/s...')
+#2 /vagrant_data/site/pages/home.php(5): load_template('templates/home....', Array)
+#3 /vagrant_data/site/index.php(31): require_once('/vagrant_data/s...')
+#4 {main}
+  thrown in /vagrant_data/site/templates/default/navigation.php on line 14
+[22-Nov-2016 20:30:55 UTC] PHP Notice:  Undefined index: page in /vagrant_data/site/index.php on line 29
+[22-Nov-2016 20:47:11 UTC] PHP Notice:  Undefined index: page in /vagrant_data/site/index.php on line 29
+[22-Nov-2016 20:47:34 UTC] PHP Notice:  Undefined index: page in /vagrant_data/site/index.php on line 29
+[22-Nov-2016 20:50:10 UTC] PHP Notice:  Undefined index: page in /vagrant_data/site/index.php on line 29
+[22-Nov-2016 20:50:21 UTC] PHP Notice:  Undefined index: page in /vagrant_data/site/index.php on line 29
