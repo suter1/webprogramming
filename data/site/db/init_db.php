@@ -6,10 +6,11 @@ $database->connect();
 $varchar = 'varchar(255)';
 $datetime = 'datetime';
 $default_int = 'int(6)';
+$primary_key = "$default_int NOT NULL AUTO_INCREMENT PRIMARY KEY";
 $money = 'DECIMAL(5,2)';
 $tables = [
     'users' => [
-        'id'                => 'int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        'id'                => $primary_key,
         'first_name'        => $varchar,
         'last_name'         => $varchar,
         'email'             => $varchar,
@@ -24,7 +25,7 @@ $tables = [
     ],
 
     'pictures' => [
-        'id'                => "$default_int NOT NULL AUTO_INCREMENT PRIMARY KEY",
+        'id'                => $primary_key,
         'title'             => $varchar . " NOT NULL",
         'path'              => $varchar . " NOT NULL",
         'thumbnail_path'    => $varchar . " NOT NULL",
@@ -42,7 +43,7 @@ $tables = [
     ],
 
     'orders' => [
-        'id'                => $default_int . ' NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        'id'                => $primary_key,
         'order_date'        => $datetime,
         'price'             => $money,
         'user_id'           => $default_int . ' NOT NULL',
@@ -58,7 +59,7 @@ $tables = [
     ],
 
     'special_offers' => [
-        'id'                => $default_int . ' NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        'id'                => $primary_key,
         'start'             => "$datetime NOT NULL",
         'end'               => "$datetime NOT NULL",
     ],
@@ -71,7 +72,7 @@ $tables = [
     ],
 
     'payouts' => [
-        'id'                => $default_int . ' NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        'id'                => $primary_key,
         'execution'         => "$datetime NOT NULL",
         'user_id'           => $default_int . ' NOT NULL',
         'total_payout'      => $money,
@@ -86,12 +87,19 @@ $tables = [
         'FOREIGN KEY'       => '(picture_id) REFERENCES pictures(id), FOREIGN KEY (user_id) REFERENCES users(id)'
     ],
     'tags' => [
-        'id'                => $default_int . ' NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        'id'                => $primary_key,
         'name'              => $varchar . ' NOT NULL',
     ],
     'pictures_tags' => [
         'tag_id'            => $default_int . ' NOT NULL',
         'picture_id'        => $default_int . ' NOT NULL',
+    ],
+    'localizations' => [
+        'id'                => $primary_key,
+        'qualifier'         => $varchar,
+        'value'             => $varchar,
+        'lang'              => 'varchar(2)',
+
     ],
 ];
 
@@ -100,3 +108,5 @@ foreach($tables as $table => $columns){
 }
 
 $database->disconnect();
+
+require_once "seeds.php";

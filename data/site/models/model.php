@@ -45,7 +45,7 @@ abstract class Model implements ModelStructure {
         $index = 0;
         foreach($search_array as $key => $value){
             $where .= "$key= '$value'";
-            if(++$index < sizeof($search_array)) $where .= ", ";
+            if(++$index < sizeof($search_array)) $where .= " AND ";
         }
         $db = new Database();
         $db->connect();
@@ -124,6 +124,14 @@ abstract class Model implements ModelStructure {
             return static::initModels($result);
         }
     }
+
+	public static function delete_all($where = null){
+		$db = new Database();
+		$db->connect();
+		$result = $db->delete(static::getTableName(), $where);
+		$db->disconnect();
+		return $result;
+	}
 
     private static function initModel($result, $class = null){
         if($class == null) $class = static::class;

@@ -33,7 +33,7 @@
                         <div class="arrow-up"></div>
                         <div class="popup">
                             <?php
-                            if(isset($_SESSION['loggedIn'])) $_SESSION['LoggedIn']->render();
+                            if(isset($_SESSION['logged_in'])) "<p>yes.... logged in --- create a stupid object to render here</p>";
                             else echo "<form action='./login' method='post'>" .
                                     "<label for='username'>Username</label>" .
                                     "<input type='text' autocomplete='false' required='required' name='username' />" .

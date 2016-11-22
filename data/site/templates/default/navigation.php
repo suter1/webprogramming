@@ -5,14 +5,13 @@
  * Date: 04/10/16
  * Time: 21:04
  */
-
+require_once "autoload.php";
 $lang = get_param('lang', 'de');
 $categories = ["Home", "Upload", "Register"];
-$translation = yaml_parse_file("languages.yml");
-$trans = $translation['languages'][$lang];
 $navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
 foreach ($categories as $category) {
-	$navigation .= "<li class='category'><a href='/" . strtolower($category) . "'>" . $trans[strtolower($category)] . "</a></li>";
+	$localization = Localization::find_by(['lang' => $lang, 'qualifier' => strtolower($category)]);
+	$navigation .= "<li class='category'><a href='/" . strtolower($category) . "'>" . $localization->getValue() . "</a></li>";
 }
 
 $site = get_param('site', 'home');

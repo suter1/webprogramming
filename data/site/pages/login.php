@@ -4,16 +4,11 @@ $password = get_param('password', null, 'POST');
 $username = get_param('username', null, 'POST');
 
 $user = User::find_by(['username' => $username]);
-
-if($user === null){
-    redirect("/home");
-}
-
+if($user === null) redirect("/home");
 if ( $out = password_verify($password, $user->getPasswordHash()) ) {
-    echo "ok";
-    //TODO set crappy session stuff
+    $_SESSION['user'] = $user;
+    $_SESSION['logged_in'] = true;
 } else {
-    echo $user->getUsername();
-    echo "<br />nok <br />";
+    //probably do something later
 }
-var_dump($out);
+redirect("/home");

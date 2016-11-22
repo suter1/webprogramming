@@ -167,7 +167,7 @@ class Database {
                 $delete = 'DELETE FROM ' . $table . ' WHERE ' . $where; // Create query to delete rows
             }
             $this->myQuery = $delete;
-            if ($del = $this->sql($delete)) {
+            if ($del = $this->rawSql($delete)) {
                 array_push($this->result, $this->con->affected_rows);
                 return true; // The query exectued correctly
             } else {

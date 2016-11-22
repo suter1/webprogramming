@@ -22,18 +22,18 @@
 				</div>
 				<div class="divTableRow">
 					<div class="divTableCell">
-						<label id="pw">Password</label>
+						<label id="pw" for="password" >Password</label>
 					</div>
 					<div class="divTableCell">
-						<input name="passw" type="password" required="required"/>
+						<input name="password" type="password" required="required"/>
 					</div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableCell">
-						<label id="confpw">Confirm password</label>
+						<label id="confirm" for="password_confirm">Confirm password</label>
 					</div>
 					<div class="divTableCell">
-						<input name="confpassw" type="password" required="required">
+						<input name="password_confirm" type="password" required="required">
 					</div>
 				</div>
 				<input type="submit" value="Submit">
