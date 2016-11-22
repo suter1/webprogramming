@@ -56,12 +56,11 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         if (array_key_exists('DateTimeOriginal', $exif)) $e_date = $exif['DateTimeOriginal'];
 
         if (array_key_exists('UndefinedTag:0xA434', $exif)) $e_lens = $exif['UndefinedTag:0xA434'];
-		$thumbnail = resize_image($composed_path);
-		$thumb_path = $thumbnail_path . "/" . basename($composed_path);
-		$thumbnail_file = fopen($thumb_path, "w") or die(getcwd() . " Unable to open file! $thumb_path");
-		fwrite($thumbnail_file, $thumbnail);
-		fclose($thumbnail_file);
 
+		$thumb_path = $thumbnail_path . "/" . basename($composed_path);
+
+		$thumb_successful = resize_image($composed_path, $thumb_path);
+		if(!$thumb_successful) die("could not create thumbnail file");
         $image = Picture::create([
             'camera_model' => $e_camera_model,
             'aperture' => $e_aperture,

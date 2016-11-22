@@ -1,6 +1,6 @@
 <?php
 
-function resize_image($path) {
+function resize_image($path, $new_path) {
 
 	$x = getimagesize($path);
 	$width  = $x['0'];
@@ -25,15 +25,23 @@ function resize_image($path) {
 	imagecopyresized($img_base, $img, 0, 0, 0, 0, $rs_width, $rs_height, $width, $height);
 
 	$path_info = pathinfo($path);
+	echo "new path: $new_path  ". $path_info['extension'];
 	switch ($path_info['extension']) {
 		case "gif":
-			return imagegif($img_base, $path);
+		case "GIF":
+			return imagegif($img_base, "./gallery/thumbnails/".basename($path));
 			break;
+		case "JPEG":
 		case "jpeg":
-			return imagejpeg($img_base, $path);
+		case "JPG":
+		case "jpg":
+			return imagejpeg($img_base, "./gallery/thumbnails/".basename($path));
 			break;
 		case "png":
-			return imagepng($img_base, $path);
+		case "PNG":
+			return imagepng($img_base, "./gallery/thumbnails/".basename($path));
+			break;
+		default :
 			break;
 	}
 }

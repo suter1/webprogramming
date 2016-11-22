@@ -2,8 +2,8 @@
 
 if (isset($_SESSION['logged_in']))
 	echo ("<p>" . current_user()->getFirstName() . " " . current_user()->getLastName() . " (" . current_user()->getUsername() . ")" . "</p>"
-		."<Form method='post' action='/logout'>"
-		."<input type='submit' value='Logout'>");
+		."<form method='post' action='/logout'>"
+		."<input type='submit' name='logout' value='Logout'></form>");
 else echo "<form action='./login' method='post'>" .
 	"<label for='username'>Username</label>" .
 	"<input type='text' autocomplete='false' required='required' name='username' />" .
