@@ -1,5 +1,5 @@
 <?php
-require_once('connection.php');
+require_once('database.php');
 $drop = false;
 $database = new Database();
 $database->connect();

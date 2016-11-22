@@ -5,7 +5,7 @@
  * Date: 22/11/16
  * Time: 18:21
  */
-require_once('connection.php');
+require_once('database.php');
 require_once('autoload.php');
 $reinsert = true;
 $database = new Database();

@@ -8,9 +8,9 @@ class Database {
     * Database class
     */
     private $db_host = "localhost";  // Change as required
-    private $db_user = "root";  // Change as required
-    private $db_pass = "root";  // Change as required
-    private $db_name = "isithombe";    // Change as required
+    private $db_user = "wp2016";  // Change as required
+    private $db_pass = "Web_2016";  // Change as required
+    private $db_name = "isithombeDB";    // Change as required
 
     /*
     * Extra variables that are required by other function such as boolean con variable
