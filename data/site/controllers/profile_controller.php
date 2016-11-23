@@ -8,6 +8,9 @@
 
 class ProfileController extends Controller{
 	public function show(){
-
+		load_template("views/profile/show.php", [
+			'user' => current_user(),
+			'pictures' => current_user()->pictures(),
+		]);
 	}
 }

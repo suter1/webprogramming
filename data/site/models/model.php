@@ -19,7 +19,6 @@ abstract class Model implements ModelStructure {
      * $configuration = ["class_name", "join_table", "foreign_key", "association_key"]
      */
     private function build_many_to_many_associations() {
-
 		foreach ($this->has_and_belongs_to_many() as $association => $configuration) {
 			$func = function () use ($association, $configuration) {
 				$current_table = static::getTableName();
@@ -41,9 +40,9 @@ abstract class Model implements ModelStructure {
 				$current_table = static::getTableName();
 				$db = new Database();
 				$db->connect();
-				$join = $configuration['foreign_table'] . " ON " . $configuration['foreign_key'] . " = " . $current_table . ".id" .
-					" WHERE " . $current_table . ".id = " . $this->getId();
-				$result = $db->select($current_table, $association . ".*", $join);
+				$join = $configuration['foreign_table'] . " ON " . $configuration['foreign_key'] . " = " . $current_table . ".id";
+				$where = " " . $current_table . ".id = " . $this->getId();
+				$result = $db->select($current_table, $association . ".*", $join, $where);
 				return static::initModels($result, $configuration['class_name']);
 			};
 			$this->addMethod($association, $func);

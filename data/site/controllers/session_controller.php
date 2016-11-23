@@ -10,7 +10,6 @@ class SessionController extends Controller {
 		if($user === null) redirect("/home");
 		if ( $out = password_verify($password, $user->getPasswordHash()) ) {
 			$_SESSION['user_id'] = $user->getId();
-			$_SESSION['user'] = serialize($user);
 			$_SESSION['logged_in'] = true;
 		} else {
 			//probably do something later

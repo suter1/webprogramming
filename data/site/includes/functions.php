@@ -2,14 +2,15 @@
 require_once("autoload.php");
 
 $controllers = [
-	'home' => 'HomeController',
-	'detail' => 'DetailController',
-	'upload' => 'UploadController',
-	'register' => 'RegistrationController',
-	'tags' => 'TagsController',
-	'login' => 'SessionController',
-	'logout' => 'SessionController',
-	'mail_sent' => 'MailController',
+	'home' 			=> 'HomeController',
+	'detail' 		=> 'DetailController',
+	'upload'		=> 'UploadController',
+	'register' 		=> 'RegistrationController',
+	'tags'			=> 'TagsController',
+	'login'			=> 'SessionController',
+	'logout' 		=> 'SessionController',
+	'mail_sent' 	=> 'MailController',
+	'profile'   	=> 'ProfileController',
 ];
 
 $languages = [
@@ -47,7 +48,7 @@ function redirect($url, $statusCode = 303) {
 }
 
 function current_user(){
-	if(isset($_SESSION['user'])) return unserialize($_SESSION['user']);
+	if(isset($_SESSION['user_id'])) return User::find_by(['id' => $_SESSION['user_id'] ]);
 	return null;
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SESSION['logged_in']))
-	echo ("<p><a href='/profiles/". current_user()->getId() ."'>My Profile</a><p>" . current_user()->getFirstName() . " " . current_user()->getLastName() . " (" . current_user()->getUsername() . ")" . "</p>"
+	echo ("<p><a href='/profile/". current_user()->getId() ."'>My Profile</a><p>" . current_user()->getFirstName() . " " . current_user()->getLastName() . " (" . current_user()->getUsername() . ")" . "</p>"
 		."<button onClick='logout();'>Logout</button>");
 else {
 
