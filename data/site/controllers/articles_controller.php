@@ -1,6 +1,12 @@
 <?php
-require_once("db/database.php");
-class ArticlesController extends Controller{
+require_once("autoload.php");
+
+class ArticlesController extends Controller {
+
+	public function do_not_require_login() {
+		return ['show'];
+	}
+
 	public function show(){
 		$categories = ["nature", "shit", "crap"];
 

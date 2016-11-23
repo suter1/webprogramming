@@ -5,14 +5,15 @@
  * Date: 23/11/16
  * Time: 01:59
  */
-
+require_once("autoload.php");
 class ProfileController extends Controller{
 	public function show(){
-		$my_pictures = Localization::find_by(["qualifier" => "my_pictures", 'lang' => 'de'])->getValue();
-		$no_pictures = Localization::find_by(['qualifier' => 'no_pictures', 'lang' => 'de'])->getValue();
-		$no_orders = Localization::find_by(["qualifier" => "no_orders", 'lang' => 'de'])->getValue();
-		$my_orders = Localization::find_by(["qualifier" => "my_orders", 'lang' => 'de'])->getValue();
-		$upload = Localization::find_by(["qualifier" => "upload", 'lang' => 'de'])->getValue();
+		$lang = get_language();
+		$my_pictures = Localization::find_by(["qualifier" => "my_pictures", 'lang' => $lang])->getValue();
+		$no_pictures = Localization::find_by(['qualifier' => 'no_pictures', 'lang' => $lang])->getValue();
+		$no_orders = Localization::find_by(["qualifier" => "no_orders", 'lang' => $lang])->getValue();
+		$my_orders = Localization::find_by(["qualifier" => "my_orders", 'lang' => $lang])->getValue();
+		$upload = Localization::find_by(["qualifier" => "upload", 'lang' => $lang])->getValue();
 		load_template("views/profile/show.php", [
 			'user' => current_user(),
 			'pictures' => current_user()->pictures(),

@@ -2,6 +2,11 @@
 require_once "autoload.php";
 
 class RegistrationController extends Controller {
+
+	public function do_not_require_login() {
+		return ['create', 'show'];
+	}
+
 	public function show(){
 		load_template("views/registration/show.php", []);
 	}

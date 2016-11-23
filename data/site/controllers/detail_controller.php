@@ -1,5 +1,11 @@
 <?php
+require_once("autoload.php");
+
 class DetailController extends Controller {
+
+	public function do_not_require_login() {
+		return ['show'];
+	}
 
 	public function show(){
 		$url = $_SERVER["REQUEST_URI"];

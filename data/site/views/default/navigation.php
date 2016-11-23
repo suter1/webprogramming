@@ -6,8 +6,8 @@
  * Time: 21:04
  */
 require_once "autoload.php";
-$lang = get_param('lang', 'de');
 $categories = ["Home"];
+$lang = get_language();
 $navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
 foreach ($categories as $category) {
 	$localization = Localization::find_by(['lang' => $lang, 'qualifier' => strtolower($category)]);
@@ -31,6 +31,6 @@ foreach($tags as $tag){
 }
 
 $navigation .= "</ul></div>";
-$url = $_SERVER['REQUEST_URI'];
-$navigation .= "<br /><br /><a href='$url?site=$site&lang=$clangShort'>$clang</a></nav>";
+$url = explode("?", $_SERVER['REQUEST_URI'])[0];
+$navigation .= "<br /><br /><a href='$url?lang=$clangShort'>$clang</a></nav>";
 echo $navigation;

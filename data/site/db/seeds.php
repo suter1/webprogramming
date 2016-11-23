@@ -10,7 +10,7 @@ require_once('autoload.php');
 $reinsert = true;
 $database = new Database();
 $database->connect();
-$languages = [
+$langs = [
 	'de' => [
 		'detail' => "Detailansicht",
 		'home' => "Startseite",
@@ -53,7 +53,7 @@ $admin_users = [
 ];
 if($reinsert) {
 	Localization::delete_all();
-	foreach ($languages as $language => $entries) {
+	foreach ($langs as $language => $entries) {
 		foreach($entries as $qualifier => $value){
 			Localization::create(['qualifier' => $qualifier, 'value' => $value, 'lang' => $language]);
 		}

@@ -19,10 +19,9 @@ $languages = [
 ];
 
 $urlbase = 'http://localhost:8080/';
-$language = "de";
 
 function load_template($template, array $options = []) {
-	$options["language"] = $GLOBALS['language'];
+	$options["language"] = get_language();
 	$options["languages"] = $GLOBALS['languages'];
 	$options["controllers"] = $GLOBALS['controllers'];
 	$options["page"] = $GLOBALS['page'];
@@ -70,4 +69,17 @@ function determine_http_method(){
 function get_controller($page){
 	$class = $GLOBALS['controllers'][$page];
 	return new $class();
+}
+
+function set_language(){
+	$lang = get_param('lang');
+	if($lang !== null && in_array($lang, $GLOBALS['languages'])){
+		setcookie("lang", $lang, time() + (86400 * 30), "/");
+		$_COOKIE['lang'] = $lang;
+	} // 30 days
+}
+
+function get_language(){
+	if(isset($_COOKIE['lang'])) return $_COOKIE['lang'];
+	return 'de';
 }

@@ -7,6 +7,14 @@
  * Time: 00:19
  */
 abstract class Controller {
+
+	/**
+	 * @return array of methods that do not require login
+	 */
+	public function do_not_require_login(){
+		return [];
+	}
+
 	public function show() {
 		return "Not implemented";
 	}

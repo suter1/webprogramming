@@ -1,7 +1,16 @@
 <?php
 require_once "autoload.php";
-
 class SessionController extends Controller {
+	private $session_helper;
+
+	public function __construct() {
+		$this->session_helper = new SessionHelper();
+	}
+
+	public function do_not_require_login() {
+		return ['create'];
+	}
+
 	public function create(){
 		$password = get_param('password', null, 'POST');
 		$username = get_param('username', null, 'POST');
@@ -9,8 +18,7 @@ class SessionController extends Controller {
 		$user = User::find_by(['username' => $username]);
 		if($user === null) redirect("/home");
 		if ( $out = password_verify($password, $user->getPasswordHash()) ) {
-			$_SESSION['user_id'] = $user->getId();
-			$_SESSION['logged_in'] = true;
+			$this->session_helper->login(['user_id' => $user->getId(), 'logged_in' => true]);
 		} else {
 			//probably do something later
 		}
@@ -18,7 +26,7 @@ class SessionController extends Controller {
 	}
 
 	public function delete(){
-		session_destroy();
+		$this->session_helper->logout();
 		redirect('/home');
 	}
 }
