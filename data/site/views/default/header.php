@@ -33,24 +33,12 @@
                 <input type="text" name="search" class="search" autocomplete="false" placeholder="Suche..." class="search"/>
             </div>
             <div class="equalHW eq">
-                <span class="toggle"><i class="fa fa-user-circle" aria-hidden="true"></i>
-                    <div class="toggle_div hide">
-                        <div class="arrow-up"></div>
-                        <div class="popup">
-                            <?php require_once("views/default/profile.php"); ?>
-                        </div>
-                    </div>
-                </span>
+                <?php require_once("views/default/profile.php"); ?>
             </div>
             <div class="equalHW eq">
-                <span class="toggle"><i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                <div class="toggle_div hide">
-                    <div class="arrow-up"></div>
-                    <div class="popup">
+
                         <?php require_once("views/default/basket.php") ?>
-                    </div>
-                </div>
-                </span>
+
             </div>
         </div>
     </header>

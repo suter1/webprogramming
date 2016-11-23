@@ -88,6 +88,11 @@ class User extends Model {
 				"class_name" => "Picture",
 				"foreign_table" => "pictures",
 				"foreign_key" => "owner_id",
+			],
+			"orders" => [
+				"class_name" => "Order",
+				"foreign_table" => "orders",
+				"foreign_key" => "user_id",
 			]
 		];
 	}

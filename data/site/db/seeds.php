@@ -7,20 +7,29 @@
  */
 require_once('database.php');
 require_once('autoload.php');
-$reinsert = false;
+$reinsert = true;
 $database = new Database();
 $database->connect();
-$languages = ['de' => [
+$languages = [
+	'de' => [
 		'detail' => "Detailansicht",
 		'home' => "Startseite",
 		'upload' => "hochladen",
 		'register' => "Registrieren",
+		'my_pictures' => 'Meine Bilder',
+		'no_pictures' => 'Sie haben bisher keine Bilder hochgeladen.',
+		'my_orders' => 'Meine Einkäufe',
+		'no_orders' => 'Sie haben bisher keine Einkäufe.',
 	],
 	'en' => [
 		'detail' => 'Details',
 		'home' => 'Home',
 		'upload' => "Upload",
 		'register' => 'Register',
+		'my_pictures' => 'My Pictures',
+		'no_pictures' => "Currently you haven't uploaded any pictures.",
+		'my_orders' => 'My Orders',
+		'no_orders' => "You haven't bought anything yet",
 	],
 ];
 
@@ -50,6 +59,9 @@ if($reinsert) {
 		}
 	}
 
+
+}
+if(false){
 	User::delete_all();
 	foreach ($admin_users as $user){
 		User::create($user);
