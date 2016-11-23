@@ -19,17 +19,18 @@ if (sizeof($params) > 2 && in_array($params[2], $GLOBALS['languages'])) {
 
 $pageId = explode("?", $pageId)[0];
 
-if (!empty($pageId) && in_array($pageId, $GLOBALS['pages'])) {
+if (!empty($pageId) && in_array($pageId, array_keys($GLOBALS['controllers']))) {
     $GLOBALS['page'] = $pageId;
 } else {
     //crap
     echo $pageId;
     echo "<br>crap";
 }
-$pageFile = "pages/" . $GLOBALS['page'] . ".php";
-if (is_file($pageFile)) {
-    require_once $pageFile;
-} else {
-    echo 'Page not found: ' . $pageFile;
-    return;
+$method = determine_method();
+$controller = get_controller($pageId);
+if(!is_null($controller)){
+	$controller->$method();
+}else{
+	echo "page not found.";
+	die;
 }

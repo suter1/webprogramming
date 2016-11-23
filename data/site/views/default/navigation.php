@@ -7,7 +7,7 @@
  */
 require_once "autoload.php";
 $lang = get_param('lang', 'de');
-$categories = ["Home", "Upload", "Register"];
+$categories = ["Home", "Upload"];
 $navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
 foreach ($categories as $category) {
 	$localization = Localization::find_by(['lang' => $lang, 'qualifier' => strtolower($category)]);

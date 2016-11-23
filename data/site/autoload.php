@@ -4,16 +4,12 @@
  * @param $className
  */
 function __autoload($className){
-    $directories = ['models', 'db', __DIR__, null];
+	$snake_case_class = strtolower(preg_replace('/(?<!^)[A-Z]+/', '_$0', $className));
+    $directories = array_merge(glob('./*' , GLOB_ONLYDIR), glob('./**/*' , GLOB_ONLYDIR));
     foreach ($directories as $dir) {
-        if($dir != null){
-            $path = __DIR__ . '/' . $dir . '/'. strtolower($className) . '.php';
-        }else{
-            $path = strtolower($className) . '.php';
-        }
-        //echo $path . "<br>";
+        if($dir != null) $path = __DIR__ . '/' . $dir . '/'. $snake_case_class . '.php';
+        else $path = $snake_case_class . '.php';
         if (file_exists($path)) {
-           // echo $path . " exists";
             require_once($path);
             break;
         }

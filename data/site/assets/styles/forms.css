@@ -11,7 +11,7 @@ form input[type=text], form input[type=email], form input[type=password], form i
     width: 100%;
 }
 
-form input[type=submit] {
+form input[type=submit], button {
     width: 100%;
     background-color: #4a66af;
     color: white;
@@ -22,7 +22,7 @@ form input[type=submit] {
     cursor: pointer;
 }
 
-form input[type=submit]:hover {
+form input[type=submit]:hover, button:hover {
     background-color: #45a049;
 }
 

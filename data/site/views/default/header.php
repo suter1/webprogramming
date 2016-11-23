@@ -26,7 +26,7 @@
     <div class="flex-container">
     <header>
         <div class="headline eqWrap">
-            <a href="index.php">
+            <a href="/home">
                 <div class="logo equalHW eq"></div>
             </a>
             <div class="equalHWWide eq">
@@ -37,7 +37,7 @@
                     <div class="toggle_div hide">
                         <div class="arrow-up"></div>
                         <div class="popup">
-                            <?php require_once("templates/default/profile.php"); ?>
+                            <?php require_once("views/default/profile.php"); ?>
                         </div>
                     </div>
                 </span>
@@ -47,7 +47,7 @@
                 <div class="toggle_div hide">
                     <div class="arrow-up"></div>
                     <div class="popup">
-                        <?php require_once("templates/default/basket.php") ?>
+                        <?php require_once("views/default/basket.php") ?>
                     </div>
                 </div>
                 </span>

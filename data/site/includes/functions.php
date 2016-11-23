@@ -1,13 +1,15 @@
 <?php
-$pages = [
-	'home',
-	'detail',
-	'upload',
-	'register',
-	'tags',
-	'mail_sent',
-	'login',
-	'logout',
+require_once("autoload.php");
+
+$controllers = [
+	'home' => 'HomeController',
+	'detail' => 'DetailController',
+	'upload' => 'UploadController',
+	'register' => 'RegistrationController',
+	'tags' => 'TagsController',
+	'login' => 'SessionController',
+	'logout' => 'SessionController',
+	'mail_sent' => 'MailController',
 ];
 
 $languages = [
@@ -21,7 +23,7 @@ $language = "de";
 function load_template($template, array $options = []) {
 	$options["language"] = $GLOBALS['language'];
 	$options["languages"] = $GLOBALS['languages'];
-	$options["pages"] = $GLOBALS['pages'];
+	$options["controllers"] = $GLOBALS['controllers'];
 	$options["page"] = $GLOBALS['page'];
 	include $template;
 }
@@ -47,4 +49,24 @@ function redirect($url, $statusCode = 303) {
 function current_user(){
 	if(isset($_SESSION['user'])) return unserialize($_SESSION['user']);
 	return null;
+}
+
+function determine_method(){
+	$method = null;
+	$available_methods = [
+		"post"   => 'create',
+		'get'    => 'show',
+		'delete' => 'delete',
+		'patch'  => 'update',
+		'put'    => 'update',
+	];
+	return $available_methods[determine_http_method()];
+}
+function determine_http_method(){
+	return strtolower($_SERVER['REQUEST_METHOD']);
+}
+
+function get_controller($page){
+	$class = $GLOBALS['controllers'][$page];
+	return new $class();
 }

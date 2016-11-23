@@ -1,5 +1,5 @@
-<?php require_once("templates/default/header.php") ?>
-<?php require_once("templates/default/navigation.php") ?>
+<?php require_once("views/default/header.php") ?>
+<?php require_once("views/default/navigation.php") ?>
 <section class="section">
 	<form method="post" action="/register" >
 		<div class="divTable">
@@ -41,4 +41,4 @@
 		</div>
 	</form>
 </section>
-<?php require_once("templates/default/footer.php") ?>
+<?php require_once("views/default/footer.php") ?>
