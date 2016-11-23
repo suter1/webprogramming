@@ -89,7 +89,17 @@ class User extends Model {
         return $this->password_hash;
     }
 
-    protected function has_and_belongs_to_many() {
-        return [];
+    protected function has_many() {
+		return [
+			"pictures" =>[
+				"class_name" => "Picture",
+				"foreign_table" => "pictures_tags",
+				"foreign_key" => "owner_id",
+			]
+		];
     }
+
+	protected function has_and_belongs_to_many() {
+		return [];
+	}
 }

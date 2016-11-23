@@ -37,4 +37,8 @@ class Tag extends Model {
     {
         return $this->id;
     }
+
+	protected function has_many() {
+		return [];
+	}
 }

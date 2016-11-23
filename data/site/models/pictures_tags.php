@@ -10,4 +10,8 @@ class PicturesTags extends Model {
     {
         return [];
     }
+
+	protected function has_many() {
+		return [];
+	}
 }

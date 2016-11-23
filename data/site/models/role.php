@@ -14,4 +14,8 @@ class Role extends Model {
     {
         return [];
     }
+
+	protected function has_many() {
+		return [];
+	}
 }

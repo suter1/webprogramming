@@ -8,7 +8,9 @@ abstract class Model implements ModelStructure {
      * Model constructor.
      */
     protected function __construct(){
-        $this->build_associations();
+        $this->build_many_to_many_associations();
+		$this->build_many_to_one_associations();
+		$this->build_one_to_many_associations();
     }
 
     /**
@@ -16,24 +18,43 @@ abstract class Model implements ModelStructure {
      * pictures.id = pictures_tags.picture_id LEFT JOIN tags ON tags.id = pictures_tags.tag_id WHERE pictures.id = 1;
      * $configuration = ["class_name", "join_table", "foreign_key", "association_key"]
      */
-    private function build_associations(){
+    private function build_many_to_many_associations() {
 
-        foreach ($this->has_and_belongs_to_many() as $association => $configuration){
-            $func = function() use ($association, $configuration) {
-                $current_table = static::getTableName();
-                $db = new Database();
-                $db->connect();
-                $join =  $configuration['join_table'] . " ON " . $configuration['foreign_key'] . " = " . $current_table .".id"  .
-                    " LEFT JOIN " . $association . " ON " . $configuration['association_key'] . " = " . $association . ".id ".
-                    " WHERE ". $current_table . ".id = " . $this->getId();
-                $result = $db->select($current_table, $association.".*", $join);
-                return static::initModels($result, $configuration['class_name']);
-            };
-            $this->addMethod($association, $func);
-        }
-    }
+		foreach ($this->has_and_belongs_to_many() as $association => $configuration) {
+			$func = function () use ($association, $configuration) {
+				$current_table = static::getTableName();
+				$db = new Database();
+				$db->connect();
+				$join = $configuration['join_table'] . " ON " . $configuration['foreign_key'] . " = " . $current_table . ".id" .
+					" LEFT JOIN " . $association . " ON " . $configuration['association_key'] . " = " . $association . ".id " .
+					" WHERE " . $current_table . ".id = " . $this->getId();
+				$result = $db->select($current_table, $association . ".*", $join);
+				return static::initModels($result, $configuration['class_name']);
+			};
+			$this->addMethod($association, $func);
+		}
+	}
 
-    protected abstract function has_and_belongs_to_many();
+	private function build_one_to_many_associations() {
+		foreach ($this->has_many() as $association => $configuration) {
+			$func = function () use ($association, $configuration) {
+				$current_table = static::getTableName();
+				$db = new Database();
+				$db->connect();
+				$join = $configuration['foreign_table'] . " ON " . $configuration['foreign_key'] . " = " . $current_table . ".id" .
+					" WHERE " . $current_table . ".id = " . $this->getId();
+				$result = $db->select($current_table, $association . ".*", $join);
+				return static::initModels($result, $configuration['class_name']);
+			};
+			$this->addMethod($association, $func);
+		}
+	}
+
+	private function build_many_to_one_associations(){
+	}
+
+	protected abstract function has_and_belongs_to_many();
+	protected abstract function has_many();
 
     /**
      * ['key' => 'value', 'key' => 'value']

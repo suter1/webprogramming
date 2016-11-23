@@ -5,7 +5,7 @@
  * Date: 01.11.2016
  * Time: 21:13
  */
-class Special_offer extends Model {
+class SpecialOffer extends Model {
 	private $id;
 	private $start;
 	private $end;
@@ -45,4 +45,8 @@ class Special_offer extends Model {
     {
         return [];
     }
+
+	protected function has_many() {
+		return [];
+	}
 }

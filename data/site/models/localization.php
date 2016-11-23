@@ -52,4 +52,8 @@ class Localization extends Model {
 	static function getTableName() {
 		return "localizations";
 	}
+
+	protected function has_many() {
+		return [];
+	}
 }
