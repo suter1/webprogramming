@@ -22,7 +22,8 @@ if ($lang == $clangShort) {
 	$clangShort = 'en';
 }
 $navigation .= "</ul><br><br><br>";
-$navigation .= "<div class='topten'><h4>Categories</h4><ul>";
+$categories_lang = Localization::find_by(['lang' => $lang, 'qualifier' => 'categories'])->getValue();
+$navigation .= "<div class='topten'><h4>$categories_lang</h4><ul>";
 $tags = Tag::all();
 foreach($tags as $tag){
     $tag_name = $tag->getName();

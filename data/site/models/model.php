@@ -64,7 +64,7 @@ abstract class Model implements ModelStructure {
         $where = "";
         $index = 0;
         foreach($search_array as $key => $value){
-            $where .= "$key= '$value'";
+            $where .= "`$key`= '$value'";
             if(++$index < sizeof($search_array)) $where .= " AND ";
         }
         $db = new Database();
@@ -90,6 +90,12 @@ abstract class Model implements ModelStructure {
         return null;
     }
 
+    public static function find_or_create_by($find_or_create_array){
+		$model = static::find_by($find_or_create_array);
+		if($model !== null) return $model;
+		return static::create($find_or_create_array);
+	}
+
     /**
      * @return Model Array
      */
@@ -108,7 +114,7 @@ abstract class Model implements ModelStructure {
     public function update($update_hash){
         $db = new Database();
         $db->connect();
-        $result = $db->update(static::getTableName(), "WHERE ID='$this->id'", $update_hash);
+        $result = $db->update(static::getTableName(), "WHERE `ID`=$this->id", $update_hash);
         $db->disconnect();
         return $result;
     }

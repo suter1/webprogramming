@@ -12,6 +12,8 @@ $controllers = [
 	'mail_sent' 	=> 'MailController',
 	'profile'   	=> 'ProfileController',
 ];
+$dir = $_SERVER['DOCUMENT_ROOT'];
+$directories = array_merge(glob("$dir/*" , GLOB_ONLYDIR), glob("$dir/**/*", GLOB_ONLYDIR));
 
 $languages = [
 	"de",

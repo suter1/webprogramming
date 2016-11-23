@@ -5,7 +5,6 @@
  * Date: 22/11/16
  * Time: 18:21
  */
-require_once('database.php');
 require_once('autoload.php');
 $reinsert = true;
 $database = new Database();
@@ -20,6 +19,7 @@ $langs = [
 		'no_pictures' => 'Sie haben bisher keine Bilder hochgeladen.',
 		'my_orders' => 'Meine Einkäufe',
 		'no_orders' => 'Sie haben bisher keine Einkäufe.',
+		'categories' => 'Kategorien',
 	],
 	'en' => [
 		'detail' => 'Details',
@@ -30,6 +30,7 @@ $langs = [
 		'no_pictures' => "Currently you haven't uploaded any pictures.",
 		'my_orders' => 'My Orders',
 		'no_orders' => "You haven't bought anything yet",
+		'categories' => 'Categories',
 	],
 ];
 
@@ -51,20 +52,16 @@ $admin_users = [
 		'email' => 'r.suter@whatever.ch',
 	]
 ];
-if($reinsert) {
-	Localization::delete_all();
-	foreach ($langs as $language => $entries) {
-		foreach($entries as $qualifier => $value){
-			Localization::create(['qualifier' => $qualifier, 'value' => $value, 'lang' => $language]);
-		}
+
+foreach ($langs as $language => $entries) {
+	foreach($entries as $qualifier => $value){
+		Localization::find_or_create_by(['qualifier' => $qualifier, 'value' => htmlspecialchars($value, ENT_QUOTES), 'lang' => $language]);
 	}
-
-
 }
+
 if(false){
-	User::delete_all();
 	foreach ($admin_users as $user){
-		User::create($user);
+		User::find_or_create_by($user);
 	}
 }
 $database->disconnect();

@@ -6,8 +6,9 @@ session_start();
 
 $url = $_SERVER["REQUEST_URI"];
 $params = explode("/", $url);
-require_once("autoload.php");
 require_once("includes/functions.php");
+
+require_once("autoload.php");
 require_once('db/init_db.php');
 set_language();
 if (sizeof($params) > 2 && in_array($params[2], $GLOBALS['languages'])) {
