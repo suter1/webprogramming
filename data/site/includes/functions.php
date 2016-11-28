@@ -76,9 +76,9 @@ function determine_method(){
 			['rgx' => $any_page, 'method' => 'create']
 		],
 		'get'    => [
-			['rgx' => $default_rgx, 			'method' => 'show'],
-			['rgx' => '/\w*\/\d{1,}\/edit$/', 	'method' => 'edit'],
-			['rgx' => $any_page, 				'method' => 'index'],
+			['rgx' => $default_rgx, 					'method' => 'show'],
+			['rgx' => '/\w*\/\d{1,}\/edit(\?.+)?$/', 	'method' => 'edit'],
+			['rgx' => $any_page, 						'method' => 'index'],
 		],
 		'delete' => [
 			['rgx' => $default_rgx,		'method' => 'delete'],

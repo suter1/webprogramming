@@ -15,8 +15,6 @@ class TagsController extends Controller{
 		$url = $_SERVER["REQUEST_URI"];
 		$params = explode("/", $url);
 		$tag_id = $params[2];
-
-
 		$tag = Tag::find_by(['id' => $tag_id]);
 		$pictures = $tag->pictures();
 
