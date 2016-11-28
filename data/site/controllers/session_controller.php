@@ -4,6 +4,7 @@ class SessionController extends Controller {
 	private $session_helper;
 
 	public function __construct() {
+		parent::__construct();
 		$this->session_helper = new SessionHelper();
 	}
 
@@ -12,8 +13,8 @@ class SessionController extends Controller {
 	}
 
 	public function create(){
-		$password = get_param('password', null, 'POST');
-		$username = get_param('username', null, 'POST');
+		$password = $this->params['password'];
+		$username = $this->params['username'];
 
 		$user = User::find_by(['username' => $username]);
 		if($user === null) redirect("/home");

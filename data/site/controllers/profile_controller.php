@@ -7,6 +7,11 @@
  */
 require_once("autoload.php");
 class ProfileController extends Controller{
+
+	public function __construct() {
+		parent::__construct();
+	}
+
 	public function show(){
 		$lang = get_language();
 		$my_pictures = Localization::find_by(["qualifier" => "my_pictures", 'lang' => $lang])->getValue();

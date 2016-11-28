@@ -3,6 +3,10 @@ require_once("autoload.php");
 
 class DetailController extends Controller {
 
+	public function __construct() {
+		parent::__construct();
+	}
+
 	public function do_not_require_login() {
 		return ['show'];
 	}
