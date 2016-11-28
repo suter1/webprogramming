@@ -8,10 +8,10 @@ class TagsController extends Controller{
 	}
 
 	public function do_not_require_login() {
-		return ['show'];
+		return ['index'];
 	}
 
-	public function show(){
+	public function index(){
 		$url = $_SERVER["REQUEST_URI"];
 		$params = explode("/", $url);
 		$tag_id = $params[2];

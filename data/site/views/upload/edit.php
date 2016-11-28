@@ -3,15 +3,15 @@
 	<section class="section">
 		<div class="eqWrap">
 			<div class="eq equalHW">
-				<label for="camera_model">Camera Model</label>
+				<label for="camera_model"><?php echo $options['lang_camera_model'] ?></label>
 				<input type="text" name="camera_model" id="camera_model" value="<?php echo $options['camera_model'] ?>" /><br />
-				<label for="aperture">Aperture</label>
+				<label for="aperture"><?php echo $options['lang_aperture'] ?></label>
 				<input type="text" name="aperture" id="aperture" value="<?php echo $options['aperture'] ?>" /><br />
-				<label for="exposure_time">Exposure Time</label>
+				<label for="exposure_time"><?php echo $options['lang_exposure_time'] ?></label>
 				<input type="text" name="exposure_time" id="exposure_time" value="<?php echo $options['exposure_time'] ?>" /><br />
-				<label for="title">Title</label>
+				<label for="title"><?php echo $options['lang_title'] ?></label>
 				<input type="text" name="title" id="title" value="<?php echo $options['title'] ?>" /><br />
-                <label for="price">Price (CHF)</label>
+                <label for="price"><?php echo $options['lang_price'] ?> (CHF)</label>
                 <input type="number" name="price" id="price" step="0.1" min="1" value="<?php echo $options['price'] ?>"/><br />
                 <input type="hidden" name="id" id="id" value="<?php echo $options['id'] ?>" /><br />
 				<button onclick="updateImage();">Update</button>

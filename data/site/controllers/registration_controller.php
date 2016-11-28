@@ -8,11 +8,11 @@ class RegistrationController extends Controller {
 	}
 
 	public function do_not_require_login() {
-		return ['create', 'show'];
+		return ['create', 'index'];
 	}
 
-	public function show(){
-		load_template("views/registration/show.php", []);
+	public function index(){
+		load_template("views/registration/index.php", []);
 	}
 
 	public function create(){

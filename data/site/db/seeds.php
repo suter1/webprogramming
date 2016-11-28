@@ -20,6 +20,11 @@ $langs = [
 		'my_orders' => 'Meine Einkäufe',
 		'no_orders' => 'Sie haben bisher keine Einkäufe.',
 		'categories' => 'Kategorien',
+		'camera_model' => 'Kamera',
+		'aperture'		=> 'Blende',
+		'exposure_time' => 'Verschlusszeit',
+		'price'			=> 'Preis',
+		'title'			=> 'Titel',
 	],
 	'en' => [
 		'detail' => 'Details',
@@ -31,6 +36,11 @@ $langs = [
 		'my_orders' => 'My Orders',
 		'no_orders' => "You haven't bought anything yet",
 		'categories' => 'Categories',
+		'camera_model' => 'Camera',
+		'aperture'		=> 'Aperture',
+		'exposure_time' => 'Exposure Time',
+		'price'			=> 'Price',
+		'title'			=> 'Title',
 	],
 ];
 
@@ -55,7 +65,8 @@ $admin_users = [
 
 foreach ($langs as $language => $entries) {
 	foreach($entries as $qualifier => $value){
-		Localization::find_or_create_by(['qualifier' => $qualifier, 'value' => htmlspecialchars($value, ENT_QUOTES), 'lang' => $language]);
+		$loc = Localization::find_or_create_by(['qualifier' => $qualifier, 'lang' => $language]);
+		$loc->update(['value' => htmlspecialchars($value, ENT_QUOTES)]);
 	}
 }
 

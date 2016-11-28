@@ -98,7 +98,11 @@ class UploadController extends Controller {
 		preg_match('/(\d{1,})\/edit/', $url, $matches);
 		$id = $matches[0];
 		$image = Picture::find_by(['id' => $id]);
-		load_template("views/upload/edit.php", [
+		$translations = [];
+		foreach(['camera_model', 'aperture', 'title', 'price', 'exposure_time'] as $translate){
+			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+		}
+		load_template("views/upload/edit.php", array_merge([
 			'camera_model' 		=> $image->getCameraModel(),
 			'aperture'			=> $image->getAperture(),
 			'exposure_time'		=> $image->getExposureTime(),
@@ -106,7 +110,7 @@ class UploadController extends Controller {
 			'thumbnail_path'	=> $image->getThumbnailPath(),
 			'price'				=> $image->getPrice(),
 			'id'				=> $image->getId(),
-		]);
+		], $translations));
 	}
 
 	/**

@@ -14,7 +14,7 @@ class HomeController extends Controller{
 	public function index(){
 		$pictures = Picture::last(10);
 
-		load_template('views/home/show.php', [
+		load_template('views/home/index.php', [
 			'pictures' => $pictures,
 		]);
 	}
