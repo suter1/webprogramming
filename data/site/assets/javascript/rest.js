@@ -12,6 +12,8 @@ function rest(path, method, data, callback){
         method: method,
         url: path,
     }).done(function (msg) {
-        callback(msg);
+        callback("success", msg);
+    }).fail(function(msg){
+        callback("error", msg);
     });
 }

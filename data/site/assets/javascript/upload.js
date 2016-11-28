@@ -8,8 +8,13 @@ function updateImage(){
     $(':input:text').each(function(index, element){
         data[element.name] = element.value;
     });
-    var callback= function(msg){
-        window.location.replace(`/detail/${id}`);
+    var callback= function(type, msg){
+        if(type == "success"){
+            window.location.replace(`/detail/${id}`);
+        }else if(type == "error"){
+            console.log("fuck");
+            console.log(msg);
+        }
     }
-    update(`/detail/${id}`, data, callback);
+    update(`/upload/${id}`, data, callback);
 }

@@ -114,14 +114,18 @@ class UploadController extends Controller {
 	public function update(){
 		$url = $_SERVER['REQUEST_URI'];
 		preg_match('/(\d{1,})/', $url, $matches);
+		echo "ok";
 		$id = $matches[0];
 		// TODO $id should be there already somehow, or easy available by method call
 		$camera_model = $this->params['camera_model'];
 		$aperture = $this->params['aperture'];
 		$exposure_time = $this->params['exposure_time'];
 		$title = $this->params['title'];
+		var_dump($this->params);
 		$image = Picture::find_by(['id' => $id]);
-		$image->update(['camera_model' => $camera_model, 'aperture' => $aperture, 'exposure_time' => $exposure_time, 'title' => $title]);
+		$res = $image->update(['camera_model' => $camera_model, 'aperture' => $aperture, 'exposure_time' => $exposure_time, 'title' => $title]);
+		if(!$res) header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+
 	}
 
 	public function index(){
