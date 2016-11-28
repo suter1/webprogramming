@@ -193,7 +193,7 @@ class Database {
             }
             $sql = 'UPDATE ' . $table . ' SET ' . implode(',', $args) . ' WHERE ' . $where;
             $this->myQuery = $sql;
-            if ($query = $this->sql($sql)) {
+            if ($query = $this->rawSql($sql)) {
                 array_push($this->result, $this->con->affected_rows);
                 return true;
             } else {

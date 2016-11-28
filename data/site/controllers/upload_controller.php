@@ -10,6 +10,11 @@ require_once "includes/image_functions.php";
 require_once "autoload.php";
 
 class UploadController extends Controller {
+
+	public function __construct() {
+		parent::__construct();
+	}
+
 	public function create() {
 		if (($_FILES['upload'])) {
 			$path = "gallery";
@@ -76,16 +81,50 @@ class UploadController extends Controller {
 				'owner_id' => current_user()->getId(),
 				'width' => $e_width,
 				'height' => $e_height,
-				'title' => 'whatever',
+				'title' => '',
 				'id' => null]);
 
 			$id = $image->getId();
-			header('Location: ' . "/detail/$id");
-		}else
+			redirect("/upload/$id/edit");
+		} else
 			load_template("views/upload/show.php", []);
 	}
 
-	public function show(){
-			load_template("views/upload/show.php", []);
+	/**
+	 * TODO authorize if admin or owner == current user
+	 */
+	public function edit(){
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})\/edit/', $url, $matches);
+		$id = $matches[0];
+		$image = Picture::find_by(['id' => $id]);
+		load_template("views/upload/edit.php", [
+			'camera_model' 		=> $image->getCameraModel(),
+			'aperture'			=> $image->getAperture(),
+			'exposure_time'		=> $image->getExposureTime(),
+			'title'				=> $image->getTitle(),
+			'thumbnail_path'	=> $image->getThumbnailPath(),
+			'id'				=> $image->getId(),
+		]);
+	}
+
+	/**
+	 *
+	 */
+	public function update(){
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})/', $url, $matches);
+		$id = $matches[0];
+		// TODO $id should be there already somehow, or easy available by method call
+		$camera_model = $this->params['camera_model'];
+		$aperture = $this->params['aperture'];
+		$exposure_time = $this->params['exposure_time'];
+		$title = $this->params['title'];
+		$image = Picture::find_by(['id' => $id]);
+		$image->update(['camera_model' => $camera_model, 'aperture' => $aperture, 'exposure_time' => $exposure_time, 'title' => $title]);
+	}
+
+	public function index(){
+		load_template("views/upload/index.php", []);
 	}
 }

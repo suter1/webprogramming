@@ -14,6 +14,8 @@ class DetailController extends Controller {
 
 		$picture = Picture::find_by(['id' => $picture_id]);
 		load_template("views/detail/show.php", [
+			'id'   => $picture_id,
+			'owner_id' => $picture->getOwnerId(),
 			'path' => $picture->getPath(),
 			'title' => $picture->getTitle(),
 			'price' => $picture->getPrice(),

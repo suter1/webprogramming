@@ -1,10 +1,14 @@
 function destroy(path, callback) {
     rest(path, "DELETE", callback);
-
 }
 
-function rest(path, method, callback){
+function update(path, data, callback) {
+    rest(path, "PATCH", data, callback);
+}
+
+function rest(path, method, data, callback){
     $.ajax({
+        data: data,
         method: method,
         url: path,
     }).done(function (msg) {

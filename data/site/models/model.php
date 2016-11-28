@@ -114,7 +114,7 @@ abstract class Model implements ModelStructure {
     public function update($update_hash){
         $db = new Database();
         $db->connect();
-        $result = $db->update(static::getTableName(), "WHERE `ID`=$this->id", $update_hash);
+        $result = $db->update(static::getTableName(), " `ID`=".$this->getId(), $update_hash);
         $db->disconnect();
         return $result;
     }

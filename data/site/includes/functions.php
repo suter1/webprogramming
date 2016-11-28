@@ -53,19 +53,54 @@ function current_user(){
 	return null;
 }
 
+/**
+ * Determines the method by the http method and the url
+ *
+ * method   HTTP Verb   path
+ * index    GET         <controller>/
+ * show     GET         <controller>/:id
+ * edit     GET         <controller>/:id/edit
+ * post     POST        <controller>/:id
+ * delete   DELETE      <controller>/:id
+ * update   PATCH       <controller>/:id
+ * update   PUT         <controller>/:id
+ *
+ * @return mixed
+ */
 function determine_method(){
-	$method = null;
+	$default_rgx = '/\w*\/\d{1,}(\?.+)?$/'; // /<whatever>/:id or /<whatever>/:id?what=a_shit
+	$any_page = '/\w*[^\/\d](\?.+)?$/'; // /<whatever> or /<whatever>?what=a_shit
 	$available_methods = [
-		"post"   => 'create',
-		'get'    => 'show',
-		'delete' => 'delete',
-		'patch'  => 'update',
-		'put'    => 'update',
+		'post'   => [
+			['rgx' => $default_rgx, 'method' => 'create'],
+			['rgx' => $any_page, 'method' => 'create']
+		],
+		'get'    => [
+			['rgx' => $default_rgx, 			'method' => 'show'],
+			['rgx' => '/\w*\/\d{1,}\/edit$/', 	'method' => 'edit'],
+			['rgx' => $any_page, 				'method' => 'index'],
+		],
+		'delete' => [
+			['rgx' => $default_rgx,		'method' => 'delete'],
+			['rgx' => $any_page, 		'method' => 'delete']
+		],
+		'patch'  => [
+			['rgx' => $default_rgx, 'method' => 'update']
+		],
+		'put'    => [
+			['rgx' => $default_rgx, 'method' => 'update']
+		],
 	];
-	return $available_methods[determine_http_method()];
+	$url = $_SERVER['REQUEST_URI'];
+	$methods = $available_methods[determine_http_method()];
+	foreach($methods as $route){
+		if(preg_match($route['rgx'], $url)) return $route['method'];
+	}
+	return null;
 }
 function determine_http_method(){
-	return strtolower($_SERVER['REQUEST_METHOD']);
+	$method = strtolower($_SERVER['REQUEST_METHOD']);
+	return $method;
 }
 
 function get_controller($page){
