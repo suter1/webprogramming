@@ -104,6 +104,7 @@ class UploadController extends Controller {
 			'exposure_time'		=> $image->getExposureTime(),
 			'title'				=> $image->getTitle(),
 			'thumbnail_path'	=> $image->getThumbnailPath(),
+			'price'				=> $image->getPrice(),
 			'id'				=> $image->getId(),
 		]);
 	}
@@ -117,15 +118,15 @@ class UploadController extends Controller {
 		echo "ok";
 		$id = $matches[0];
 		// TODO $id should be there already somehow, or easy available by method call
-		$camera_model = $this->params['camera_model'];
-		$aperture = $this->params['aperture'];
-		$exposure_time = $this->params['exposure_time'];
-		$title = $this->params['title'];
-		var_dump($this->params);
 		$image = Picture::find_by(['id' => $id]);
-		$res = $image->update(['camera_model' => $camera_model, 'aperture' => $aperture, 'exposure_time' => $exposure_time, 'title' => $title]);
+		$res = $image->update([
+			'camera_model' => $this->params['camera_model'],
+			'aperture' => $this->params['aperture'],
+			'exposure_time' => $this->params['exposure_time'],
+			'title' => $this->params['title'],
+			'price' => $this->params['price'],
+		]);
 		if(!$res) header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-
 	}
 
 	public function index(){

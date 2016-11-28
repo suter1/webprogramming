@@ -11,7 +11,9 @@
 				<input type="text" name="exposure_time" id="exposure_time" value="<?php echo $options['exposure_time'] ?>" /><br />
 				<label for="title">Title</label>
 				<input type="text" name="title" id="title" value="<?php echo $options['title'] ?>" /><br />
-				<input type="hidden" name="id" id="id" value="<?php echo $options['id'] ?>" /><br />
+                <label for="price">Price (CHF)</label>
+                <input type="number" name="price" id="price" step="0.1" min="1" value="<?php echo $options['price'] ?>"/><br />
+                <input type="hidden" name="id" id="id" value="<?php echo $options['id'] ?>" /><br />
 				<button onclick="updateImage();">Update</button>
 			</div>
 			<div class="eq equalHW">

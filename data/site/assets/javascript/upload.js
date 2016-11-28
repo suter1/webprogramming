@@ -5,7 +5,7 @@
 function updateImage(){
     var id = $('#id').val();
     var data = {};
-    $(':input:text').each(function(index, element){
+    $(':input').each(function(index, element){
         data[element.name] = element.value;
     });
     var callback= function(type, msg){
