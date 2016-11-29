@@ -24,6 +24,19 @@ abstract class Controller {
 		return "Not implemented";
 	}
 
+	public function index() {
+		return "Not implemented";
+	}
+
+	public function edit() {
+		return "Not implemented";
+	}
+
+	//NOTE new is a stupid keyword...
+	public function newly() {
+		return "Not implemented";
+	}
+
 	public function create() {
 		return "Not implemented";
 	}

@@ -9,7 +9,7 @@
 	}
 	if(sizeof($options['pictures'])===0) $pictures_html .= $options['no_pictures'];
 
-	$pictures_html .= "<br /><a href='/upload'>" . $options['upload']  ."</a>";
+	$pictures_html .= "<br /><a href='/upload/new'>" . $options['upload']  ."</a>";
 	echo $pictures_html;
 	?>
 

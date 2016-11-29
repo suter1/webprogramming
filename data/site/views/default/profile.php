@@ -9,7 +9,7 @@
 			$popup_html = "";
 			$popup_html .= "<p><a href='/profile/" . current_user()->getId() . "'>My Profile</a><p>";
 			$popup_html .= current_user()->getFirstName() . " " . current_user()->getLastName() . " (" . current_user()->getUsername() . ")" . "</p>";
-			$popup_html .= "<a href='/upload'>" . $localization->getValue() . "</a>";
+			$popup_html .= "<a href='/upload/new'>" . $localization->getValue() . "</a>";
 			$popup_html .= "<button onClick='logout();' style='bottom: 0; left: 0; position: absolute;'>Logout</button><br />";
 			echo $popup_html;
 		} else {

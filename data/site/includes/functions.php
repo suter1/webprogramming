@@ -60,6 +60,7 @@ function current_user(){
  * index    GET         <controller>/
  * show     GET         <controller>/:id
  * edit     GET         <controller>/:id/edit
+ * newly    GET         <controller>/new
  * post     POST        <controller>/:id
  * delete   DELETE      <controller>/:id
  * update   PATCH       <controller>/:id
@@ -78,6 +79,7 @@ function determine_method(){
 		'get'    => [
 			['rgx' => $default_rgx, 					'method' => 'show'],
 			['rgx' => '/\w*\/\d{1,}\/edit(\?.+)?$/', 	'method' => 'edit'],
+			['rgx' => '/\w*\/new(\?.+)?$/', 			'method' => 'newly'], //NOTICE new is a keyword...
 			['rgx' => $any_page, 						'method' => 'index'],
 		],
 		'delete' => [

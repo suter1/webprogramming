@@ -133,7 +133,7 @@ class UploadController extends Controller {
 		if(!$res) header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 	}
 
-	public function index(){
-		load_template("views/upload/index.php", []);
+	public function newly(){
+		load_template("views/upload/newly.php", []);
 	}
 }
