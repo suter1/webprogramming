@@ -36,6 +36,8 @@ foreach($tags as $tag){
 }
 
 $navigation .= "</ul></div>";
+$search = Localization::find_by(['qualifier' => 'search', 'lang' => get_language()])->getValue();
+$navigation .= "<div 'tag_search'><input type='text' style='max-width: 130px;' maxlength='15' minlength='3' placeholder='$search tag...'/>";
 $url = explode("?", $_SERVER['REQUEST_URI'])[0];
 $navigation .= "<br /><br /><a href='$url?lang=$clangShort'>$clang</a></nav>";
 echo $navigation;

@@ -1,5 +1,5 @@
 function destroy(path, callback) {
-    rest(path, "DELETE", callback);
+    rest(path, "DELETE", null, callback);
 }
 
 function update(path, data, callback) {

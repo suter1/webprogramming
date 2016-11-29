@@ -30,15 +30,16 @@
                 <div class="logo equalHW eq"></div>
             </a>
             <div class="equalHWWide eq">
-                <input type="text" name="search" class="search" autocomplete="false" placeholder="Suche..." class="search"/>
+                <input type="text" name="search" class="search" autocomplete="false" placeholder=
+                "<?php
+				echo Localization::find_by(['qualifier' => 'search', 'lang' => get_language()])->getValue();
+				?>..." class="search"/>
             </div>
             <div class="equalHW eq">
                 <?php require_once("views/default/profile.php"); ?>
             </div>
             <div class="equalHW eq">
-
-                        <?php require_once("views/default/basket.php") ?>
-
+                <?php require_once("views/default/basket.php") ?>
             </div>
         </div>
     </header>

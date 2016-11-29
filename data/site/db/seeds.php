@@ -25,6 +25,7 @@ $langs = [
 		'exposure_time' => 'Verschlusszeit',
 		'price'			=> 'Preis',
 		'title'			=> 'Titel',
+		'search'			=> 'Suche',
 	],
 	'en' => [
 		'detail' => 'Details',
@@ -41,6 +42,7 @@ $langs = [
 		'exposure_time' => 'Exposure Time',
 		'price'			=> 'Price',
 		'title'			=> 'Title',
+		'search'			=> 'Search',
 	],
 ];
 

@@ -15,6 +15,6 @@ function updateImage(){
             console.log("fuck");
             console.log(msg);
         }
-    }
+    };
     update(`/upload/${id}`, data, callback);
 }
