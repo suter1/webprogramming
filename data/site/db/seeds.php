@@ -63,11 +63,20 @@ $admin_users = [
 	]
 ];
 
+$default_tags = [
+	'Nature', 'Politics', 'Animal', 'Cat', 'Dog', 'Sports', 'Fashion', 'Cars', 'Kitchen', 'Beauty', 'Diaröh',
+	'Shit', 'Crap',
+];
+
 foreach ($langs as $language => $entries) {
 	foreach($entries as $qualifier => $value){
 		$loc = Localization::find_or_create_by(['qualifier' => $qualifier, 'lang' => $language]);
 		$loc->update(['value' => htmlspecialchars($value, ENT_QUOTES)]);
 	}
+}
+
+foreach ($default_tags as $tag) {
+	$tag = Tag::find_or_create_by(['name' => $tag]);
 }
 
 if(false){
