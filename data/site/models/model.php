@@ -97,12 +97,13 @@ abstract class Model implements ModelStructure {
 	}
 
     /**
+	 * @param $order
      * @return Model Array
      */
-    public static function all(){
+    public static function all($order = 'id asc'){
         $db = new Database();
         $db->connect();
-        $result = $db->select(static::getTableName());
+        $result = $db->select(static::getTableName(), '*', null, null, $order);
         $db->disconnect();
         return static::initModels($result);
     }

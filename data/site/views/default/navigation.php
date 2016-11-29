@@ -6,6 +6,10 @@
  * Time: 21:04
  */
 require_once "autoload.php";
+
+//TODO move db calls to controller
+
+
 $categories = ["Home"];
 $lang = get_language();
 $navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
@@ -24,7 +28,7 @@ if ($lang == $clangShort) {
 $navigation .= "</ul><br><br><br>";
 $categories_lang = Localization::find_by(['lang' => $lang, 'qualifier' => 'categories'])->getValue();
 $navigation .= "<div class='topten'><h4>$categories_lang</h4><ul>";
-$tags = Tag::all();
+$tags = Tag::first(10);
 foreach($tags as $tag){
     $tag_name = $tag->getName();
     $tag_id = $tag->getId();

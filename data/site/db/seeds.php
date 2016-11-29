@@ -74,7 +74,6 @@ foreach ($langs as $language => $entries) {
 		$loc->update(['value' => htmlspecialchars($value, ENT_QUOTES)]);
 	}
 }
-
 foreach ($default_tags as $tag) {
 	$tag = Tag::find_or_create_by(['name' => $tag]);
 }
