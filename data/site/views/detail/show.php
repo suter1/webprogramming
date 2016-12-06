@@ -16,8 +16,9 @@
 		</article>
             <div style="width: 200px;">
 			<?php
+			$picture_id = $options['id'];
+
 			if (isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) {
-				$picture_id = $options['id'];
 				$loc_edit = Localization::find_by(["qualifier" => 'edit', 'lang' => get_language()]);
 				echo "<button onclick='/upload/$picture_id/edit'>" . $loc_edit->getValue() . "</button>";
 			}
