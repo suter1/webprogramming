@@ -20,22 +20,30 @@ class PurchaseController extends Controller{
 
 	public function index(){
 		$images = [];
-		foreach($this->basket() as $image_id){
-			array_push($images, Picture::find_by(['id' => $image_id]));
+		foreach(array_keys($this->basket()) as $picture_id){
+			$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]), 'pieces' => $this->basket()[$picture_id] ];
 		}
-		load_template("views/purchase/index.php", ['images' => $images]);
+		load_template("views/purchase/index.php", ['images' => $images, 'price' => $this->price()]);
 	}
 
+	/**
+	 * creates a hash in the following structure in the session
+	 *
+	 * ['basket']['<picture_id>' => '<number of pieces>']
+	 */
 	public function create(){
 		$this->basket();
-		$image_id = $this->params['picture_id'];
-		if(isset($image_id) && $image_id != "") array_push($_SESSION['basket'], $image_id);
+		$picture_id = $this->params['picture_id'];
+		if(isset($picture_id) && $picture_id != "") {
+			if(!isset($_SESSION['basket'][$picture_id])) $_SESSION['basket'][$picture_id] = 0;
+			$_SESSION['basket'][$picture_id] = 1; // can easily be changed to += 1 in case of multiple purchases possible
+		}
 		http_response_code(200);
 	}
 
 	public function delete(){
-		$image_id = $this->params['picture_id'];
-		$offset = array_search($image_id, $_SESSION['basket']);
+		$picture_id = $this->params['picture_id'];
+		$offset = array_search($picture_id, $_SESSION['basket']);
 		array_splice($_SESSION['basket'], $offset);
 		http_response_code(200);
 	}
@@ -46,5 +54,14 @@ class PurchaseController extends Controller{
 	private function basket(){
 		if(!isset($_SESSION['basket'])) $_SESSION['basket'] = [];
 		return $_SESSION['basket'];
+	}
+
+	private function price(){
+		$price = 0;
+		foreach(array_keys($this->basket()) as $picture_id){
+			$img = Picture::find_by(['id' => $picture_id]);
+			$price += $img->getPrice() * $this->basket()[$picture_id];
+		}
+		return $price;
 	}
 }
