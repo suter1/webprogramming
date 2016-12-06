@@ -56,9 +56,6 @@ abstract class Controller {
 		$method = $_SERVER['REQUEST_METHOD'];
 		if ($method == "PUT" || $method == "DELETE" || $method == "PATCH") {
 			parse_str(file_get_contents('php://input'), $this->params);
-//			var_dump($_SERVER["CONTENT_TYPE"]);
-//			var_dump($this->params);
-//			die();
 			$GLOBALS["_{$method}"] = $this->params;
 			$_REQUEST = $this->params + $_REQUEST;
 		} else if ($method == "GET") {

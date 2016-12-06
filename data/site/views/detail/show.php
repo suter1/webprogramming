@@ -9,8 +9,10 @@
             <p>
                 <?php
                 if(isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']){
-                    $img_id = $options['id'];
-                    echo "<a href='/upload/$img_id/edit'>Edit</a>";
+                    $picture_id = $options['id'];
+					echo "<a href='/upload/$picture_id/edit'>Edit</a>";
+					echo "<input type='hidden' id='picture_id' name='picture_id' value='$picture_id' />";
+					echo "<button onclick='addToBasket()'>" . $options['buy']. "</button>";
                 }
                 ?>
             </p>

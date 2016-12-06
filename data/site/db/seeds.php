@@ -26,6 +26,7 @@ $langs = [
 		'price'			=> 'Preis',
 		'title'			=> 'Titel',
 		'search'			=> 'Suche',
+		'buy'			=> 'Kaufen',
 	],
 	'en' => [
 		'detail' => 'Details',
@@ -43,6 +44,7 @@ $langs = [
 		'price'			=> 'Price',
 		'title'			=> 'Title',
 		'search'			=> 'Search',
+		'buy'			=> 'Buy',
 	],
 ];
 

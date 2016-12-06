@@ -11,6 +11,7 @@ $controllers = [
 	'logout' 		=> 'SessionController',
 	'mail_sent' 	=> 'MailController',
 	'profile'   	=> 'ProfileController',
+	'purchase'		=> 'PurchaseController',
 ];
 $dir = $_SERVER['DOCUMENT_ROOT'];
 $directories = array_merge(glob("$dir/*" , GLOB_ONLYDIR), glob("$dir/**/*", GLOB_ONLYDIR));
