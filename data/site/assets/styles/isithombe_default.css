@@ -3,6 +3,15 @@ body{
     font-family: "Helvetica", Arial, sans-serif;
 }
 
+p.title {
+    font-weight: bold;
+}
+
+span.title {
+    font-weight: bold;
+    color: black;
+}
+
 .flex-container {
     display: flex;
     flex-flow: row wrap;
