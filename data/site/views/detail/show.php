@@ -23,7 +23,7 @@
 			}
 
 			if(isset($_SESSION['user_id']))
-				echo "<div style='width: 200px;'><button onclick='addToBasket()'>" . $options['buy']. "</button>";
+				echo "<button style='width: 200px;'><button onclick='addToBasket()'>" . $options['buy']. "</button>";
 
 			?>
 		</p>
