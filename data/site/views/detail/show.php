@@ -14,18 +14,18 @@
 			<p>Bildgrössenauswahl</p>
 			<article class="MetaData">"Meta data"</article>
 		</article>
-		<p>
+            <div style="width: 200px;">
 			<?php
 			if (isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) {
 				$picture_id = $options['id'];
 				$loc_edit = Localization::find_by(["qualifier" => 'edit', 'lang' => get_language()]);
-				echo "<button onclick='/upload/$picture_id/edit'>" . $loc_edit->getValue() . "</button></div>";
+				echo "<button onclick='/upload/$picture_id/edit'>" . $loc_edit->getValue() . "</button>";
 			}
 
 			if(isset($_SESSION['user_id']))
-				echo "<button style='width: 200px;'><button onclick='addToBasket()'>" . $options['buy']. "</button>";
+				echo "<button onclick='addToBasket()'>" . $options['buy']. "</button>";
 
 			?>
-		</p>
-	</section>
+            </div>
+    </section>
 <?php require_once("views/default/footer.php") ?>
