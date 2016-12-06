@@ -14,10 +14,6 @@ class PurchaseController extends Controller{
 		parent::__construct();
 	}
 
-	public function do_not_require_login() {
-		return [];
-	}
-
 	public function index(){
 		$images = [];
 		foreach(array_keys($this->basket()) as $picture_id){

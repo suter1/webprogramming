@@ -42,8 +42,9 @@ $langs = [
 		'male'          => 'männlich',
 		'female'        => 'weiblich',
 		'edit'          => 'Bearbeiten',
-		'search'			=> 'Suche',
+		'search'		=> 'Suche',
 		'buy'			=> 'Kaufen',
+		'no_result'		=> 'Keine Einträge gefunden.',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -77,8 +78,10 @@ $langs = [
 		'male'          => 'male',
 		'female'        => 'female',
 		'edit'          => 'Edit',
-		'search'			=> 'Search',
+		'search'		=> 'Search',
 		'buy'			=> 'Buy',
+		'no_result'		=> 'Nothing found.',
+
 	],
 ];
 
