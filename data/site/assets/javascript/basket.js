@@ -4,6 +4,7 @@ function getBasket(){
 
 function addToBasket(){
     let picture_id = $("#picture_id").val();
+    console.log('id', picture_id);
     let data = {
         picture_id: picture_id,
     };

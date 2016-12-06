@@ -23,10 +23,10 @@
 				echo "<button onclick='/upload/$picture_id/edit'>" . $loc_edit->getValue() . "</button>";
 			}
 
-			if(isset($_SESSION['user_id']) && $options['owner_id'] != $_SESSION['user_id'])
+			if(isset($_SESSION['user_id']) && $options['owner_id'] != $_SESSION['user_id']) {
 				echo "<input type='hidden' name='picture_id' id='picture_id' value='$picture_id'/>";
-			    echo "<button onclick='addToBasket()'>" . $options['buy']. "</button>";
-
+				echo "<button onclick='addToBasket()'>" . $options['buy'] . "</button>";
+			}
 			?>
             </div>
     </section>
