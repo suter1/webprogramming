@@ -20,7 +20,7 @@
 				$picture_id = $options['id'];
 				$locedit = Localization::find_by(["qualifier" => 'edit', 'lang' => get_language()]);
 				echo "<button onclick='addToBasket()'>" . $options['buy']. "</button>";
-				echo "<button onclick='/upload/$img_id/edit'>" . $locedit->getValue() . "</button>";
+				echo "<button onclick='/upload/$picture_id/edit'>" . $locedit->getValue() . "</button>";
 			}
 
 			?>
