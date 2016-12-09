@@ -8,7 +8,7 @@ class TagsController extends Controller{
 	}
 
 	public function do_not_require_login() {
-		return ['show'];
+		return ['show', 'index'];
 	}
 
 	public function show(){
@@ -21,5 +21,22 @@ class TagsController extends Controller{
 		load_template("views/tags/show.php", [
 			'pictures' => $pictures,
 		]);
+	}
+
+	public function index(){
+		// prevent direct access
+		$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
+		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+		if(!$isAjax) {
+			echo 'Access denied - not an AJAX request...';
+			die();
+		}
+
+		$tags = Tag::where(['name' => $this->params['term']]);
+		$tag_list = [];
+		foreach($tags as $tag){
+			array_push($tag_list, ['label' => $tag->getName(), 'value' => $tag->getId()]);
+		}
+		echo json_encode($tag_list);
 	}
 }

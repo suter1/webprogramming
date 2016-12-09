@@ -31,7 +31,7 @@ foreach($tags as $tag){
 
 $navigation .= "</ul>";
 $search = Localization::find_by(['qualifier' => 'search', 'lang' => get_language()])->getValue();
-$navigation .= "<div class='tag_search'><input type='text' maxlength='15' minlength='3' placeholder='$search tag...'/>";
+$navigation .= "<div class='tag_search'><input type='text' maxlength='15' class='ui-autocomplete-input' id='tag-search' minlength='3' placeholder='$search tag...'/>";
 $url = explode("?", $_SERVER['REQUEST_URI'])[0];
 $navigation .= "<br /><br /><a href='$url?lang=$clangShort'>$clang</a></nav><div id='content' class='equalHW eq'>";
 echo $navigation;
