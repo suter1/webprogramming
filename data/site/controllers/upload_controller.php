@@ -102,6 +102,10 @@ class UploadController extends Controller {
 		foreach(['camera_model', 'aperture', 'title', 'price', 'exposure_time'] as $translate){
 			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
 		}
+		$tags = "";
+		foreach ($image->tags() as $tag){
+			$tags .= $tag->getName() . ",";
+		}
 		load_template("views/upload/edit.php", array_merge([
 			'camera_model' 		=> $image->getCameraModel(),
 			'aperture'			=> $image->getAperture(),
@@ -110,6 +114,7 @@ class UploadController extends Controller {
 			'thumbnail_path'	=> $image->getThumbnailPath(),
 			'price'				=> $image->getPrice(),
 			'id'				=> $image->getId(),
+			'tags'				=> $tags,
 		], $translations));
 	}
 
@@ -119,9 +124,7 @@ class UploadController extends Controller {
 	public function update(){
 		$url = $_SERVER['REQUEST_URI'];
 		preg_match('/(\d{1,})/', $url, $matches);
-		echo "ok";
 		$id = $matches[0];
-		// TODO $id should be there already somehow, or easy available by method call
 		$image = Picture::find_by(['id' => $id]);
 		$res = $image->update([
 			'camera_model' => $this->params['camera_model'],
@@ -130,6 +133,12 @@ class UploadController extends Controller {
 			'title' => $this->params['title'],
 			'price' => $this->params['price'],
 		]);
+
+		PicturesTags::delete_all("picture_id = $id");
+		foreach(explode(",", $this->params['tags']) as $tag_name){
+			$tag = Tag::find_or_create_by(['name' => $tag_name]);
+			PicturesTags::create(['picture_id' => $id, 'tag_id' => $tag->getId()]);
+		}
 		if(!$res) header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
 	}
 

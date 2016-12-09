@@ -14,6 +14,8 @@
                 <label for="price"><?php echo $options['lang_price'] ?> (CHF)</label>
                 <input type="number" name="price" id="price" step="0.1" min="1" value="<?php echo $options['price'] ?>"/><br />
                 <input type="hidden" name="id" id="id" value="<?php echo $options['id'] ?>" /><br />
+                <label for="myTags">Tags</label>
+                <input id="myTags" type="text" name="tags" value="<?php echo $options['tags']?>" />
 				<button onclick="updateImage();">Update</button>
 			</div>
 			<div class="eq equalHW">

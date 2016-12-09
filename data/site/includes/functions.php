@@ -30,6 +30,14 @@ function load_template($template, array $options = []) {
 	include $template;
 }
 
+function require_ajax(){
+	$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
+	strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+	if(!$isAjax) {
+		die("Access denied");
+	}
+}
+
 function get_param($var, $default = null, $type = "GET") {
 	if ($type === "GET")
 		$method = $_GET;

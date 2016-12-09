@@ -134,7 +134,7 @@ abstract class Model implements ModelStructure {
     public function update($update_hash){
         $db = new Database();
         $db->connect();
-        $result = $db->update(static::getTableName(), " `ID`=".$this->getId(), $update_hash);
+        $result = $db->update(static::getTableName(), " `". static::getPrimaryKey() ."`=".$this->getId(), $update_hash);
         $db->disconnect();
         return $result;
     }
@@ -146,7 +146,7 @@ abstract class Model implements ModelStructure {
     public static function first($limit = 1){
         $db = new Database();
         $db->connect();
-        $result = $db->select(static::getTableName(), "*", null, null, "id ASC", $limit);
+        $result = $db->select(static::getTableName(), "*", null, null, " " . static::getPrimaryKey() ." ASC", $limit);
         $db->disconnect();
         if($result == null || sizeof($result) == 0) {
             return null;
@@ -160,7 +160,7 @@ abstract class Model implements ModelStructure {
     public static function last($limit = 1){
         $db = new Database();
         $db->connect();
-        $result = $db->select(static::getTableName(), "*", null, null, " id DESC ", $limit);
+        $result = $db->select(static::getTableName(), "*", null, null, " " . static::getPrimaryKey() . " DESC ", $limit);
         $db->disconnect();
         if($result == null || sizeof($result) == 0) {
             return null;
@@ -204,4 +204,5 @@ abstract class Model implements ModelStructure {
         }
         throw new RunTimeException('There is no method with the given name to call');
     }
+
 }

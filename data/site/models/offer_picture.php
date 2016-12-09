@@ -55,4 +55,8 @@ class OfferPicture extends Model {
 	protected function has_many() {
 		return [];
 	}
+
+	static function getPrimaryKey() {
+		return "offer_id";
+	}
 }

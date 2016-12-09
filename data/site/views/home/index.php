@@ -1,8 +1,6 @@
 <?php require_once("views/default/header.php") ?>
 <?php require_once("views/default/navigation.php") ?>
 <section class="section images">
-	<h3>Header in Section</h3>
-	<p>Absatz in einer Section</p>
 	<?php
 	$pictures_html = "";
 

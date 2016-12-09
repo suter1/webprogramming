@@ -18,4 +18,8 @@ class Role extends Model {
 	protected function has_many() {
 		return [];
 	}
+
+	static function getPrimaryKey() {
+		return "id";
+	}
 }

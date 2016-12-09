@@ -19,4 +19,7 @@ $(document).ready(function () {
             $(".ui-autocomplete-input").css("z-index", 1000);
         }
     });
+
+
+    $("#myTags").tagit();
 });

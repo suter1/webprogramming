@@ -25,12 +25,7 @@ class TagsController extends Controller{
 
 	public function index(){
 		// prevent direct access
-		$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
-		strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-		if(!$isAjax) {
-			echo 'Access denied - not an AJAX request...';
-			die();
-		}
+		require_ajax();
 
 		$tags = Tag::where(['name' => $this->params['term']]);
 		$tag_list = [];
