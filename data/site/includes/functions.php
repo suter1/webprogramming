@@ -22,8 +22,6 @@ $languages = [
 	"en"
 ];
 
-$urlbase = 'http://localhost:8080/';
-
 function load_template($template, array $options = []) {
 	$options["language"] = get_language();
 	$options["languages"] = $GLOBALS['languages'];

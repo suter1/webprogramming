@@ -10,13 +10,8 @@ require_once "autoload.php";
 //TODO move db calls to controller
 
 
-$categories = ["Home"];
 $lang = get_language();
-$navigation = "<div class='navigation-placeholder'></div><nav class='nav'><ul>";
-foreach ($categories as $category) {
-	$localization = Localization::find_by(['lang' => $lang, 'qualifier' => strtolower($category)]);
-	$navigation .= "<li class='category'><a href='/" . strtolower($category) . "'>" . $localization->getValue() . "</a></li>";
-}
+$navigation = "<div class='container eqWrap'><nav class='nav equalHW eq'>";
 
 $site = get_param('site', 'home');
 $clang = 'Deutsch';
@@ -25,9 +20,8 @@ if ($lang == $clangShort) {
 	$clang = 'English';
 	$clangShort = 'en';
 }
-$navigation .= "</ul><br><br><br>";
 $categories_lang = Localization::find_by(['lang' => $lang, 'qualifier' => 'categories'])->getValue();
-$navigation .= "<div class='topten'><h4>$categories_lang</h4><ul>";
+$navigation .= "<h4>$categories_lang</h4><ul>";
 $tags = Tag::first(10);
 foreach($tags as $tag){
     $tag_name = $tag->getName();
@@ -35,9 +29,9 @@ foreach($tags as $tag){
     $navigation .= "<li><a href='/tags/$tag_id'>$tag_name</a></li>";
 }
 
-$navigation .= "</ul></div>";
+$navigation .= "</ul>";
 $search = Localization::find_by(['qualifier' => 'search', 'lang' => get_language()])->getValue();
-$navigation .= "<div 'tag_search'><input type='text' style='max-width: 130px;' maxlength='15' minlength='3' placeholder='$search tag...'/>";
+$navigation .= "<div class='tag_search'><input type='text' maxlength='15' minlength='3' placeholder='$search tag...'/>";
 $url = explode("?", $_SERVER['REQUEST_URI'])[0];
-$navigation .= "<br /><br /><a href='$url?lang=$clangShort'>$clang</a></nav>";
+$navigation .= "<br /><br /><a href='$url?lang=$clangShort'>$clang</a></nav><div id='content' class='equalHW eq'>";
 echo $navigation;

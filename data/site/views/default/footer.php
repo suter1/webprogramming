@@ -1,6 +1,8 @@
-            <aside class="aside_right">
-                <p>Aside rechts</p>
-            </aside>
+                </div> <!-- content -->
+                <!-- <aside class="equalHW eq aside_right">
+                    <p>Werbung</p>
+                </aside> -->
+            </div> <!-- container -->
         </div>
     </body>
 </html>
