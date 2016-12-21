@@ -1,0 +1,241 @@
+@CHARSET "UTF-8";
+body{
+    font-family: "Helvetica", Arial, sans-serif;
+}
+
+p.title {
+    font-weight: bold;
+}
+
+span.title {
+    font-weight: bold;
+    color: black;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.flex-container > * {
+    padding: 15px;
+    flex: 1 100%;
+}
+
+.aside_left {
+    text-align: left;
+}
+
+.aside_right {
+    text-align: left;
+}
+
+.section {
+    text-align: left;
+    with: 100%
+}
+
+.images {
+    display: block;
+    min-width: 605px;
+}
+
+.badge {
+    background-color: lightskyblue;
+    font-size: 0.8em;
+    border: 1px antiquewhite solid;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.description {
+    font-size: 0.8em;
+    padding: 3px;
+    display: block;
+    white-space: nowrap;
+}
+
+.description span {
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.image {
+    display: inline-block;
+    margin: 1px;
+    padding: 2px;
+    border: 1px solid ghostwhite;
+    border-radius: 3px;
+    max-width: 300px;
+}
+
+.article {
+    text-align: left;
+}
+
+header {
+    background: rgb(180, 180, 180);
+    color: white;
+}
+
+ header a:visited{
+     font-color: blue;
+ }
+
+.headline {
+    display: block;
+    margin: auto 0;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    height: 103px;
+}
+
+.logo {
+    background: url('../logo/logo_isithombe.png') no-repeat;
+    min-height: 103px;
+    min-width: 126px;
+}
+
+footer {
+    background: #aaa;
+    color: white;
+}
+
+img {
+    max-width: 300px;
+}
+
+img.wrap {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+img.align-left {
+    float: left;
+    margin-right: 30px;
+}
+
+.OptSize {
+    float: left;
+    width: 100%;
+}
+
+.tag_search input{
+    width: 90px;
+}
+.nav {
+    background: #eee;
+    float: left;
+    width: 7%;
+    max-width: 150px;
+    min-width: 120px;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    overflow: auto;
+}
+
+.nav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.nav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.nav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
+.eqWrap { display: flex; }
+.eq { padding: 10px; }
+.equalHW { flex: 1; }
+.equalHWWide { flex: 2; }
+
+
+.search {
+    float: left;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search:focus {
+    width: 100%;
+}
+
+.hide{
+    display: none;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #5555aa;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toggle{
+    cursor: hand;
+    cursor: pointer;
+}
+
+.basket-list{
+    list-style: none inside none;
+    float: left;
+}
+
+.popup {
+    width: 300px;
+    height: 400px;
+    background-color: #5555aa;
+    border: solid royalblue;
+    z-index: 5;
+    position: absolute;
+    border-radius: 4px;
+}
+
+@media all and (min-width: 768px) {
+    .navigation-placeholder {
+        text-align: left;
+        flex: 1 auto;
+        order: 1;
+    }
+
+    .aside_left {
+        flex: 1 auto;
+        order: 2;
+    }
+
+    .aside_right {
+        flex: 1 auto;
+        order: 5;
+    }
+
+    .section {
+        flex: 7 0px;
+        order: 3;
+    }
+
+    .article {
+        flex: 5 0px;
+        order: 3;
+    }
+
+    footer {
+        order: 6;
+    }
+}
