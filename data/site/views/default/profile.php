@@ -26,7 +26,7 @@
 			$login_html .= "<label for='password'>" . $locpassword->getValue() . "</label>";
 			$login_html .= "<input type='password' required='required' name='password' />";
 			$login_html .= "<div class='eqWrap'><div class='eq equalHW'><input type='submit' value='". $loclogin->getValue() ."'></div>";
-			$login_html .= "<div class='eq equalHW'><button onclick='/register'>" . $locregister->getValue() . "</button></div>";
+			$login_html .= "<div class='eq equalHW'><a href='/register'><button>" . $locregister->getValue() . "</button></a></div>";
 			$login_html .= "</div>";
 			$login_html .= "</form>";
 			echo $login_html;
