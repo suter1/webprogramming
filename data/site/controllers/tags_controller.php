@@ -26,7 +26,6 @@ class TagsController extends Controller{
 	public function index(){
 		// prevent direct access
 		require_ajax();
-
 		$tags = Tag::where(['name' => $this->params['term']]);
 		$tag_list = [];
 		foreach($tags as $tag){

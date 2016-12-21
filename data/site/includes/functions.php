@@ -13,6 +13,7 @@ $controllers = [
 	'profile'   	=> 'ProfileController',
 	'purchase'		=> 'PurchaseController',
 	'pictures'		=> 'PicturesController',
+	'checkout'		=> 'CheckoutController',
 ];
 $dir = $_SERVER['DOCUMENT_ROOT'];
 $directories = array_merge(glob("$dir/*" , GLOB_ONLYDIR), glob("$dir/**/*", GLOB_ONLYDIR));

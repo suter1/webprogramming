@@ -63,5 +63,11 @@ abstract class Controller {
 		} else if ($method == "POST") {
 			$this->params = $_POST;
 		}
+		$db = new Database();
+		$db->connect();
+		foreach($this->params as $key => &$value){
+			$value = $db->escapeString(htmlspecialchars($value, ENT_HTML5));
+		}
+		$db->disconnect();
 	}
 }
