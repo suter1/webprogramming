@@ -14,3 +14,5 @@ Assignements | Prio 1 |
 Input validation + Meldungen: Register, File upload/edit, Login | not so easy |
 Bild download in gekaufter grösse | not so easy |
 Wasserzeichen | very not so easy! |
+Random Tags anzeigen anstatt statische | easy |
+Admin button für Adminpage im Header | easy |
