@@ -17,7 +17,8 @@ class PurchaseController extends Controller{
 	public function index(){
 		$images = [];
 		foreach(array_keys($this->basket()) as $picture_id){
-			$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]), 'pieces' => $this->basket()[$picture_id] ];
+			$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]),
+				'pieces' => $this->basket()[$picture_id] ];
 		}
 		load_template("views/purchase/index.php", ['images' => $images, 'price' => $this->price()]);
 	}

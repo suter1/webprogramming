@@ -29,12 +29,11 @@ if (!empty($pageId) && in_array($pageId, array_keys($GLOBALS['controllers']))) {
 }
 $method = determine_method();
 $controller = get_controller($pageId);
-
 if(!is_null($controller)){
 	$helper = new SessionHelper();
-	if(in_array($method, $controller->do_not_require_login()))
+	if(in_array($method, $controller->do_not_require_login())) {
 		$controller->$method();
-	elseif($helper->is_logged_in()){
+	}elseif($helper->is_logged_in()){
 		$controller->$method();
 	}else{
 		redirect("/home");

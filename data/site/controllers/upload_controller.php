@@ -97,6 +97,9 @@ class UploadController extends Controller {
 		$url = $_SERVER['REQUEST_URI'];
 		preg_match('/(\d{1,})\/edit/', $url, $matches);
 		$id = $matches[0];
+		/**
+		 * @var $image Picture
+		 */
 		$image = Picture::find_by(['id' => $id]);
 		$translations = [];
 		foreach(['camera_model', 'aperture', 'title', 'price', 'exposure_time'] as $translate){
