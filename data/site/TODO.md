@@ -2,8 +2,8 @@
 
 Was | Schätzung | Status
 --- | --- | ---
-Register: Mail Validierung | ev. tricky |
-Admin Page --> Verkäufe, -->, BIlder eines Users Anzeigen inkl. gelöschte, -->Liste der User inkl. Suchfunktion, Checkbox für gelöschte | easy |
+Register: Mail Validierung | done |
+Admin Page --> Verkäufe, -->, Bilder eines Users Anzeigen inkl. gelöschte, -->Liste der User inkl. Suchfunktion, Checkbox für gelöschte | easy |
 Kaufen inkl. Rückmeldung und Mail | ev. tricky |
 Meta-Daten laden & editieren | easy |
 Bilder löschen (owner & admin, nur flag in db) inkl. Rückmeldung | easy |
