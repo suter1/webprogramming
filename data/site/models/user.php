@@ -9,6 +9,7 @@ class User extends Model {
 	private $sex;
 	private $username;
 	private $password_hash;
+	private $email_confirmed = false;
 
 	function __construct($values) {
 		parent::__construct();
@@ -20,6 +21,7 @@ class User extends Model {
 		$this->sex = $values['sex'];
 		$this->username = $values['username'];
 		$this->password_hash = $values['password_hash'];
+		$this->email_confirmed = $values['email_confirmed'];
 	}
 
 	static function getTableName() {
@@ -104,4 +106,12 @@ class User extends Model {
 	static function getPrimaryKey() {
 		return "id";
 	}
+
+	/**
+	 * @return bool
+	 */
+	public function isEmailConfirmed() {
+		return $this->email_confirmed;
+	}
+
 }

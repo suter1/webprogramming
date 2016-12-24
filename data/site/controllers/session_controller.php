@@ -17,7 +17,8 @@ class SessionController extends Controller {
 		$username = $this->params['username'];
 
 		$user = User::find_by(['username' => $username]);
-		if($user === null) redirect("/home");
+		//TODO add a message that it didn't work
+		if(is_null($user) || !$user->isEmailConfirmed()) redirect("/home");
 		if ( $out = password_verify($password, $user->getPasswordHash()) ) {
 			$this->session_helper->login(['user_id' => $user->getId(), 'logged_in' => true]);
 		} else {
