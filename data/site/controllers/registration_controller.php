@@ -31,13 +31,12 @@ class RegistrationController extends Controller {
 		if(is_null($user) || !isset($user)) {
 			$password_hash = password_hash($password, PASSWORD_DEFAULT);
 			$created_user = User::create(['username' => $username, 'email' => $email, 'password_hash' => $password_hash]);
-			$header = 'From: webmaster@example.com' . "\r\n" .
-				'Reply-To: webmaster@example.com' . "\r\n" .
-				'X-Mailer: PHP/' . phpversion();
-
-			mail($created_user->getEmail(), "Please Confirm your Email.", "<p>Please Confirm your mail address here: https://whatever.ch/", $header);
-			//TODO SEND EMAIL
-			//redirect to mail_sent
+			$link = "www.google.ch";
+			$mailer = new ConfirmMailer($link, $email);
+			if($mailer->send_mail() != "1") {
+				echo
+				die();
+			}
 			redirect("mail_sent");
 		}else {
 			echo "username already taken";
