@@ -16,10 +16,10 @@ class RegistrationController extends Controller {
 	}
 
 	public function create(){
-		$username = get_param("username", null, "POST");
-		$email = get_param("email", null, "POST");
-		$password = get_param("password", null, "POST");
-		$password_confirm = get_param("password_confirm", null, "POST");
+		$username = $this->params['username'];
+		$email = $this->params['email'];
+		$password = $this->params['password'];
+		$password_confirm = $this->params['password_confirm'];
 
 		if($password != $password_confirm){
 			//TODO passwords do not match
@@ -31,7 +31,7 @@ class RegistrationController extends Controller {
 		if(is_null($user) || !isset($user)) {
 			$password_hash = password_hash($password, PASSWORD_DEFAULT);
 			$created_user = User::create(['username' => $username, 'email' => $email, 'password_hash' => $password_hash]);
-			$link = "www.google.ch";
+			$link = getenv('HTTP_HOST') . "/activation/" . $created_user->getId();
 			$mailer = new ConfirmMailer($link, $email);
 			if($mailer->send_mail() != "1") {
 				echo
