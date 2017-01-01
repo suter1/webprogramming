@@ -20,7 +20,7 @@ class DetailController extends Controller {
 		load_template("views/detail/show.php", [
 			'id'   => $picture_id,
 			'owner_id' => $picture->getOwnerId(),
-			'path' => $picture->getPath(),
+			'path' => $picture->getThumbnailPath(),
 			'title' => $picture->getTitle(),
 			'price' => $picture->getPrice(),
 			'buy' => $loc_buy,
