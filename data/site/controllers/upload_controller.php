@@ -69,6 +69,8 @@ class UploadController extends Controller {
 			$thumb_path = $thumbnail_path . "/" . basename($composed_path);
 
 			$thumb_successful = resize_image($composed_path, $thumb_path);
+			$bool = watermark($thumb_path);
+
 			if (!$thumb_successful) die("could not create thumbnail file");
 			$image = Picture::create([
 				'camera_model' => $e_camera_model,
@@ -93,7 +95,7 @@ class UploadController extends Controller {
 	/**
 	 * TODO authorize if admin or owner == current user
 	 */
-	public function edit(){
+	public function edit() {
 		$url = $_SERVER['REQUEST_URI'];
 		preg_match('/(\d{1,})\/edit/', $url, $matches);
 		$id = $matches[0];
@@ -102,29 +104,29 @@ class UploadController extends Controller {
 		 */
 		$image = Picture::find_by(['id' => $id]);
 		$translations = [];
-		foreach(['camera_model', 'aperture', 'title', 'price', 'exposure_time'] as $translate){
+		foreach (['camera_model', 'aperture', 'title', 'price', 'exposure_time'] as $translate) {
 			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
 		}
 		$tags = "";
-		foreach ($image->tags() as $tag){
+		foreach ($image->tags() as $tag) {
 			$tags .= $tag->getName() . ",";
 		}
 		load_template("views/upload/edit.php", array_merge([
-			'camera_model' 		=> $image->getCameraModel(),
-			'aperture'			=> $image->getAperture(),
-			'exposure_time'		=> $image->getExposureTime(),
-			'title'				=> $image->getTitle(),
-			'thumbnail_path'	=> $image->getThumbnailPath(),
-			'price'				=> $image->getPrice(),
-			'id'				=> $image->getId(),
-			'tags'				=> $tags,
+			'camera_model' => $image->getCameraModel(),
+			'aperture' => $image->getAperture(),
+			'exposure_time' => $image->getExposureTime(),
+			'title' => $image->getTitle(),
+			'thumbnail_path' => $image->getThumbnailPath(),
+			'price' => $image->getPrice(),
+			'id' => $image->getId(),
+			'tags' => $tags,
 		], $translations));
 	}
 
 	/**
 	 *
 	 */
-	public function update(){
+	public function update() {
 		$url = $_SERVER['REQUEST_URI'];
 		preg_match('/(\d{1,})/', $url, $matches);
 		$id = $matches[0];
@@ -138,14 +140,14 @@ class UploadController extends Controller {
 		]);
 
 		PicturesTags::delete_all("picture_id = $id");
-		foreach(explode(",", $this->params['tags']) as $tag_name){
+		foreach (explode(",", $this->params['tags']) as $tag_name) {
 			$tag = Tag::find_or_create_by(['name' => $tag_name]);
 			PicturesTags::create(['picture_id' => $id, 'tag_id' => $tag->getId()]);
 		}
-		if(!$res) header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+		if (!$res) header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
 	}
 
-	public function newly(){
+	public function newly() {
 		load_template("views/upload/newly.php", []);
 	}
 }
