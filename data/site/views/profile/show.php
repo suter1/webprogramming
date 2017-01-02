@@ -22,5 +22,8 @@
 	echo $orders_html;
 	if(sizeof($options['orders']) === 0) echo $options['no_orders'];
 	?>
+    <br>
+    <h2>Edit Profile</h2>
+    <a href="/user/<?php echo $options['user']->getId() ?>/edit"><?php echo $options['edit'] ?></a>
 </section>
 <?php require_once("views/default/footer.php") ?>

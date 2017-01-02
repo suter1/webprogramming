@@ -20,6 +20,7 @@ class ProfileController extends Controller {
 		$no_orders = Localization::find_by(["qualifier" => "no_orders", 'lang' => $lang])->getValue();
 		$my_orders = Localization::find_by(["qualifier" => "my_orders", 'lang' => $lang])->getValue();
 		$upload = Localization::find_by(["qualifier" => "upload", 'lang' => $lang])->getValue();
+		$edit_profile = Localization::find_by(["qualifier" => "edit", 'lang' => $lang])->getValue();
 		load_template("views/profile/show.php", [
 			'user' => current_user(),
 			'pictures' => current_user()->pictures(),
@@ -28,6 +29,7 @@ class ProfileController extends Controller {
 			'my_pictures' => $my_pictures,
 			'no_orders' => $no_orders,
 			'my_orders' => $my_orders,
+			'edit' => $edit_profile,
 			'upload' => $upload,
 		]);
 	}

@@ -9,6 +9,8 @@ class User extends Model {
 	private $sex;
 	private $username;
 	private $password_hash;
+	private $is_admin;
+	private $budget;
 	private $email_confirmed = false;
 
 	function __construct($values) {
@@ -21,6 +23,8 @@ class User extends Model {
 		$this->sex = $values['sex'];
 		$this->username = $values['username'];
 		$this->password_hash = $values['password_hash'];
+		$this->is_admin = $values['is_admin'];
+		$this->budget = $values['budget'];
 		$this->email_confirmed = $values['email_confirmed'];
 	}
 
@@ -114,4 +118,31 @@ class User extends Model {
 		return $this->email_confirmed;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function isAdmin() {
+		return $this->is_admin;
+	}
+
+	/**
+	 * @param mixed $is_admin
+	 */
+	public function setAdmin($is_admin) {
+		$this->is_admin = $is_admin;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getBudget() {
+		return $this->budget;
+	}
+
+	/**
+	 * @param mixed $budget
+	 */
+	public function setBudget($budget) {
+		$this->budget = $budget;
+	}
 }
