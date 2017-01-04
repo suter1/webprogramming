@@ -1,8 +1,6 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
-<?php require_once("views/default/flash.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
 
-<section class="section">
+    <section class="section">
     <form action="/upload" method="post" name="upload" enctype="multipart/form-data">
         <input type="file" name="upload" />
         <input type="submit" value="Upload File" />

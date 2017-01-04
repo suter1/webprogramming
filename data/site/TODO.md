@@ -12,7 +12,7 @@ User löschen (admin & owner, nur flag in db) + Rückmeldung | easy |
 Aktionen erstellen (admin) + Rückmeldung | easy |
 Bestellverlauf + Geldkonto pro User | tricky |
 Assignements | Prio 1 |
-Input validation + Meldungen: Register, File upload/edit, Login | not so easy |
+Input validation + Meldungen: Register, File upload/edit, Login | done |
 Bild download in gekaufter Grösse | not so easy |
 Wasserzeichen | done |
 Random Tags anzeigen anstatt statische | easy |

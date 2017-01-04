@@ -1,8 +1,6 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
-<?php require_once("views/default/flash.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
 
-	<section class="section">
+    <section class="section">
 		<div class="eqWrap">
 			<div class="eq equalHW">
 				<label for="camera_model"><?php echo $options['lang_camera_model'] ?></label>

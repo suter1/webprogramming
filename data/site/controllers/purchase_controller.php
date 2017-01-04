@@ -59,6 +59,6 @@ class PurchaseController extends Controller{
 			$img = Picture::find_by(['id' => $picture_id]);
 			$price += $img->getPrice() * $this->basket()[$picture_id];
 		}
-		return $price;
+		return money_format('%.2n CHF', $price);
 	}
 }

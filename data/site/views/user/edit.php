@@ -1,8 +1,7 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
-<?php require_once("views/default/flash.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
 
-<div>
+
+    <div>
     <label for="username">Username</label>
     <input type="text" name="username" value="<?php echo $options['username']?>" disabled="disabled"/><br>
     <label for="firstname">First Name</label>

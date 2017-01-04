@@ -1,8 +1,7 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
-<?php require_once("views/default/flash.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
 
-<table>
+
+    <table>
     <thead>
         <tr><td>First Name</td>
             <td>Last Name</td>

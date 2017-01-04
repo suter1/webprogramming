@@ -1,8 +1,7 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
-<?php require_once("views/default/flash.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
 
-	<section class="section">
+
+    <section class="section">
 		<?php
 		if (isset($_SESSION['logged_in'])) {
 			$localization = Localization::find_by(["qualifier" => 'upload', 'lang' => 'de']);
