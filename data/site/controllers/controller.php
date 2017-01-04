@@ -13,10 +13,15 @@ abstract class Controller {
 		$this->parse_params();
 	}
 
+	protected function flash($message){
+		if(!isset($_SESSION['flash'])) $_SESSION['flash'] = [];
+		array_push($_SESSION['flash'], $message);
+	}
+
 	/**
 	 * @return array of methods that do not require login
 	 */
-	public function do_not_require_login(){
+	public function do_not_require_login() {
 		return [];
 	}
 

@@ -1,5 +1,7 @@
 <?php require_once("views/default/header.php") ?>
 <?php require_once("views/default/navigation.php") ?>
+<?php require_once("views/default/flash.php") ?>
+
 <section class="section images">
 	<h2><?php echo $options['my_pictures']; ?></h2>
 	<?php

@@ -22,10 +22,9 @@ class RegistrationController extends Controller {
 		$password_confirm = $this->params['password_confirm'];
 
 		if($password != $password_confirm){
-			//TODO passwords do not match
-			echo "fail";
-			load_template("views/show.php", []);
-			die();
+			parent::flash("The passwords you entered do not match");
+			load_template("views/registration/index.php", []);
+			return;
 		}
 		$user = User::find_by(['username' => $username]);
 		if(is_null($user) || !isset($user)) {
@@ -33,16 +32,18 @@ class RegistrationController extends Controller {
 			$created_user = User::create(['username' => $username, 'email' => $email, 'password_hash' => $password_hash]);
 			$link = getenv('HTTP_HOST') . "/activation/" . $created_user->getId();
 			$mailer = new ConfirmMailer($link, $email);
-			if($mailer->send_mail() != "1") {
-				echo
-				die();
+			try{
+				if($mailer->send_mail() != "1") throw new Exception();
+			}catch(Exception $e){
+				parent::flash("Mail could not be send");
+				load_template("views/registration/index.php", []);
+				return;
 			}
 			redirect("mail_sent");
 		}else {
-			echo "username already taken";
-			load_template("views/show.php", []);
-			die();
-			//TODO username already taken
+			parent::flash("username already taken");
+			load_template("views/registration/index.php", []);
+			return;
 		}
 	}
 }

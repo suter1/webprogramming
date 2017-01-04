@@ -1,5 +1,7 @@
 <?php require_once("views/default/header.php") ?>
 <?php require_once("views/default/navigation.php") ?>
+<?php require_once("views/default/flash.php") ?>
+
 <section class="section">
 	<form method="post" action="/register" >
 		<div class="divTable">

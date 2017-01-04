@@ -22,10 +22,9 @@ class UploadController extends Controller {
 			$file = $_FILES['upload'];
 
 			if ($file['error'] != 0) {
-				echo "There was an error uploading the file \n";
-				echo $file['error'];
-				echo var_dump($file);
-				exit;
+				parent::flash("Error while file upload " . $file['error']);
+				load_template("views/upload/newly.php", []);
+				return;
 			}
 			$file_name = $_FILES['upload']['name'];
 			$file_type = $_FILES['upload']['type'];
@@ -34,8 +33,9 @@ class UploadController extends Controller {
 			$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 			if (!in_array($ext, $allowed)) {
-				echo "This file type is not allowed to upload to this site.";
-				exit;
+				parent::flash("This file type is not allowed to upload to this site.");
+				load_template("views/upload/newly.php", []);
+				return;
 			}
 
 			do {
@@ -44,8 +44,9 @@ class UploadController extends Controller {
 			} while (file_exists(__DIR__ . "/$composed_path"));
 
 			if (!move_uploaded_file($file_temp, $composed_path)) {
-				echo "file could not be moved from $file_temp to $composed_path";
-				exit;
+				parent::flash("file could not be moved from $file_temp to $composed_path");
+				load_template("views/upload/newly.php", []);
+				return;
 			}
 
 			$exif = @exif_read_data($composed_path);
@@ -71,7 +72,11 @@ class UploadController extends Controller {
 			$thumb_successful = resize_image($composed_path, $thumb_path);
 			$bool = watermark($thumb_path);
 
-			if (!$thumb_successful) die("could not create thumbnail file");
+			if (!$thumb_successful){
+				parent::flash("could not create thumbnail file");
+				load_template("views/upload/newly.php", []);
+				return;
+			}
 			$image = Picture::create([
 				'camera_model' => $e_camera_model,
 				'aperture' => $e_aperture,
@@ -88,8 +93,10 @@ class UploadController extends Controller {
 
 			$id = $image->getId();
 			redirect("/upload/$id/edit");
-		} else
+		} else {
+			parent::flash("Please select a file");
 			load_template("views/upload/show.php", []);
+		}
 	}
 
 	/**

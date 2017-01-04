@@ -18,11 +18,14 @@ class SessionController extends Controller {
 
 		$user = User::find_by(['username' => $username]);
 		//TODO add a message that it didn't work
-		if(is_null($user) || !$user->isEmailConfirmed()) redirect("/home");
+		if(is_null($user) || !$user->isEmailConfirmed()){
+			parent::flash("User does not exist, password is wrong or email is not confirmed.");
+			redirect("/home");
+		}
 		if ( $out = password_verify($password, $user->getPasswordHash()) ) {
 			$this->session_helper->login(['user_id' => $user->getId(), 'logged_in' => true]);
 		} else {
-			//probably do something later
+			parent::flash("User does not exist, password is wrong or email is not confirmed.");
 		}
 		redirect("/home");
 	}
