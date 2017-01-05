@@ -28,31 +28,17 @@ function resize_image($path, $new_path) {
 	$img_base = imagecreatetruecolor($rs_width, $rs_height);
 	imagecopyresized($img_base, $img, 0, 0, 0, 0, $rs_width, $rs_height, $width, $height);
 
-	$path_info = pathinfo($path);
-	switch ($path_info['extension']) {
-		case "gif":
-		case "GIF":
-			return imagegif($img_base, "./gallery/thumbnails/" . basename($path));
-			break;
-		case "JPEG":
-		case "jpeg":
-		case "JPG":
-		case "jpg":
-			return imagejpeg($img_base, "./gallery/thumbnails/" . basename($path));
-			break;
-		case "png":
-		case "PNG":
-			return imagepng($img_base, "./gallery/thumbnails/" . basename($path));
-			break;
-		default :
-			break;
-	}
+	$image_type = image_type($path);
+	$image_path = "./gallery/thumbnails/" . basename($path);
+
+	if ($image_type === "gif") return imagegif($img_base, $image_path);
+	if ($image_type === "jpg") return imagejpeg($img_base, $image_path);
+	if ($image_type === "png") return imagepng($img_base, $image_path);
 }
 
 function watermark($path) {
 	// Load the stamp and the photo to apply the watermark to
-	$full_path = './../assets/logo/logo_isithombe.png';
-
+	$full_path = __DIR__ . '/../assets/logo/logo_isithombe.png';
 	$stamp = imagecreatefrompng($full_path);
 	$image_type = image_type($path);
 	if ($image_type === "gif")
@@ -79,7 +65,7 @@ function watermark($path) {
 		imagesx($stamp),
 		imagesy($stamp));
 
-	if(file_exists($path)) unlink($path); // we have to unlink the image first, otherwise the resource is in use
+	if (file_exists($path)) unlink($path); // we have to unlink the image first, otherwise the resource is in use
 	return imagepng($im, $path);
 
 }
