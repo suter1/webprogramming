@@ -51,7 +51,9 @@ function resize_image($path, $new_path) {
 
 function watermark($path) {
 	// Load the stamp and the photo to apply the watermark to
-	$stamp = imagecreatefrompng(__DIR__ . '/../assets/logo/logo_isithombe.png');
+	$full_path = './../assets/logo/logo_isithombe.png';
+
+	$stamp = imagecreatefrompng($full_path);
 	$image_type = image_type($path);
 	if ($image_type === "gif")
 		$im = imagecreatefromgif($path);
