@@ -29,11 +29,11 @@ class UploadController extends Controller {
 			$file_name = $_FILES['upload']['name'];
 			$file_type = $_FILES['upload']['type'];
 			$file_temp = ($_FILES['upload']['tmp_name']);
-			$allowed = array('tif', 'tiff', 'jpg', 'jpeg', 'JPG');
+			$allowed = array('gif', 'GIF', 'jpg', 'jpeg', 'JPG', 'png', 'PNG');
 			$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 			if (!in_array($ext, $allowed)) {
-				parent::flash("This file type is not allowed to upload to this site.");
+				parent::flash("This file type is not allowed to upload to this site. $ext");
 				load_template("views/upload/newly.php", []);
 				return;
 			}
