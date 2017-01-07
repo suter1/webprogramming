@@ -116,6 +116,8 @@ $default_tags = [
 	'Shit', 'Crap',
 ];
 
+$default_roles = ['admin'];
+
 foreach ($langs as $language => $entries) {
 	foreach($entries as $qualifier => $value){
 		$loc = Localization::find_or_create_by(['qualifier' => $qualifier, 'lang' => $language]);
@@ -125,6 +127,11 @@ foreach ($langs as $language => $entries) {
 foreach ($default_tags as $tag) {
 	$tag = Tag::find_or_create_by(['name' => $tag]);
 }
+
+foreach ($default_roles as $role) {
+	$tag = Role::find_or_create_by(['name' => $tag]);
+}
+
 
 if(false){
 	foreach ($admin_users as $user){

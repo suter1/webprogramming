@@ -142,8 +142,13 @@ class Picture extends Model {
 	/**
 	 * @return mixed
 	 */
-	public function getDescription(){
+	public function getDescription()
+	{
 		return $this->description;
+	}
+
+	public function getOwner(){
+		return User::find_by(['id' => $this->getOwnerId()]);
 	}
 
 	protected function has_and_belongs_to_many() {
