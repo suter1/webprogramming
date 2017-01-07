@@ -119,13 +119,15 @@ class UploadController extends Controller {
 			$tags .= $tag->getName() . ",";
 		}
 		load_template("views/upload/edit.php", array_merge([
+			'title' => $image->getTitle(),
 			'camera_model' => $image->getCameraModel(),
+			'lens' => $image->getLens(),
 			'aperture' => $image->getAperture(),
 			'exposure_time' => $image->getExposureTime(),
-			'title' => $image->getTitle(),
-			'thumbnail_path' => $image->getThumbnailPath(),
+			'created_at' => $image->getCreatedAt(),
 			'price' => $image->getPrice(),
 			'id' => $image->getId(),
+			'thumbnail_path' => $image->getThumbnailPath(),
 			'tags' => $tags,
 		], $translations));
 	}
@@ -139,10 +141,12 @@ class UploadController extends Controller {
 		$id = $matches[0];
 		$image = Picture::find_by(['id' => $id]);
 		$res = $image->update([
+			'title' => $this->params['title'],
 			'camera_model' => $this->params['camera_model'],
+			'lens' => $this->params['lens'],
 			'aperture' => $this->params['aperture'],
 			'exposure_time' => $this->params['exposure_time'],
-			'title' => $this->params['title'],
+			'created_at' => $this->params['created_at'],
 			'price' => $this->params['price'],
 		]);
 

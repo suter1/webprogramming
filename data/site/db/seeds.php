@@ -46,6 +46,8 @@ $langs = [
 		'buy'			=> 'Kaufen',
 		'no_result'		=> 'Keine Einträge gefunden.',
 		'basket'		=> 'Warenkorb',
+		'lens'          => 'Objektiv',
+		'size'          => 'Grösse',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -83,7 +85,8 @@ $langs = [
 		'buy'			=> 'Buy',
 		'no_result'		=> 'Nothing found.',
 		'basket'		=> 'Basket',
-
+		'lens'          => 'Lens',
+		'size'          => 'Size',
 	],
 ];
 
