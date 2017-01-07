@@ -137,6 +137,10 @@ class Picture extends Model {
 		return $this->owner_id;
 	}
 
+	public function getOwner(){
+		return User::find_by(['id' => $this->getOwnerId()]);
+	}
+
 	protected function has_and_belongs_to_many() {
 		return ["tags" => [
 			"class_name" => "Tag",
