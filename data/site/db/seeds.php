@@ -100,8 +100,8 @@ $admin_users = [
 		'sex' => 'male',
 		'password_hash' => '$2y$10$W6zRHQBYFKRBkAHdpdbFhOfJL8xXeXcI6kRuAaBG5Lh8N0gCIAuL.',
 		'email' => 't.fluehmann@whatever.ch',
-		'is_admin' => 't',
-		'email_confirmed' => 't',
+		'is_admin' => '1',
+		'email_confirmed' => '1',
 	],
 	[
 		'first_name' => 'raphael',
@@ -110,8 +110,8 @@ $admin_users = [
 		'sex' => 'male',
 		'password_hash' => '$2y$10$W6zRHQBYFKRBkAHdpdbFhOfJL8xXeXcI6kRuAaBG5Lh8N0gCIAuL.',
 		'email' => 'r.suter@whatever.ch',
-		'is_admin' => 't',
-		'email_confirmed' => 't',
+		'is_admin' => '1',
+		'email_confirmed' => '1',
 	]
 ];
 

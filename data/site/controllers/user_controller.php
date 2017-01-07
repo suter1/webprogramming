@@ -29,7 +29,24 @@ class UserController extends Controller {
 			'username'		=> $user->getUserName(),
 			'email'			=> $user->getEmail(),
 			'sex'			=> $user->getSex(),
+			'id'			=> $user->getId(),
 		]);
+	}
+
+	public function update(){
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})/', $url, $matches);
+		$id = $matches[0];
+		$user = User::find_by(['id' => $id]);
+		$update_array = [
+			'sex' => $this->params['sex'],
+			'first_name' => $this->params['first_name'],
+			'email' => $this->params['email'],
+			'last_name' => $this->params['last_name']];
+
+		if(current_user()->isAdmin()) array_merge(['is_admin' => $this->params['is_admin']]);
+		$success = $user->update($update_array);
+		http_response_code(($success) ? 200 : 500);
 	}
 
 }

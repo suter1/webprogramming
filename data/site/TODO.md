@@ -16,4 +16,4 @@ Input validation + Meldungen: Register, File upload/edit, Login | done |
 Bild download in gekaufter Grösse | not so easy |
 Wasserzeichen | done |
 Random Tags anzeigen anstatt statische | easy |
-Admin button für Adminpage im Header | easy |
+Admin button für Adminpage im Header | done |

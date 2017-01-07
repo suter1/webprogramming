@@ -41,5 +41,10 @@
             <div class="equalHW eq">
                 <?php require_once("views/default/basket.php") ?>
             </div>
+            <?php
+            if(current_user()->isAdmin()){
+                echo "<div class='equalHW eq'><a href='/admin'><button style='width: auto;'>Admin</button></a></div>";
+            }
+            ?>
         </div>
     </header>
