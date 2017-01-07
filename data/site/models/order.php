@@ -10,6 +10,9 @@ class Order extends Model {
 	private $order_date;
 	private $user_id;
 	private $price;
+	private $payment_id; //provided from paypal
+	private $hash;
+	private $complete;
 
 	function __construct($values)
 	{
@@ -17,6 +20,9 @@ class Order extends Model {
 		$this->order_date=$values['order_date'];
 		$this->user_id=$values['user_id'];
 		$this->price=$values['price'];
+		$this->complete=$values['complete'];
+		$this->payment_id=$values['payment_id'];
+		$this->hash=$values['hash'];
 	}
 
 	static function getTableName()

@@ -50,6 +50,9 @@ $tables = [
         'order_date'        => $datetime,
         'price'             => $money,
         'user_id'           => $default_int . ' NOT NULL',
+		'payment_id'		=> $varchar,
+		'hash' 				=> $varchar,
+		'complete'			=> 'boolean',
         'FOREIGN KEY'       => '(user_id) REFERENCES users(id)',
     ],
 
