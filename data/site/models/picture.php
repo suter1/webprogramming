@@ -142,8 +142,7 @@ class Picture extends Model {
 	/**
 	 * @return mixed
 	 */
-	public function getDescription()
-	{
+	public function getDescription() {
 		return $this->description;
 	}
 
