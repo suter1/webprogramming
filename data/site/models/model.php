@@ -171,6 +171,15 @@ abstract class Model implements ModelStructure {
         }
     }
 
+    public function delete(){
+		$db = new Database();
+		$db->connect();
+		$where = static::getPrimaryKey() . " = " . $this->getId();
+		$result = $db->delete(static::getTableName(), $where);
+		$db->disconnect();
+		return $result;
+	}
+
 	public static function delete_all($where = null){
 		$db = new Database();
 		$db->connect();

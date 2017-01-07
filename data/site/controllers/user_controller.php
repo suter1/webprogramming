@@ -49,4 +49,14 @@ class UserController extends Controller {
 		http_response_code(($success) ? 200 : 500);
 	}
 
+	public function delete(){
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})/', $url, $matches);
+		$id = $matches[0];
+		if(current_user()->isAdmin() || current_user()->getId() === $id){
+			User::find_by(['id' => $id])->delete();
+		}
+		http_response_code(200);
+	}
+
 }

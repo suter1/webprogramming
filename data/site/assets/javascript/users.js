@@ -17,3 +17,15 @@ function updateUser(){
     };
     update(`/user/${id}`, data, callback);
 }
+
+function deleteUser(id){
+    let callback = function(type, msg){
+        if(type == "success"){
+            window.location.replace(`/user`);
+        }else if(type == "error"){
+            console.log("fuck");
+            console.log(msg);
+        }
+    };
+    destroy(`/user/${id}`, callback);
+}
