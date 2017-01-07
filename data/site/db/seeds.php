@@ -100,6 +100,8 @@ $admin_users = [
 		'sex' => 'male',
 		'password_hash' => '$2y$10$W6zRHQBYFKRBkAHdpdbFhOfJL8xXeXcI6kRuAaBG5Lh8N0gCIAuL.',
 		'email' => 't.fluehmann@whatever.ch',
+		'is_admin' => 't',
+		'email_confirmed' => 't',
 	],
 	[
 		'first_name' => 'raphael',
@@ -108,6 +110,8 @@ $admin_users = [
 		'sex' => 'male',
 		'password_hash' => '$2y$10$W6zRHQBYFKRBkAHdpdbFhOfJL8xXeXcI6kRuAaBG5Lh8N0gCIAuL.',
 		'email' => 'r.suter@whatever.ch',
+		'is_admin' => 't',
+		'email_confirmed' => 't',
 	]
 ];
 
@@ -115,8 +119,6 @@ $default_tags = [
 	'Nature', 'Politics', 'Animal', 'Cat', 'Dog', 'Sports', 'Fashion', 'Cars', 'Kitchen', 'Beauty', 'Diaröh',
 	'Shit', 'Crap',
 ];
-
-$default_roles = ['admin'];
 
 foreach ($langs as $language => $entries) {
 	foreach($entries as $qualifier => $value){
@@ -128,13 +130,7 @@ foreach ($default_tags as $tag) {
 	Tag::find_or_create_by(['name' => $tag]);
 }
 
-foreach ($default_roles as $role) {
-	Role::find_or_create_by(['name' => $role]);
-}
-
-$admin_role = Role::find_by(['name' => 'admin']);
 foreach ($admin_users as $user){
 	$u_o = User::find_or_create_by($user);
-
 }
 $database->disconnect();

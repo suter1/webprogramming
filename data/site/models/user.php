@@ -9,6 +9,7 @@ class User extends Model {
 	private $sex;
 	private $username;
 	private $password_hash;
+	private $is_admin = false;
 	private $budget;
 	private $email_confirmed = false;
 
@@ -24,6 +25,7 @@ class User extends Model {
 		$this->password_hash = $values['password_hash'];
 		$this->budget = $values['budget'];
 		$this->email_confirmed = $values['email_confirmed'];
+		$this->is_admin = $values['is_admin'];
 	}
 
 	static function getTableName() {
@@ -132,7 +134,7 @@ class User extends Model {
 	 * @param mixed $is_admin
 	 */
 	public function setAdmin($is_admin) {
-		$this->roles = $is_admin;
+		$this->is_admin = $is_admin;
 	}
 
 	/**
