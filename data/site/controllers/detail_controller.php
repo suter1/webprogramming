@@ -17,8 +17,9 @@ class DetailController extends Controller {
 		$picture_id = $params[2];
 		$loc_buy = Localization::find_by(['qualifier' => 'buy', 'lang' => get_language()])->getValue();
 		$picture = Picture::find_by(['id' => $picture_id]);
+		$user = User::find_by(['id' => $picture->getOwnerId()]);
 		$translations = [];
-		foreach (['camera_model', 'lens', 'aperture', 'title', 'price', 'exposure_time', 'created_at', 'uploaded_at', 'size'] as $translate) {
+		foreach (['camera_model', 'description', 'owner', 'lens', 'aperture', 'title', 'price', 'exposure_time', 'created_at', 'uploaded_at', 'size'] as $translate) {
 			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
 		}
 		load_template("views/detail/show.php", array_merge([
@@ -35,6 +36,8 @@ class DetailController extends Controller {
 			'created_at' => $picture->getCreatedAt(),
 			'uploaded_at'=> $picture->getUploadedAt(),
 			'buy' => $loc_buy,
+			'owner' => $user->getUsername(),
+			'description' => $picture->getDescription(),
 		], $translations));
 	}
 }

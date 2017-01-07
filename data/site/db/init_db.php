@@ -39,6 +39,7 @@ $tables = [
         'created_at'        => "$datetime NOT NULL",
         'uploaded_at'       => "$datetime NOT NULL",
         'owner_id'          => $default_int . " NOT NULL",
+	    'description'       => $varchar,
         'FOREIGN KEY'       => '(owner_id) REFERENCES users(id)'
     ],
 

@@ -48,6 +48,7 @@ $langs = [
 		'basket'		=> 'Warenkorb',
 		'lens'          => 'Objektiv',
 		'size'          => 'Grösse',
+		'description'   => 'Beschreibung',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -87,6 +88,7 @@ $langs = [
 		'basket'		=> 'Basket',
 		'lens'          => 'Lens',
 		'size'          => 'Size',
+		'description'   => 'Description',
 	],
 ];
 

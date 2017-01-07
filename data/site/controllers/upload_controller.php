@@ -80,6 +80,7 @@ class UploadController extends Controller {
 			$image = Picture::create([
 				'camera_model' => $e_camera_model,
 				'aperture' => $e_aperture,
+				'lens' => $e_lens,
 				'exposure_time' => $e_exposure_time,
 				'created_at' => $e_date,
 				'uploaded_at' => date('Y-m-d H:i:s'),
@@ -89,6 +90,7 @@ class UploadController extends Controller {
 				'width' => $e_width,
 				'height' => $e_height,
 				'title' => '',
+				'description' => '',
 				'id' => null]);
 
 			$id = $image->getId();
@@ -111,7 +113,7 @@ class UploadController extends Controller {
 		 */
 		$image = Picture::find_by(['id' => $id]);
 		$translations = [];
-		foreach (['camera_model', 'aperture', 'title', 'price', 'exposure_time'] as $translate) {
+		foreach (['camera_model', 'description', 'lens', 'created_at', 'aperture', 'title', 'price', 'exposure_time'] as $translate) {
 			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
 		}
 		$tags = "";
@@ -126,6 +128,7 @@ class UploadController extends Controller {
 			'exposure_time' => $image->getExposureTime(),
 			'created_at' => $image->getCreatedAt(),
 			'price' => $image->getPrice(),
+			'description' => $image->getDescription(),
 			'id' => $image->getId(),
 			'thumbnail_path' => $image->getThumbnailPath(),
 			'tags' => $tags,
@@ -148,6 +151,7 @@ class UploadController extends Controller {
 			'exposure_time' => $this->params['exposure_time'],
 			'created_at' => $this->params['created_at'],
 			'price' => $this->params['price'],
+			'description' => $this->params['description'],
 		]);
 
 		PicturesTags::delete_all("picture_id = $id");
