@@ -125,17 +125,16 @@ foreach ($langs as $language => $entries) {
 	}
 }
 foreach ($default_tags as $tag) {
-	$tag = Tag::find_or_create_by(['name' => $tag]);
+	Tag::find_or_create_by(['name' => $tag]);
 }
 
 foreach ($default_roles as $role) {
-	$tag = Role::find_or_create_by(['name' => $tag]);
+	Role::find_or_create_by(['name' => $role]);
 }
 
+$admin_role = Role::find_by(['name' => 'admin']);
+foreach ($admin_users as $user){
+	$u_o = User::find_or_create_by($user);
 
-if(false){
-	foreach ($admin_users as $user){
-		User::find_or_create_by($user);
-	}
 }
 $database->disconnect();

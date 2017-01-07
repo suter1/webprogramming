@@ -71,7 +71,7 @@
 			        </tr>
 			        <tr>
 				        <td><label for="owner"><?php echo $options['lang_owner'] ?></label></td>
-				        <td><?php echo $options['owner'] ?></td>
+				        <td><?php echo $options['owner']->getUsername() ?></td>
 			        </tr>
 		        </table>
 	        </article>
