@@ -12,6 +12,16 @@ span.title {
     color: black;
 }
 
+.table {
+    border-collapse:collapse;
+    border:1px solid #ccc;
+}
+
+.table td{
+    border:1px solid #ccc;
+    padding: 5px;
+}
+
 .flex-container {
     display: flex;
     flex-flow: row wrap;

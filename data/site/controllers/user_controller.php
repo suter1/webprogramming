@@ -30,6 +30,7 @@ class UserController extends Controller {
 			'email'			=> $user->getEmail(),
 			'sex'			=> $user->getSex(),
 			'id'			=> $user->getId(),
+			'deleted'		=> $user->isDeleted(),
 		]);
 	}
 
@@ -54,7 +55,7 @@ class UserController extends Controller {
 		preg_match('/(\d{1,})/', $url, $matches);
 		$id = $matches[0];
 		if(current_user()->isAdmin() || current_user()->getId() === $id){
-			User::find_by(['id' => $id])->delete();
+			User::find_by(['id' => $id])->update(['deleted' => '1']);
 		}
 		http_response_code(200);
 	}

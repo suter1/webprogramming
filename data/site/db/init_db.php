@@ -22,6 +22,7 @@ $tables = [
         'is_admin'          => 'boolean',
         'username'          => $varchar,
         'password_hash'     => $varchar,
+		'deleted' 			=> 'boolean DEFAULT 0',
     ],
 
     'pictures' => [
@@ -40,6 +41,7 @@ $tables = [
         'uploaded_at'       => "$datetime NOT NULL",
         'owner_id'          => $default_int . " NOT NULL",
 	    'description'       => $varchar,
+		'deleted'			=> 'boolean DEFAULT 0',
         'FOREIGN KEY'       => '(owner_id) REFERENCES users(id)'
     ],
 

@@ -42,7 +42,7 @@
                 <?php require_once("views/default/basket.php") ?>
             </div>
             <?php
-            if(current_user()->isAdmin()){
+            if(!is_null(current_user()) && current_user()->isAdmin()){
                 echo "<div class='equalHW eq'><a href='/admin'><button style='width: auto;'>Admin</button></a></div>";
             }
             ?>

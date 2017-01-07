@@ -12,6 +12,7 @@ class User extends Model {
 	private $is_admin = false;
 	private $budget;
 	private $email_confirmed = false;
+	private $deleted = false;
 
 	function __construct($values) {
 		parent::__construct();
@@ -26,6 +27,7 @@ class User extends Model {
 		$this->budget = $values['budget'];
 		$this->email_confirmed = $values['email_confirmed'];
 		$this->is_admin = $values['is_admin'];
+		$this->deleted = $values['deleted'];
 	}
 
 	static function getTableName() {
@@ -142,6 +144,10 @@ class User extends Model {
 	 */
 	public function getBudget() {
 		return $this->budget;
+	}
+
+	public function isDeleted(){
+		return $this->deleted;
 	}
 
 	/**
