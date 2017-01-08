@@ -12,7 +12,7 @@ class HomeController extends Controller{
 	}
 
 	public function index(){
-		$pictures = Picture::last(10);
+		$pictures = Picture::where(['deleted' => '0'], null, null, null, 10);
 
 		load_template('views/home/index.php', [
 			'pictures' => $pictures,

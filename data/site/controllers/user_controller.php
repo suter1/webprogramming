@@ -22,7 +22,11 @@ class UserController extends Controller {
 		preg_match('/(\d{1,})\/edit/', $url, $matches);
 		$id = $matches[0];
 		$user = User::find_by(['id' => $id]);
-		load_template("views/user/edit.php", [
+		$translations = [];
+		foreach (['first_name', 'last_name', 'username', 'email', 'sex', 'male', 'female', 'update'] as $translate){
+			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+		}
+		load_template("views/user/edit.php", array_merge([
 			'first_name'	=> $user->getFirstName(),
 			'last_name' 	=> $user->getLastName(),
 			'is_admin'		=> $user->isAdmin(),
@@ -31,7 +35,25 @@ class UserController extends Controller {
 			'sex'			=> $user->getSex(),
 			'id'			=> $user->getId(),
 			'deleted'		=> $user->isDeleted(),
-		]);
+		], $translations));
+	}
+
+	public function show(){
+		$lang = get_language();
+		$no_pictures = Localization::find_by(['qualifier' => 'no_pictures', 'lang' => $lang])->getValue();
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})/', $url, $matches);
+		$id = $matches[0];
+		$user = User::find_by(['id' => $id]);
+		$translations = [];
+		foreach (['pictures'] as $translate){
+			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+		}
+		load_template("views/user/show.php", array_merge([
+			'user' => $user->getUsername(),
+			'pictures' => $user->pictures(),
+			'no_pictures' => $no_pictures,
+		], $translations));
 	}
 
 	public function update(){
