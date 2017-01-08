@@ -1,7 +1,7 @@
 <?php require_once("views/default/default_header.php"); ?>
 
 <section class="section images">
-	<h2><?php echo $options['my_pictures']; ?></h2>
+	<h2><?php echo $options['lang_my_pictures']; ?></h2>
 	<?php
 	$pictures_html="";
 	foreach($options['pictures'] as $picture){
@@ -34,9 +34,9 @@
 	if(sizeof($options['orders']) === 0) echo $options['no_orders'];
 	?>
     <br />
-    <h2>Budget</h2>
+    <h2><?php echo $options['lang_budget'] ?></h2>
     <span><?php echo $options['user']->getBudget()?></span>
-    <h2>Edit Profile</h2>
+    <h2><?php echo $options['lang_edit_profile'] ?></h2>
     <a href="/user/<?php echo $options['user']->getId() ?>/edit"><?php echo $options['edit'] ?></a>
 </section>
 <?php require_once("views/default/footer.php") ?>

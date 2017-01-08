@@ -20,7 +20,13 @@ class PurchaseController extends Controller{
 			$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]),
 				'pieces' => $this->basket()[$picture_id] ];
 		}
-		load_template("views/purchase/index.php", ['images' => $images, 'price' => $this->price()]);
+		$translations = [];
+		foreach (['checkout'] as $translate) {
+			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+		}
+		load_template("views/purchase/index.php", array_merge([
+			'images' => $images, 'price' => $this->price()
+		], $translations));
 	}
 
 	/**

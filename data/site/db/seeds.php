@@ -52,6 +52,11 @@ $langs = [
 		'description'   => 'Beschreibung',
 		'show_profile'  => 'Profil anzeigen',
 		'update'        => 'Aktualisieren',
+		'buy_now'       => 'Jetzt kaufen (Paypal)',
+		'delete_picture' => 'Bild löschen',
+		'checkout'      => 'Zur Kasse',
+		'edit_profile'  => 'Profil bearbeiten',
+		'budget'        => 'Kontostand',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -95,6 +100,11 @@ $langs = [
 		'description'   => 'Description',
 		'show_profile'  => 'Show Profile',
 		'update'        => 'Update',
+		'buy_now'       => 'Buy now (Paypal)',
+		'delete_picture' => 'Delete picture',
+		'checkout'      => 'Checkout',
+		'edit_profile'  => 'Edit profile',
+		'budget'        => 'Credit balance',
 	],
 ];
 

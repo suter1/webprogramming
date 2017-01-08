@@ -18,7 +18,7 @@ class DetailController extends Controller {
 		$loc_buy = Localization::find_by(['qualifier' => 'buy', 'lang' => get_language()])->getValue();
 		$picture = Picture::find_by(['id' => $picture_id]);
 		$translations = [];
-		foreach (['camera_model', 'description', 'owner', 'lens', 'aperture', 'title', 'price', 'exposure_time', 'created_at', 'uploaded_at', 'size'] as $translate) {
+		foreach (['camera_model', 'description', 'owner', 'lens', 'aperture', 'title', 'price', 'exposure_time', 'created_at', 'uploaded_at', 'size', 'delete_picture'] as $translate) {
 			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
 		}
 		load_template("views/detail/show.php", array_merge([

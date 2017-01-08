@@ -26,7 +26,7 @@
 				echo "<button onclick='editPicture()'>" . $loc_edit->getValue() . "</button>";
 			}
 			if ((isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) || (isset($_SESSION['user_id']) && current_user()->isAdmin())) {
-				echo "<button onclick='deletePicture()'>Delete picture</button>";
+				echo "<button onclick='deletePicture()'>". $options['lang_delete_picture'] . "</button>";
 			}
 			if ((isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) || (isset($_SESSION['user_id']) && $options['owner_id'] != $_SESSION['user_id'])) {
 				echo "<button onclick='addToBasket()'>" . "<i class='fa fa-shopping-basket' aria-hidden='false'></i>" . " " . $options['buy'] . "</button>";

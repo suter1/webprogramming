@@ -14,5 +14,5 @@ $out .= "<br /><div style='margin-top: 10px; background-color: #2dafaf;display: 
 echo $out;
 ?>
 <br />
-<a href="/checkout/new"><button>Buy Now (Paypal)</button></a>
+<a href="/checkout/new"><button><?php echo $options['lang_buy_now'] ?></button></a>
 <?php require_once("views/default/footer.php") ?>
