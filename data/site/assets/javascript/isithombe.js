@@ -12,5 +12,4 @@ function search(e){
     if(e && e.keyCode == 13){
         window.location.href = `/pictures?search=${search}`
     }
-
 }

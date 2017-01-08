@@ -71,7 +71,13 @@ abstract class Controller {
 		$db = new Database();
 		$db->connect();
 		foreach($this->params as $key => &$value){
-			$value = $db->escapeString(htmlspecialchars($value, ENT_HTML5));
+			if(is_array($value)){
+				foreach($value as &$val){
+					$val = $db->escapeString(htmlspecialchars($val, ENT_HTML5));
+				}
+			}else {
+				$value = $db->escapeString(htmlspecialchars($value, ENT_HTML5));
+			}
 		}
 		$db->disconnect();
 	}
