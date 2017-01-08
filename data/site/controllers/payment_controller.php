@@ -41,11 +41,17 @@ class PaymentController extends \Controller {
 					'budget' => ($owners_budget + $picture->getPrice()*0.6)
 				]);
 			}
-
+			$method = (isset($_SERVER['HTTPS']) && $_SERVER["HTTPS"] === 'on') ? "https" : "http";
+			$url = "$method://" . getenv('HTTP_HOST') ;
+			$download_link = $url . "/order/" . $order->getId() ."?download";
+			$mailer = new PurchaseMailer($download_link, current_user()->getEmail());
+			try{
+				if($mailer->send_mail() != "1") throw new Exception();
+			}catch(Exception $e){
+				parent::flash("Mail could not be send, but payment was ok");
+			}
 			$_SESSION['basket'] = [];
-			load_template("views/payment/index.php", ['order_id' => $order->getId()]);
-
-
+			load_template("views/payment/index.php", ['order_id' => $order->getId(), 'download_link' => $download_link]);
 		}else{
 			parent::flash("Payment could not be completed");
 			load_template("views/payment/index.php", []);

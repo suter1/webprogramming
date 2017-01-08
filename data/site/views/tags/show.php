@@ -10,9 +10,9 @@
      */
     if(sizeof($options['pictures']) > 0)
         foreach ($options['pictures'] as $picture)
-            if(file_exists($picture->getPath())) {
+            if(file_exists($picture->getThumbnailPath())) {
                 $title = $picture->getTitle();
-                $image = "<div class='image'><img src='/" . $picture->getPath() . "' /> ";
+                $image = "<div class='image'><img src='/" . $picture->getThumbnailPath() . "' /> ";
                 $description = "<div class='description'><span>$title</span>";
                 foreach($picture->tags() as $tag){
                     $description .= "<span class='badge'>" . $tag->getName() . "</span>";
