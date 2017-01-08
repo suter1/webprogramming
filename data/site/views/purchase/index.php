@@ -9,7 +9,7 @@
 		$images .= "Your basket is empty";
 	}else{
 	    $images .= "<p>Total: " . $options['price'] . "</p>";
-		$images .= "<a href='/checkout'><button>Checkout</button></a>";
+		$images .= "<a href='/checkout'><button>" . $options['lang_checkout'] . "</button></a>";
 	}
 	echo $images;
 	?>

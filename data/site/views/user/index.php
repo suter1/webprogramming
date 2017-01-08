@@ -37,6 +37,7 @@
             }
 			$rows .= "<td><a href='/user/$user_id/edit'><button>Edit</button></a></td><td>";
 			if(!$user->isDeleted()) $rows .= "<button onclick='deleteUser($user_id)'>Delete</button>";
+            $rows .= "<td><a href='/user/$user_id' ><button>Show user profile</button></a></td>";
             $rows .= '</td></tr>';
         }
         echo $rows;

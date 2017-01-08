@@ -21,7 +21,11 @@ class ProfileController extends Controller {
 		$my_orders = Localization::find_by(["qualifier" => "my_orders", 'lang' => $lang])->getValue();
 		$upload = Localization::find_by(["qualifier" => "upload", 'lang' => $lang])->getValue();
 		$edit_profile = Localization::find_by(["qualifier" => "edit", 'lang' => $lang])->getValue();
-		load_template("views/profile/show.php", [
+		$translations = [];
+		foreach (['budget', 'edit_profile', 'my_pictures', 'no_pictures', 'no_orders', 'my_orders', 'upload', 'edit'] as $translate) {
+			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+		}
+		load_template("views/profile/show.php", array_merge([
 			'user' => current_user(),
 			'pictures' => current_user()->pictures(),
 			'orders' => current_user()->orders(),
@@ -31,6 +35,6 @@ class ProfileController extends Controller {
 			'my_orders' => $my_orders,
 			'edit' => $edit_profile,
 			'upload' => $upload,
-		]);
+		], $translations));
 	}
 }

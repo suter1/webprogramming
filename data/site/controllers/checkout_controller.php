@@ -18,12 +18,16 @@ class CheckoutController extends \Controller {
 		$total = $this->getTotal();
 		$basket_lang = Localization::find_by(['qualifier' => 'basket', 'lang' => get_language()])->getValue();
 		$price_lang = Localization::find_by(['qualifier' => 'price', 'lang' => get_language()])->getValue();
-		load_template("views/checkout/index.php", [
+		$translations = [];
+		foreach (['buy_now'] as $translate) {
+			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+		}
+		load_template("views/checkout/index.php", array_merge([
 			'images' => $images,
 			'basket' => $basket_lang,
 			'total' => money_format('%.2n', $total),
-			'price' => $price_lang]
-		);
+			'price' => $price_lang
+		], $translations));
 	}
 
 	public function newly(){

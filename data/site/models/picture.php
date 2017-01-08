@@ -17,6 +17,7 @@ class Picture extends Model {
 	private $uploaded_at;
 	private $owner_id;
 	private $description;
+	private $deleted;
 
 	function __construct($values) {
 		parent::__construct();
@@ -35,6 +36,7 @@ class Picture extends Model {
 		$this->uploaded_at = $values['uploaded_at'];
 		$this->owner_id = $values['owner_id'];
 		$this->description = $values['description'];
+		$this->deleted = $values['deleted'];
 	}
 
 	static function getTableName() {
@@ -146,8 +148,18 @@ class Picture extends Model {
 		return $this->description;
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function getOwner(){
 		return User::find_by(['id' => $this->getOwnerId()]);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function isDeleted(){
+		return $this->deleted;
 	}
 
 	protected function has_and_belongs_to_many() {
