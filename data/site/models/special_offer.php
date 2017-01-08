@@ -11,6 +11,7 @@ class SpecialOffer extends Model {
 	private $end;
 
 	function __construct($values){
+		parent::__construct();
 		$this->id=$values['id'];
 		$this->start=$values['start'];
 		$this->end=$values['end'];
@@ -41,12 +42,20 @@ class SpecialOffer extends Model {
         return $this->end;
     }
 
-    protected function has_and_belongs_to_many()
-    {
-        return [];
+    protected function has_and_belongs_to_many(){
+		return ["pictures" => [
+			"class_name" => "Picture",
+			"join_table" => "offers_pictures",
+			"foreign_key" => "offer_id",
+			"association_key" => "picture_id"]
+		];
     }
 
 	protected function has_many() {
 		return [];
+	}
+
+	static function getPrimaryKey() {
+		return "id";
 	}
 }
