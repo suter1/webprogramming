@@ -43,12 +43,15 @@ class PaymentController extends \Controller {
 			}
 
 			$_SESSION['basket'] = [];
+			load_template("views/payment/index.php", ['order_id' => $order->getId()]);
+
 
 		}else{
 			parent::flash("Payment could not be completed");
+			load_template("views/payment/index.php", []);
+
 		}
 
-		load_template("views/payment/index.php", []);
 	}
 
 }
