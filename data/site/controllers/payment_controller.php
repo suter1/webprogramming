@@ -15,7 +15,7 @@ class PaymentController extends \Controller {
 	public function index() {
 		$approved = $this->params['approved'];
 		if($approved === 'true' && isset($_SESSION['payment_hash'])){
-			parent::flash("Payment successful");
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'payment_successful'])->getValue());
 			$order = Order::find_by(['hash' => $_SESSION['payment_hash'], 'payment_id' => $this->params['paymentId']]);
 			$order->update(['complete' => '1']);
 
@@ -48,16 +48,13 @@ class PaymentController extends \Controller {
 			try{
 				if($mailer->send_mail() != "1") throw new Exception();
 			}catch(Exception $e){
-				parent::flash("Mail could not be send, but payment was ok");
+				parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'nomail_payok'])->getValue());
 			}
 			$_SESSION['basket'] = [];
 			load_template("views/payment/index.php", ['order_id' => $order->getId(), 'download_link' => $download_link]);
 		}else{
-			parent::flash("Payment could not be completed");
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'no_payment'])->getValue());
 			load_template("views/payment/index.php", []);
-
 		}
-
 	}
-
 }
