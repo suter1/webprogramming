@@ -81,8 +81,8 @@ class PaypalApi {
 		$this->payment->setTransactions([$this->transaction]);
 		$method = (isset($_SERVER['HTTPS']) && $_SERVER["HTTPS"] === 'on') ? "https" : "http";
 		$url = "$method://" . getenv('HTTP_HOST') ;
-		$this->redirectUrls->setReturnUrl( "http://localhost:8080/payment?approved=true");
-		$this->redirectUrls->setCancelUrl("http://localhost:8080/payment?approved=false");
+		$this->redirectUrls->setReturnUrl( $url . "/payment?approved=true");
+		$this->redirectUrls->setCancelUrl( $url . "/payment?approved=false");
 
 		$this->payment->setRedirectUrls($this->redirectUrls);
 		try{

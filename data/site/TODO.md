@@ -9,10 +9,10 @@ User löschen (admin & owner, nur flag in db) + Rückmeldung | easy |
 Aktionen erstellen (admin) + Rückmeldung | easy |
 Bestellverlauf + Geldkonto pro User | tricky |
 Assignements (Admin-Page & Checkout) | Prio 1 |
-Bild Kauf & download in gekaufter Grösse | not so easy |
+Bild Kauf & download in gekaufter Grösse | not so easy | done
 Random Tags anzeigen anstatt statische | easy |
 Admin button für Adminpage im Header | done |
 Register: Mail Validierung | not so easy | done
 Meta-Daten laden & editieren | easy | done
 Wasserzeichen | easy | done
-Input validation + Meldungen: Register, File upload
+Input validation + Meldungen: Register, File upload | easy| done

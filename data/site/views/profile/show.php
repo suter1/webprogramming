@@ -25,7 +25,9 @@
 	echo $orders_html;
 	if(sizeof($options['orders']) === 0) echo $options['no_orders'];
 	?>
-    <br>
+    <br />
+    <h2>Budget</h2>
+    <span><?php echo $options['user']->getBudget()?></span>
     <h2>Edit Profile</h2>
     <a href="/user/<?php echo $options['user']->getId() ?>/edit"><?php echo $options['edit'] ?></a>
 </section>
