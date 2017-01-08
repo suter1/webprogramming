@@ -110,10 +110,12 @@ abstract class Model implements ModelStructure {
 	/**
 	 * @param $order
 	 * @param $where
+	 * @param $limit
+	 * @param $andOr
 	 * @return Model Array
 	 *
 	 */
-	public static function where($where = [], $andOr = [], $order = 'id asc'){
+	public static function where($where = [], $andOr = [], $order = 'id asc', $limit = null){
 		$db = new Database();
 		$db->connect();
 		$where_query = "";
@@ -122,7 +124,7 @@ abstract class Model implements ModelStructure {
 			$where_query .= " ". htmlspecialchars($key) . " LIKE '%" . htmlspecialchars($value) . "%' ";
 			if(isset($andOr[$counter])) $where_query .= htmlspecialchars($andOr[$counter]);
 		}
-		$result = $db->select(static::getTableName(), '*', null, $where_query, $order);
+		$result = $db->select(static::getTableName(), '*', null, $where_query, $order, $limit);
 		$db->disconnect();
 		return static::initModels($result);
 	}
