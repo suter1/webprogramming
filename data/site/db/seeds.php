@@ -64,6 +64,10 @@ $langs = [
 		'mail_notsent'  => 'Überprüfen Sie die Mailadresse.',
 		'double_username' => 'Dieser Benutzername wird bereits verwendet. Bitte versuchen Sie einen anderen.',
 		'login_error'   => 'Der Benutzer existiert nicht, das Passwort ist falsch oder ihre E-Mail-Adresse wurde noch nicht bestätigt.',
+		'picture_deleted' => 'Das Bild wurde erfolgreich gelöscht.',
+		'type_notallowed' => 'Dieser Dateityp ist auf dieser Seite nicht erlaubt. ',
+		'select_file'   => 'Bitte wählen Sie eine Datei.',
+		'no_thumbnail'  => 'Beim Erstellen der Bildvorschau ist ein Fehler aufgetreten.',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -119,6 +123,10 @@ $langs = [
 		'mail_notsent'  => 'Please check your mail address.',
 		'double_username' => 'This username is already taken. Please try another one.',
 		'login_error'   => 'User does not exist, password is wrong or email is not confirmed.',
+		'picture_deleted' => 'The picture is successfully deleted.',
+		'type_notallowed' => 'This file type is not allowed to upload to this site. ',
+		'select_file'   => 'Please select a file.',
+		'no_thumbnail'  => 'An error occured on creating a thumbnail.'
 	],
 ];
 

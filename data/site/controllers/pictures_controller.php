@@ -27,7 +27,7 @@ class PicturesController extends Controller{
 		$picture = Picture::find_by(['id' => $id]);
 		if(current_user()->getId() === $picture->getOwnerId() || current_user()->isAdmin()){
 			$picture->update(['deleted' => '1']);
-			parent::flash("picture deleted");
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'picture_deleted'])->getValue());
 		}
 		http_response_code(200);
 	}
