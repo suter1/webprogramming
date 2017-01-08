@@ -143,6 +143,9 @@ class UploadController extends Controller {
 		preg_match('/(\d{1,})/', $url, $matches);
 		$id = $matches[0];
 		$image = Picture::find_by(['id' => $id]);
+		if ($this->params['price'] < 1){
+			$this->params['price'] = 1;
+		}
 		$res = $image->update([
 			'title' => $this->params['title'],
 			'camera_model' => $this->params['camera_model'],
