@@ -17,11 +17,13 @@ class SpecialOfferController extends Controller {
 	}
 
 	public function create(){
-		$start = date('d-M-Y H:i:s', strtotime($this->params['start']));
-		$end = date('d-M-Y H:i:s', strtotime($this->params['end']));
+		$start_date = DateTime::createFromFormat('d.m.Y H:i', $this->params['start']);
+		$end_date = DateTime::createFromFormat('d.m.Y H:i', $this->params['end']);
 		$pictures = $this->params['pictures'];
 
-		$special_offer = SpecialOffer::create(['start' => $start, 'end' => $end]);
+		$special_offer = SpecialOffer::create([
+			'start' => $start_date->format('Y-m-d H:i:s'),
+			'end' => $end_date->format('Y-m-d H:i:s')]);
 		foreach($pictures as $picture_id){
 			OfferPicture::create(['picture_id' => $picture_id, 'offer_id' => $special_offer->getId()]);
 		}
@@ -55,7 +57,6 @@ class SpecialOfferController extends Controller {
 			'start' => $start_date->format('Y-m-d H:i:s'),
 			'end' => $end_date->format('Y-m-d H:i:s'),
 		]);
-
 
 		foreach($pictures as $picture_id){
 			OfferPicture::create(['picture_id' => $picture_id, 'offer_id' => $offer->getId()]);

@@ -18,7 +18,7 @@
             $html = "";
             foreach($options['pictures'] as $picture){
                 $checked= "";
-                if(in_array($options['offer']->pictures(), $picture)){
+                if(in_array($picture, $options['offer']->pictures())){
                     $checked = "checked";
                 }
                 $html .= "<option $checked value='" . $picture->getId() . "'>" .
