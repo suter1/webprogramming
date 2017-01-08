@@ -17,7 +17,10 @@
 	<?php
 	$orders_html = "";
 	foreach($options['orders'] as $order){
-		$orders_html .= "<img src='/" .$order->getThumbnailPath(). "' />";
+	    foreach($order->pictures_orders() as $po) {
+			$orders_html .= "<a href='/order/" . $order->getId(). "?download'>
+			<img src='/" . $po->getPicture()->getThumbnailPath() . "' /></a>";
+		}
 	}
 	echo $orders_html;
 	if(sizeof($options['orders']) === 0) echo $options['no_orders'];

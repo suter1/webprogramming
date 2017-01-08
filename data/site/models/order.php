@@ -16,6 +16,7 @@ class Order extends Model {
 
 	function __construct($values)
 	{
+		parent::__construct();
 		$this->id=$values['id'];
 		$this->order_date=$values['order_date'];
 		$this->user_id=$values['user_id'];
@@ -62,6 +63,10 @@ class Order extends Model {
         return $this->price;
     }
 
+    public function isComplete(){
+    	return $this->complete;
+	}
+
 
     protected function has_and_belongs_to_many()
     {
@@ -69,7 +74,13 @@ class Order extends Model {
     }
 
 	protected function has_many() {
-		return [];
+		return [
+			"pictures_orders" => [
+				"class_name" => "PictureOrder",
+				"foreign_table" => "pictures_orders",
+				"foreign_key" => "order_id",
+			],
+		];
 	}
 
 	static function getPrimaryKey() {

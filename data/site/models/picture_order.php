@@ -32,6 +32,10 @@ class PictureOrder extends Model {
         return $this->picture_id;
     }
 
+    public function getPicture(){
+    	return Picture::find_by(['id' => $this->getPictureId()]);
+	}
+
     /**
      * @return mixed
      */
@@ -39,6 +43,10 @@ class PictureOrder extends Model {
     {
         return $this->order_id;
     }
+
+    public function getOrder(){
+    	return Order::find_by(['id' => $this->getOrderId()]);
+	}
 
     /**
      * @return mixed
