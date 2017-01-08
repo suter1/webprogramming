@@ -1,7 +1,5 @@
                 </div> <!-- content -->
-                <!-- <aside class="equalHW eq aside_right">
-                    <p>Werbung</p>
-                </aside> -->
+            <?php require_once("views/default/special_offer.php"); ?>
             </div> <!-- container -->
         </div>
     </body>

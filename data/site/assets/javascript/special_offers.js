@@ -28,3 +28,7 @@ function deleteSpecialOffer(id) {
     };
     destroy(`/special_offer/${id}`, callback);
 }
+
+$(document).ready(function(){
+    $('#special_offer').load("/current_offer");
+});
