@@ -1,4 +1,4 @@
-<div>
+<div id="flash">
 <?php
 	$msg = "";
 	if(isset($_SESSION['flash']) && is_array($_SESSION['flash'])){

@@ -11,6 +11,7 @@ function addToBasket(){
     let callback = function(type, msg){
         if(type == "success"){
             console.log("added to basket");
+            flash("Added 1 item to basket");
         }else if(type == "error"){
             console.log("fuck");
             console.log(msg);
@@ -18,4 +19,10 @@ function addToBasket(){
     };
 
     create(`/purchase`, data, callback);
+}
+
+function flash(message){
+    let flash_div = $('#flash');
+    flash_div.html(`<h2 class='message'>${message}</h2><br />`);
+    console.log(message);
 }
