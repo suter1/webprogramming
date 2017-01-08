@@ -17,6 +17,7 @@ $controllers = [
 	'activation'	=> 'ActivationController',
 	'user'			=> 'UserController',
 	'admin'			=> 'AdminController',
+	'payment'			=> 'PaymentController',
 ];
 $dir = $_SERVER['DOCUMENT_ROOT'];
 $directories = array_merge(glob("$dir/*" , GLOB_ONLYDIR), glob("$dir/**/*", GLOB_ONLYDIR));

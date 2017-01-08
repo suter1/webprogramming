@@ -7,6 +7,7 @@
  * Time: 22:46
  */
 require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../models/order.php";
 class PaypalApi {
 
 	private $context;
@@ -16,6 +17,7 @@ class PaypalApi {
 	private $transaction;
 	private $payment;
 	private $redirectUrls;
+	private $itemList;
 
 	function __construct() {
 
@@ -49,33 +51,58 @@ class PaypalApi {
 		$this->transaction = new \PayPal\Api\Transaction();
 		$this->payment = new PayPal\Api\Payment();
 		$this->redirectUrls = new PayPal\Api\RedirectUrls();
-
+		$this->itemList = new \PayPal\Api\ItemList();
 	}
 
-	function prepare($total){
+	function prepare($total, $pictures){
+		$items = [];
+		foreach($pictures as $pic){
+			$picture = $pic['picture'];
+			$item = new \PayPal\Api\Item();
+			$item->setName($picture->getTitle());
+			$item->setCurrency("CHF");
+			$item->setQuantity(1);
+			$item->setPrice($picture->getPrice());
+			$item->setSku($picture->getId());
+			array_push($items, $item);
+		}
+		$this->details->setSubtotal($total);
+		$this->itemList->setItems($items);
+
 		$this->amount->setTotal($total);
 		$this->amount->setDetails($this->details);
 		$this->transaction->setAmount($this->amount);
 		$this->transaction->setDescription('Pictures');
+		$this->transaction->setItemList($this->itemList);
+		$this->transaction->setInvoiceNumber(uniqid());
 
-		$this->payment->setIntent('SALE');
+		$this->payment->setIntent('sale');
 		$this->payment->setPayer($this->payer);
 		$this->payment->setTransactions([$this->transaction]);
-		$this->redirectUrls->setReturnUrl("http://localhost:8080/payments?approved=true");
-		$this->redirectUrls->setCancelUrl("http://localhost:8080/payments?approved=false");
+		$method = (isset($_SERVER['HTTPS']) && $_SERVER["HTTPS"] === 'on') ? "https" : "http";
+		$url = "$method://" . getenv('HTTP_HOST') ;
+		$this->redirectUrls->setReturnUrl( "http://localhost:8080/payment?approved=true");
+		$this->redirectUrls->setCancelUrl("http://localhost:8080/payment?approved=false");
 
 		$this->payment->setRedirectUrls($this->redirectUrls);
 		try{
 			$this->payment->create($this->context);
+			$hash = md5($this->payment->getId());
+			Order::create([
+				'hash' => $hash,
+				'payment_id' => $this->payment->getId(),
+				'user_id' => current_user()->getId(),
+				'price' => $total,
+				'order_date' => date('Y-m-d H:i:s', time()),
+				'complete' => 'f'
+			]);
+			$_SESSION['payment_hash'] = $hash;
 		}catch(\PayPal\Exception\PayPalConnectionException $e){
-			redirect('/home');
+			die($e->getData());
+			redirect('/home?message=Fail');
 		}
 
-		foreach($this->payment->getLinks() as $link) {
-			if($link->getRel() === 'approval_url'){
-				redirect($link->getHref());
-			}
-		}
+		redirect($this->payment->getApprovalLink());
 
 	}
 }

@@ -29,7 +29,7 @@ class CheckoutController extends \Controller {
 	public function newly(){
 		$total = $this->getTotal();
 		$api = new PaypalApi();
-		$api->prepare($total);
+		$api->prepare($total, $this->getImages());
 	}
 
 	private function getImages(){
