@@ -33,7 +33,7 @@ class UploadController extends Controller {
 			$ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
 			if (!in_array($ext, $allowed)) {
-				parent::flash("This file type is not allowed to upload to this site. $ext");
+				parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'type_notallowed'])->getValue().$ext);
 				load_template("views/upload/newly.php", []);
 				return;
 			}
@@ -73,7 +73,7 @@ class UploadController extends Controller {
 			$bool = watermark($thumb_path);
 
 			if (!$thumb_successful){
-				parent::flash("could not create thumbnail file");
+				parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'no_thumbnail'])->getValue());
 				load_template("views/upload/newly.php", []);
 				return;
 			}
@@ -96,7 +96,7 @@ class UploadController extends Controller {
 			$id = $image->getId();
 			redirect("/upload/$id/edit");
 		} else {
-			parent::flash("Please select a file");
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'select_file'])->getValue());
 			load_template("views/upload/show.php", []);
 		}
 	}
