@@ -22,7 +22,7 @@ class RegistrationController extends Controller {
 		$password_confirm = $this->params['password_confirm'];
 
 		if($password != $password_confirm){
-			parent::flash("The passwords you entered do not match");
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'wrong_password'])->getValue());
 			load_template("views/registration/index.php", []);
 			return;
 		}
@@ -35,13 +35,13 @@ class RegistrationController extends Controller {
 			try{
 				if($mailer->send_mail() != "1") throw new Exception();
 			}catch(Exception $e){
-				parent::flash("Mail could not be send");
+				parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'mail_notsent'])->getValue());
 				load_template("views/registration/index.php", []);
 				return;
 			}
 			redirect("mail_sent");
 		}else {
-			parent::flash("username already taken");
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'double_username'])->getValue());
 			load_template("views/registration/index.php", []);
 			return;
 		}

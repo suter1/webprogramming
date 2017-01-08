@@ -57,6 +57,13 @@ $langs = [
 		'checkout'      => 'Zur Kasse',
 		'edit_profile'  => 'Profil bearbeiten',
 		'budget'        => 'Kontostand',
+		'payment_successful' => 'Die Zahlung war erfolgreich.',
+		'nomail_payok'  => 'Die Bestätigungsmail konnte nicht versandt werden, aber die Bezahlung war erfolgreich.',
+		'no_payment'    => 'Die Zahlung konnte nicht durchgeführt werden.',
+		'wrong_password' => 'Bitte überprüfen Sie ihr Passwort.',
+		'mail_notsent'  => 'Überprüfen Sie die Mailadresse.',
+		'double_username' => 'Dieser Benutzername wird bereits verwendet. Bitte versuchen Sie einen anderen.',
+		'login_error'   => 'Der Benutzer existiert nicht, das Passwort ist falsch oder ihre E-Mail-Adresse wurde noch nicht bestätigt.',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -105,6 +112,13 @@ $langs = [
 		'checkout'      => 'Checkout',
 		'edit_profile'  => 'Edit profile',
 		'budget'        => 'Credit balance',
+		'payment_successful' => 'The payment was successful.',
+		'nomail_payok'  => 'Mail could not be send, but the payment was successful.',
+		'no_payment'    => 'The payment wasn\'t successfully',
+		'wrong_password' => 'Please check your password.',
+		'mail_notsent'  => 'Please check your mail address.',
+		'double_username' => 'This username is already taken. Please try another one.',
+		'login_error'   => 'User does not exist, password is wrong or email is not confirmed.',
 	],
 ];
 
