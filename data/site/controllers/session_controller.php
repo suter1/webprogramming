@@ -32,6 +32,7 @@ class SessionController extends Controller {
 	}
 
 	public function delete(){
+		parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'logout_successful'])->getValue());
 		$this->session_helper->logout();
 		redirect('/home');
 	}

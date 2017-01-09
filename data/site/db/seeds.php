@@ -72,6 +72,7 @@ $langs = [
 		'license'  	=> 'Ich akzeptiere hiermit die Allgmeinen Geschäftsbedingungen von Isithombe Webshop.',
 		'added_picture' => 'Bild dem Warenkorb hinzugefügt',
 		'login_successful' => 'Login erfolgreich',
+		'logout_successful' => 'Logout erfolgreich',
 
 	],
 	'en' => [
@@ -136,6 +137,7 @@ $langs = [
 		'license'  	=> 'I accept the license agreement with isithombe webshop',
 		'added_picture' => 'Added picture to basket',
 		'login_successful' => 'You are logged in now',
+		'logout_successful' => 'Logout successful',
 	],
 ];
 
