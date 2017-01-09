@@ -70,6 +70,7 @@ $langs = [
 		'no_thumbnail'  => 'Beim Erstellen der Bildvorschau ist ein Fehler aufgetreten.',
 		'copyright'  	=> 'Ich bestätige hiermit die Urheberrechte an dem Bild zu haben und dieses an Isithombe Webshop zu übertragen.',
 		'license'  	=> 'Ich akzeptiere hiermit die Allgmeinen Geschäftsbedingungen von Isithombe Webshop.',
+		'added_picture' => 'Bild dem Warenkorb hinzugefügt',
 	],
 	'en' => [
 		'detail'        => 'Details',
@@ -131,6 +132,8 @@ $langs = [
 		'no_thumbnail'  => 'An error occured on creating a thumbnail.',
 		'copyright'  	=> 'I confirm, I have the full copyright on the picture and will hand it over to isithombe webshop',
 		'license'  	=> 'I accept the license agreement with isithombe webshop',
+		'added_picture' => 'Added picture to basket',
+		'login_successful' => 'You are logged in now',
 	],
 ];
 

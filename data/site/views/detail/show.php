@@ -76,6 +76,7 @@
 			        </tr>
 		        </table>
 	        </article>
+            <input type="hidden" id="added_picture" value="<?php echo $options['lang_added_picture'] ?>" />
         </div>
     </section>
 <?php require_once("views/default/footer.php") ?>

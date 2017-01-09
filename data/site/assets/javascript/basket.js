@@ -10,8 +10,9 @@ function addToBasket(){
     };
     let callback = function(type, msg){
         if(type == "success"){
+            let message = $("#added_picture").val();
             console.log("added to basket");
-            flash("Added 1 item to basket");
+            flash(message);
         }else if(type == "error"){
             console.log("fuck");
             console.log(msg);
