@@ -14,15 +14,7 @@ class CurrentOfferController extends Controller{
 	public function index(){
 		// prevent direct access
 		require_ajax();
-		$offers = SpecialOffer::all();
-		$offer = null;
-		$current_time = date('Y-m-d H:i:s');
-		foreach($offers as $of){
-			if($of->getStart() < $current_time && $of->getEnd() > $current_time){
-				$offer = $of;
-				break;
-			}
-		}
+		$offer = SpecialOffer::getCurrent();
 		load_template("views/current_offer/index.php", ['offer' => $offer]);
 	}
 }

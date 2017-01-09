@@ -75,7 +75,21 @@ class Picture extends Model {
 	 * @return mixed
 	 */
 	public function getPrice() {
-		return $this->price;
+		$special_offer = SpecialOffer::getCurrent();
+		$in_array = false;
+		if (!is_null($special_offer)) {
+			foreach ($special_offer->pictures() as $picture) {
+				if ($this->getId() === $picture->getId()) {
+					$in_array = true;
+					break;
+				}
+			}
+		}
+		if (!is_null($special_offer) && $in_array) {
+			return $this->price * 0.5;
+		} else {
+			return $this->price;
+		}
 	}
 
 	/**
@@ -151,14 +165,14 @@ class Picture extends Model {
 	/**
 	 * @return mixed
 	 */
-	public function getOwner(){
+	public function getOwner() {
 		return User::find_by(['id' => $this->getOwnerId()]);
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function isDeleted(){
+	public function isDeleted() {
 		return $this->deleted;
 	}
 
