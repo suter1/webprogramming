@@ -42,8 +42,11 @@ class CheckoutController extends \Controller {
 
 		foreach(array_keys($basket) as $picture_id){
 			$picture = Picture::find_by(['id' => $picture_id]);
-			$images[$picture_id] = ['picture' => $picture,
-				'pieces' => $basket[$picture_id] ];
+			$images[$picture_id] = [
+				'picture' => $picture,
+				'pieces' => $basket[$picture_id],
+				'size' => $basket[$picture_id]['size']
+			];
 		}
 
 		return $images;
@@ -53,7 +56,7 @@ class CheckoutController extends \Controller {
 		$total = 0.00;
 		foreach(array_keys($basket) as $picture_id){
 			$picture = Picture::find_by(['id' => $picture_id]);
-			$total += $picture->getPrice();
+			$total += $picture->getPrice() * $basket[$picture_id]['size'];
 		}
 		return $total;
 	}

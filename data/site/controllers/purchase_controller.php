@@ -18,7 +18,9 @@ class PurchaseController extends Controller{
 		$images = [];
 		foreach(array_keys($this->basket()) as $picture_id){
 			$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]),
-				'pieces' => $this->basket()[$picture_id] ];
+				'pieces' => $this->basket()[$picture_id]['amount'],
+				'size' => $this->basket()[$picture_id]['size'],
+ 			];
 		}
 		$translations = [];
 		foreach (['checkout'] as $translate) {
@@ -37,9 +39,13 @@ class PurchaseController extends Controller{
 	public function create(){
 		$this->basket();
 		$picture_id = $this->params['picture_id'];
+		$size = $this->params['size'];
+		echo $size;
+		if(!isset($size) || ($size !== '1' && $size !== '0.5')) $size = '1';
 		if(isset($picture_id) && $picture_id != "") {
-			if(!isset($_SESSION['basket'][$picture_id])) $_SESSION['basket'][$picture_id] = 0;
-			$_SESSION['basket'][$picture_id] = 1; // can easily be changed to += 1 in case of multiple purchases possible
+			if(!isset($_SESSION['basket'][$picture_id])) $_SESSION['basket'][$picture_id] = ['size' => 1, 'amount' => 0];
+			$_SESSION['basket'][$picture_id]['amount'] = 1; // can easily be changed to += 1 in case of multiple purchases possible
+			$_SESSION['basket'][$picture_id]['size'] = $size;
 		}
 		http_response_code(200);
 	}
@@ -64,7 +70,7 @@ class PurchaseController extends Controller{
 		$price = 0;
 		foreach(array_keys($this->basket()) as $picture_id){
 			$img = Picture::find_by(['id' => $picture_id]);
-			$price += $img->getPrice() * $this->basket()[$picture_id];
+			$price += $img->getPrice() * $this->basket()[$picture_id]['amount'] * $this->basket()[$picture_id]['size'];
 		}
 		return money_format('%.2n CHF', $price);
 	}

@@ -14,9 +14,6 @@
 	            </table>
             </aside>
         </div>
-        <article class="OptSize">
-            <p>Bildgrössenauswahl</p>
-        </article>
         <div style="width: 200px;">
 			<?php
 			$picture_id = $options['id'];
@@ -28,6 +25,11 @@
 				echo "<button onclick='deletePicture()'>". $options['lang_delete_picture'] . "</button>";
 			}
 			if ((!is_null(current_user()) && $options['owner_id'] !== current_user()->getId())) {
+				echo "<article class='OptSize'>";
+                echo '<p>Bildgrössenauswahl</p>';
+                echo '<label for="half">50%</label><input type="radio" name="img_size" value="0.5" />';
+                echo '<label for="full">100%</label><input type="radio" name="img_size" value="1" checked/>';
+                echo '</article>';
 				echo "<button onclick='addToBasket()'>" . "<i class='fa fa-shopping-basket' aria-hidden='false'></i>" . " " . $options['buy'] . "</button>";
 			}
 			?>

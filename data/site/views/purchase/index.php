@@ -4,7 +4,7 @@
 	foreach(array_keys($options['images']) as $picture_id) {
 		$images .= "<li id='basket_item_$picture_id'>";
 		$images .= $options['images'][$picture_id]['pieces']  . "x " . $options['images'][$picture_id]['picture']->getTitle() .
-            "  (" . money_format('%.2n CHF', $options['images'][$picture_id]['picture']->getPrice()) . ")";
+            "  (" . money_format('%.2n CHF', $options['images'][$picture_id]['picture']->getPrice() * $options['images'][$picture_id]['size']) . ")";
 		$images .= " <i class='fa fa-trash' onclick='deleteFromBasket(" . $picture_id . ")' aria-hidden='true'></i>";
 		$images .= "</li>";
 	}

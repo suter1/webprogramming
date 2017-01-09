@@ -4,8 +4,10 @@ function getBasket(){
 
 function addToBasket(){
     let picture_id = $("#picture_id").val();
+    let size = $('input[name=img_size]:checked').val()
     console.log('id', picture_id);
     let data = {
+        size: size,
         picture_id: picture_id,
     };
     let callback = function(type, msg){
