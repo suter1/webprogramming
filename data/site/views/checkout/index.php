@@ -16,7 +16,7 @@ echo $out;
 <br />
 <div id="license-confirm" style="display: none" title="License Agreement">
     <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
-		<?php echo $options['lang_license'] ?></p>
+		<?php echo "<a href='/impressum'>" . $options['lang_license'] . "</a>"?></p>
 </div>
 <button onclick="licenseAgreement(); return false;"><?php echo $options['lang_buy_now'] ?></button>
 <?php require_once("views/default/footer.php") ?>

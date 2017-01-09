@@ -21,6 +21,7 @@ $controllers = [
 	'order'			=> 'OrderController',
 	'special_offer'	=> 'SpecialOfferController',
 	'current_offer'	=> 'CurrentOfferController',
+	'impressum'		=> 'ImpressumController',
 ];
 $dir = $_SERVER['DOCUMENT_ROOT'];
 $directories = array_merge(glob("$dir/*" , GLOB_ONLYDIR), glob("$dir/**/*", GLOB_ONLYDIR));
