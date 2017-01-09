@@ -21,14 +21,13 @@
 			<?php
 			$picture_id = $options['id'];
 			echo "<input type='hidden' name='picture_id' id='picture_id' value='$picture_id'/>";
-			if ((isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) || (isset($_SESSION['user_id']) && current_user()->isAdmin())) {
+			if (!is_null(current_user()) && $options['owner_id'] === current_user()->getId() ||
+                (!is_null(current_user()) && current_user()->isAdmin())) {
 				$loc_edit = Localization::find_by(["qualifier" => 'edit', 'lang' => get_language()]);
 				echo "<button onclick='editPicture()'>" . $loc_edit->getValue() . "</button>";
-			}
-			if ((isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) || (isset($_SESSION['user_id']) && current_user()->isAdmin())) {
 				echo "<button onclick='deletePicture()'>". $options['lang_delete_picture'] . "</button>";
 			}
-			if ((isset($_SESSION['user_id']) && $options['owner_id'] == $_SESSION['user_id']) || (isset($_SESSION['user_id']) && $options['owner_id'] != $_SESSION['user_id'])) {
+			if ((!is_null(current_user()) && $options['owner_id'] !== current_user()->getId())) {
 				echo "<button onclick='addToBasket()'>" . "<i class='fa fa-shopping-basket' aria-hidden='false'></i>" . " " . $options['buy'] . "</button>";
 			}
 			?>

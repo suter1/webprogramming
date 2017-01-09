@@ -13,6 +13,7 @@
             <td>Deleted</td>
             <td>Edit</td>
             <td>Delete</td>
+            <td>Show</td>
         </tr>
     </thead>
     <tbody>
