@@ -7,7 +7,7 @@ if(isset($options['offer']) && !is_null($options['offer'])) {
 		$html .= "<div><a href='/detail/" . $picture->getId() . "'>
 	<img src='/" . $picture->getThumbnailPath() . "' />
 	<br>
-	<span>" . $picture->getTitle() . " *** " . money_format('%.2n CHF', $picture->getPrice() * 0.5) . "</span>
+	<span>" . $picture->getTitle() . " *** " . money_format('%.2n CHF', $picture->getPrice()) . "</span>
 	</a>
 	</div>";
 	}
