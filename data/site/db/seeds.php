@@ -71,6 +71,8 @@ $langs = [
 		'copyright'  	=> 'Ich bestätige hiermit die Urheberrechte an dem Bild zu haben und dieses an Isithombe Webshop zu übertragen.',
 		'license'  	=> 'Ich akzeptiere hiermit die Allgmeinen Geschäftsbedingungen von Isithombe Webshop.',
 		'added_picture' => 'Bild dem Warenkorb hinzugefügt',
+		'login_successful' => 'Login erfolgreich',
+
 	],
 	'en' => [
 		'detail'        => 'Details',

@@ -24,6 +24,7 @@ class SessionController extends Controller {
 		}
 		if ( $out = password_verify($password, $user->getPasswordHash()) ) {
 			$this->session_helper->login(['user_id' => $user->getId(), 'logged_in' => true]);
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'login_successful'])->getValue());
 		} else {
 			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'login_error'])->getValue());
 		}
