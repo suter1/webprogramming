@@ -19,7 +19,7 @@ class CheckoutController extends \Controller {
 		$basket_lang = Localization::find_by(['qualifier' => 'basket', 'lang' => get_language()])->getValue();
 		$price_lang = Localization::find_by(['qualifier' => 'price', 'lang' => get_language()])->getValue();
 		$translations = [];
-		foreach (['buy_now'] as $translate) {
+		foreach (['buy_now', 'license'] as $translate) {
 			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
 		}
 		load_template("views/checkout/index.php", array_merge([

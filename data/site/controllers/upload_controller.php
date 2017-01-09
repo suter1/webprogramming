@@ -166,6 +166,8 @@ class UploadController extends Controller {
 	}
 
 	public function newly() {
-		load_template("views/upload/newly.php", []);
+		$lang = get_language();
+		$copyright = Localization::find_by(['qualifier' => 'copyright', 'lang' => $lang])->getValue();
+		load_template("views/upload/newly.php", ['copyright' => $copyright]);
 	}
 }

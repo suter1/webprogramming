@@ -27,3 +27,21 @@ function deletePicture() {
     };
     destroy(`/pictures/${picture_id}`, callback);
 }
+
+function licenseAgreement(){
+    $("#license-confirm").dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+            "OK": function () {
+                window.location.href= "/checkout/new";
+                $(this).dialog("close");
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+}
