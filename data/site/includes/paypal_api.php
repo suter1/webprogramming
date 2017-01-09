@@ -62,7 +62,7 @@ class PaypalApi {
 			$item->setName($picture->getTitle());
 			$item->setCurrency("CHF");
 			$item->setQuantity(1);
-			$item->setPrice($picture->getPrice());
+			$item->setPrice($picture->getPrice() * $_SESSION['basket'][$picture->getId()]['size']);
 			$item->setSku($picture->getId());
 			array_push($items, $item);
 		}
