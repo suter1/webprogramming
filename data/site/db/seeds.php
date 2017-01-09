@@ -73,6 +73,7 @@ $langs = [
 		'added_picture' => 'Bild dem Warenkorb hinzugefügt',
 		'login_successful' => 'Login erfolgreich',
 		'logout_successful' => 'Logout erfolgreich',
+		'actual_offer'	=> 'Aktuell: 50% Rabatt auf ausgewählte Bilder! ',
 
 	],
 	'en' => [
@@ -138,6 +139,7 @@ $langs = [
 		'added_picture' => 'Added picture to basket',
 		'login_successful' => 'You are logged in now',
 		'logout_successful' => 'Logout successful',
+		'actual_offer'	=> 'Now: 50% discount on the following pictures!',
 	],
 ];
 

@@ -1,7 +1,7 @@
 <div>
 <?php
 $html = "";
-$html .= "<h4>Today 50% discount for the following pictures!</h4>";
+$html .= "<h4>" . $options['lang_offer'] . "</h4>";
 if(isset($options['offer']) && !is_null($options['offer'])) {
 	foreach ($options['offer']->pictures() as $picture) {
 		$html .= "<div><a href='/detail/" . $picture->getId() . "'>
