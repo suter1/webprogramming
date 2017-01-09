@@ -24,8 +24,7 @@ if (!empty($pageId) && in_array($pageId, array_keys($GLOBALS['controllers']))) {
     $GLOBALS['page'] = $pageId;
 } else {
     //crap
-    echo $pageId;
-    echo "<br>crap";
+    redirect("/home?pageId=$pageId");
 }
 $method = determine_method();
 $controller = get_controller($pageId);

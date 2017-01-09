@@ -12,6 +12,7 @@ function addToBasket(){
         if(type == "success"){
             let message = $("#added_picture").val();
             console.log("added to basket");
+            getBasket();
             flash(message);
         }else if(type == "error"){
             console.log("fuck");
@@ -20,6 +21,20 @@ function addToBasket(){
     };
 
     create(`/purchase`, data, callback);
+}
+
+function deleteFromBasket(id) {
+    let callback = function(type, msg){
+        if(type == "success"){
+            getBasket();
+            console.log("deleted from basket");
+        }else if(type == "error"){
+            console.log("fuck");
+            console.log(msg);
+        }
+    };
+
+    destroy(`/purchase/${id}`, callback);
 }
 
 function flash(message){

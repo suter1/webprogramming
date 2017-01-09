@@ -45,9 +45,10 @@ class PurchaseController extends Controller{
 	}
 
 	public function delete(){
-		$picture_id = $this->params['picture_id'];
-		$offset = array_search($picture_id, $_SESSION['basket']);
-		array_splice($_SESSION['basket'], $offset);
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})/', $url, $matches);
+		$picture_id = $matches[0];
+		unset($_SESSION['basket'][$picture_id]);
 		http_response_code(200);
 	}
 
