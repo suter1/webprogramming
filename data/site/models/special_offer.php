@@ -21,6 +21,19 @@ class SpecialOffer extends Model {
 		return "special_offers";
 	}
 
+	static function getCurrent(){
+		$offers = SpecialOffer::all();
+		$offer = null;
+		$current_time = date('Y-m-d H:i:s');
+		foreach($offers as $of){
+			if($of->getStart() < $current_time && $of->getEnd() > $current_time){
+				$offer = $of;
+				break;
+			}
+		}
+		return $offer;
+	}
+
     /**
      * @return mixed
      */
