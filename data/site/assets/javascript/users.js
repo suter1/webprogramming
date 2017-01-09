@@ -7,6 +7,9 @@ function updateUser(){
     $(':input').each(function(index, element){
         data[element.name] = element.value;
     });
+
+    data['sex'] = $('input:radio[name=sex]:checked').val();
+    data['is_admin'] = $('input:checkbox[name=is_admin]:checked').val();
     let callback= function(type, msg){
         if(type == "success"){
             window.location.replace(`/user`);

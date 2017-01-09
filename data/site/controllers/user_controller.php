@@ -67,7 +67,8 @@ class UserController extends Controller {
 			'email' => $this->params['email'],
 			'last_name' => $this->params['last_name']];
 
-		if(current_user()->isAdmin()) array_merge(['is_admin' => $this->params['is_admin']]);
+		if(current_user()->isAdmin()) $update_array = array_merge($update_array, ['is_admin' => $this->params['is_admin']]);
+		$update_array['is_admin'] = ($update_array['is_admin'] === 'yes')?'1':'0';
 		$success = $user->update($update_array);
 		http_response_code(($success) ? 200 : 500);
 	}
