@@ -21,7 +21,7 @@ function updateUser(){
 function deleteUser(id){
     let callback = function(type, msg){
         if(type == "success"){
-            //window.location.replace(`/user`);
+            window.location.replace(`/user`);
         }else if(type == "error"){
             console.log("fuck");
             console.log(msg);

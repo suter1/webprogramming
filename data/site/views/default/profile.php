@@ -1,4 +1,4 @@
-<span class="toggle"><i class="fa fa-user-circle" aria-hidden="true"></i>
+<span class="toggle"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
 	<div class="toggle_div hide">
 		<div class="arrow-up"></div>
 		<div class="popup">

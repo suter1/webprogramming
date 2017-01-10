@@ -45,3 +45,7 @@ function licenseAgreement(){
         }
     });
 }
+
+function toggleNav(){
+    $("nav").toggle();
+}
