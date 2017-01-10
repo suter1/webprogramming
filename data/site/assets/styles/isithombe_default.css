@@ -47,6 +47,10 @@ span.title {
     with: 100%
 }
 
+.images {
+    display: block;
+}
+
 .badge {
     background-color: lightskyblue;
     font-size: 0.8em;
