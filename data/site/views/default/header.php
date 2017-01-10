@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css"
           integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/logo/icon_isithombe_web.ico">
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
+    <meta content="initial-scale-1.0" name="viewport" />
     <title>isithombe</title>
 </head>
 <body>
