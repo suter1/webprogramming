@@ -8,6 +8,10 @@ class AdminController extends Controller {
 	}
 
 	public function index(){
-		load_template("views/admin/index.php", []);
+		if(current_user()->isAdmin())
+			load_template("views/admin/index.php", []);
+		else{
+			redirect("/home");
+		}
 	}
 }

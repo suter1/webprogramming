@@ -9,6 +9,10 @@ class User extends Model {
 	private $sex;
 	private $username;
 	private $password_hash;
+	private $is_admin = false;
+	private $budget;
+	private $email_confirmed = false;
+	private $deleted = false;
 
 	function __construct($values) {
 		parent::__construct();
@@ -20,6 +24,10 @@ class User extends Model {
 		$this->sex = $values['sex'];
 		$this->username = $values['username'];
 		$this->password_hash = $values['password_hash'];
+		$this->budget = $values['budget'];
+		$this->email_confirmed = $values['email_confirmed'];
+		$this->is_admin = $values['is_admin'];
+		$this->deleted = $values['deleted'];
 	}
 
 	static function getTableName() {
@@ -82,6 +90,15 @@ class User extends Model {
 		return $this->password_hash;
 	}
 
+	protected function has_and_belongs_to_many(){
+		return ["roles" => [
+			"class_name" => "Role",
+			"join_table" => "roles_users",
+			"foreign_key" => "user_id",
+			"association_key" => "role_id"]
+		];
+	}
+
 	protected function has_many() {
 		return [
 			"pictures" => [
@@ -97,11 +114,46 @@ class User extends Model {
 		];
 	}
 
-	protected function has_and_belongs_to_many() {
-		return [];
-	}
-
 	static function getPrimaryKey() {
 		return "id";
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isEmailConfirmed() {
+		return $this->email_confirmed;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function isAdmin() {
+		return $this->is_admin;
+	}
+
+	/**
+	 * @param mixed $is_admin
+	 */
+	public function setAdmin($is_admin) {
+		$this->is_admin = $is_admin;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getBudget() {
+		return $this->budget;
+	}
+
+	public function isDeleted(){
+		return $this->deleted;
+	}
+
+	/**
+	 * @param mixed $budget
+	 */
+	public function setBudget($budget) {
+		$this->budget = $budget;
 	}
 }
