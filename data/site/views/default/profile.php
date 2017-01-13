@@ -34,3 +34,12 @@
 		</div>
 	</div>
 </span>
+<div>
+    <?php
+    $html = "";
+        if(isset($_SESSION['logged_in'])){
+            $html .= "<span>" . current_user()->getUsername() . "</span>";
+        }
+        echo $html;
+    ?>
+</div>

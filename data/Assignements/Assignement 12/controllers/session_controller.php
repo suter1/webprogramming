@@ -17,16 +17,21 @@ class SessionController extends Controller {
 		$username = $this->params['username'];
 
 		$user = User::find_by(['username' => $username]);
-		if($user === null) redirect("/home");
+		if(is_null($user) || !$user->isEmailConfirmed() || $user->isDeleted()){
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'login_error'])->getValue());
+			redirect("/home");
+		}
 		if ( $out = password_verify($password, $user->getPasswordHash()) ) {
 			$this->session_helper->login(['user_id' => $user->getId(), 'logged_in' => true]);
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'login_successful'])->getValue());
 		} else {
-			//probably do something later
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'login_error'])->getValue());
 		}
 		redirect("/home");
 	}
 
 	public function delete(){
+		parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'logout_successful'])->getValue());
 		$this->session_helper->logout();
 		redirect('/home');
 	}

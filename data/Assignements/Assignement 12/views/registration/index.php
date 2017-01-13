@@ -1,5 +1,5 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
+
 <section class="section">
 	<form method="post" action="/register" >
 		<div class="divTable">
@@ -26,26 +26,6 @@
 					</div>
 					<div class="divTableCell">
 						<input name="password" type="password" required="required"/>
-					</div>
-				</div>
-				<div class="divTableRow">
-					<div class="divTableCell">
-						<label id="sex" for="sex" >Gender</label>
-					</div>
-					<div class="divTableCell">
-						<input name="sex" type="radio" value="female" />
-						<input name="sex" value="male" type="radio" />
-					</div>
-				</div>
-				<div class="divTableRow">
-					<div class="divTableCell">
-						<label id="country" for="country" >Country</label>
-					</div>
-					<div class="divTableCell">
-						 <select>
-							<option value="ch">Schweiz</option>
-							<option value="de">Deutschland</option>
-						</select> 
 					</div>
 				</div>
 				<div class="divTableRow">

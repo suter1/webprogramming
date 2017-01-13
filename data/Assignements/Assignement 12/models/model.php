@@ -110,19 +110,26 @@ abstract class Model implements ModelStructure {
 	/**
 	 * @param $order
 	 * @param $where
+	 * @param $limit
+	 * @param $andOr
 	 * @return Model Array
 	 *
 	 */
-	public static function where($where = [], $andOr = [], $order = 'id asc'){
+	public static function where($where = [], $andOr = [], $order = 'id asc', $limit = null){
 		$db = new Database();
 		$db->connect();
 		$where_query = "";
 		$counter = 0;
 		foreach($where as $key => $value){
-			$where_query .= " ". htmlspecialchars($key) . " LIKE '%" . htmlspecialchars($value) . "%' ";
+			if(is_array($value)){
+				$where_query .= " " . htmlspecialchars($key) . " " . $value['comparator'] . " '" . htmlspecialchars($value['value']). "' ";
+			}else {
+				$where_query .= " " . htmlspecialchars($key) . " LIKE '%" . htmlspecialchars($value) . "%' ";
+			}
 			if(isset($andOr[$counter])) $where_query .= htmlspecialchars($andOr[$counter]);
+			$counter++;
 		}
-		$result = $db->select(static::getTableName(), '*', null, $where_query, $order);
+		$result = $db->select(static::getTableName(), '*', null, $where_query, $order, $limit);
 		$db->disconnect();
 		return static::initModels($result);
 	}
@@ -170,6 +177,15 @@ abstract class Model implements ModelStructure {
             return static::initModels($result);
         }
     }
+
+    public function delete(){
+		$db = new Database();
+		$db->connect();
+		$where = static::getPrimaryKey() . " = " . $this->getId();
+		$result = $db->delete(static::getTableName(), $where);
+		$db->disconnect();
+		return $result;
+	}
 
 	public static function delete_all($where = null){
 		$db = new Database();

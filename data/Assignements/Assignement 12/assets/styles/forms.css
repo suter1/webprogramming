@@ -1,4 +1,4 @@
-input[type=text],  input[type=email],  input[type=password], input[type=file], select {
+input[type=text],  input[type=email],  input[type=password], input[type=datetime], input[type=file], select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -7,7 +7,12 @@ input[type=text],  input[type=email],  input[type=password], input[type=file], s
     box-sizing: border-box;
 }
 
-form input[type=text], form input[type=email], form input[type=password], form input[type=file], select {
+form input[type=text],
+form input[type=email],
+form input[type=password],
+form input[type=datetime],
+form input[type=file],
+select {
     width: 100%;
 }
 

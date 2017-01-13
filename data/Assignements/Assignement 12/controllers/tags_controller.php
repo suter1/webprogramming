@@ -17,16 +17,21 @@ class TagsController extends Controller{
 		$tag_id = $params[2];
 		$tag = Tag::find_by(['id' => $tag_id]);
 		$pictures = $tag->pictures();
+		$showable_pictures = [];
+		foreach ($pictures as $picture){
+			if(!$picture->isDeleted()){
+				array_push($showable_pictures, $picture);
+			}
+		}
 
 		load_template("views/tags/show.php", [
-			'pictures' => $pictures,
+			'pictures' => $showable_pictures,
 		]);
 	}
 
 	public function index(){
 		// prevent direct access
 		require_ajax();
-
 		$tags = Tag::where(['name' => $this->params['term']]);
 		$tag_list = [];
 		foreach($tags as $tag){

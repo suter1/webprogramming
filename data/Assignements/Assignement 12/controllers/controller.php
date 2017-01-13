@@ -13,10 +13,15 @@ abstract class Controller {
 		$this->parse_params();
 	}
 
+	protected function flash($message){
+		if(!isset($_SESSION['flash'])) $_SESSION['flash'] = [];
+		array_push($_SESSION['flash'], $message);
+	}
+
 	/**
 	 * @return array of methods that do not require login
 	 */
-	public function do_not_require_login(){
+	public function do_not_require_login() {
 		return [];
 	}
 
@@ -63,5 +68,17 @@ abstract class Controller {
 		} else if ($method == "POST") {
 			$this->params = $_POST;
 		}
+		$db = new Database();
+		$db->connect();
+		foreach($this->params as $key => &$value){
+			if(is_array($value)){
+				foreach($value as &$val){
+					$val = $db->escapeString(htmlspecialchars($val, ENT_HTML5));
+				}
+			}else {
+				$value = $db->escapeString(htmlspecialchars($value, ENT_HTML5));
+			}
+		}
+		$db->disconnect();
 	}
 }

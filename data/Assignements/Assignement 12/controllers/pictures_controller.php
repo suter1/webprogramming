@@ -18,4 +18,17 @@ class PicturesController extends Controller{
 			'no_result' => $no_result,
 		]);
 	}
+
+	public function delete(){
+		$url = $_SERVER['REQUEST_URI'];
+		preg_match('/(\d{1,})/', $url, $matches);
+		$id = $matches[0];
+
+		$picture = Picture::find_by(['id' => $id]);
+		if(current_user()->getId() === $picture->getOwnerId() || current_user()->isAdmin()){
+			$picture->update(['deleted' => '1']);
+			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'picture_deleted'])->getValue());
+		}
+		http_response_code(200);
+	}
 }

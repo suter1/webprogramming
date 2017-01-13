@@ -90,6 +90,7 @@ class Database {
      * @param string $where
      * @param string|string $order (asc|desc)
      * @param int $limit
+	 * @param bool $user_input
      * @return array|null
      */
     public function select($table, $rows = '*', $join = null, $where = null, $order = null, $limit = null){
@@ -153,8 +154,8 @@ class Database {
 
     }
 
-//Function to delete table or row(s) from database
     /**
+	 * Function to delete table or row(s) from database
      * @param $table
      * @param null $where String with key = 'value'
      * @return bool
@@ -191,6 +192,7 @@ class Database {
             foreach ($params as $field => $value) {
                 $args[] = $field . '="' . $value . '"';
             }
+
             $sql = 'UPDATE ' . $table . ' SET ' . implode(',', $args) . ' WHERE ' . $where;
             $this->myQuery = $sql;
             if ($query = $this->rawSql($sql)) {
@@ -240,8 +242,25 @@ class Database {
         return $val;
     }
 
-// Escape your string
+	/**
+	 * Escape your string
+	 * @param $data
+	 * @return mixed
+	 */
     public function escapeString($data) {
         return $this->con->real_escape_string($data);
     }
+
+	/**
+	 * Escape your Array
+	 * @param $ary
+	 * @return array
+	 */
+    public function escapeArray($ary){
+    	$new_array=[];
+		foreach($ary as $key => &$value){
+			$new_array[$this->con->real_escape_string($key)] = $this->con->real_escape_string($value);
+		}
+		return $new_array;
+	}
 }
