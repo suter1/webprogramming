@@ -122,11 +122,12 @@ abstract class Model implements ModelStructure {
 		$counter = 0;
 		foreach($where as $key => $value){
 			if(is_array($value)){
-				$where_query .= " " . htmlspecialchars($key) . " " . $value['comparator'] . "'" . htmlspecialchars($value['value']). "' ";
+				$where_query .= " " . htmlspecialchars($key) . " " . $value['comparator'] . " '" . htmlspecialchars($value['value']). "' ";
 			}else {
 				$where_query .= " " . htmlspecialchars($key) . " LIKE '%" . htmlspecialchars($value) . "%' ";
 			}
 			if(isset($andOr[$counter])) $where_query .= htmlspecialchars($andOr[$counter]);
+			$counter++;
 		}
 		$result = $db->select(static::getTableName(), '*', null, $where_query, $order, $limit);
 		$db->disconnect();
