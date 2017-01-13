@@ -17,8 +17,7 @@ class SessionController extends Controller {
 		$username = $this->params['username'];
 
 		$user = User::find_by(['username' => $username]);
-		//TODO add a message that it didn't work
-		if(is_null($user) || !$user->isEmailConfirmed()){
+		if(is_null($user) || !$user->isEmailConfirmed() || $user->isDeleted()){
 			parent::flash(Localization::find_by(['lang' => get_language(), 'qualifier' => 'login_error'])->getValue());
 			redirect("/home");
 		}
