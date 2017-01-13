@@ -14,21 +14,29 @@ class PurchaseController extends Controller{
 		parent::__construct();
 	}
 
+	public function do_not_require_login() {
+		return ["index"];
+	}
+
 	public function index(){
 		$images = [];
-		foreach(array_keys($this->basket()) as $picture_id){
-			$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]),
-				'pieces' => $this->basket()[$picture_id]['amount'],
-				'size' => $this->basket()[$picture_id]['size'],
- 			];
+		if(isset($_SESSION['logged_in'])) {
+			foreach (array_keys($this->basket()) as $picture_id) {
+				$images[$picture_id] = ['picture' => Picture::find_by(['id' => $picture_id]),
+					'pieces' => $this->basket()[$picture_id]['amount'],
+					'size' => $this->basket()[$picture_id]['size'],
+				];
+			}
+			$translations = [];
+			foreach (['checkout'] as $translate) {
+				$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
+			}
+			load_template("views/purchase/index.php", array_merge([
+				'images' => $images, 'price' => $this->price()
+			], $translations));
+		}else{
+			load_template("views/purchase/index_empty.php");
 		}
-		$translations = [];
-		foreach (['checkout'] as $translate) {
-			$translations["lang_$translate"] = Localization::find_by(['lang' => get_language(), 'qualifier' => $translate])->getValue();
-		}
-		load_template("views/purchase/index.php", array_merge([
-			'images' => $images, 'price' => $this->price()
-		], $translations));
 	}
 
 	/**

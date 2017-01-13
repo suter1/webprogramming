@@ -8,3 +8,6 @@
 		</div>
 	</div>
 </span>
+<div>
+    <span id='basket_size'></span>
+</div>

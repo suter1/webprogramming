@@ -1,5 +1,11 @@
+$(document).ready(function() {
+   getBasket();
+});
+
 function getBasket(){
-    $("#basket").load( "/purchase" );
+    $('#basket').load( '/purchase', function(){
+        $('#basket_size').html($('#basket_count').val());
+    });
 }
 
 function addToBasket(){
