@@ -59,8 +59,8 @@ Vagrant.configure(2) do |config|
   config.push.define "ftp" do |push|
    push.host = "maestro02.ch:5544"
    push.secure = true
-   push.username = "wp2016.maestro02.ch"
-   push.password = "Web_2016"
+   push.username = ENV.fetch("SFTP_USER")
+   push.password = ENV.fetch("SFTP_PASSWORD")
    push.dir = "./data"
   end
 end
