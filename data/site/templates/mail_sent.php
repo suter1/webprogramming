@@ -1,1 +1,0 @@
-<h2>Please verify your email address with the link we sent you by email.</h2>

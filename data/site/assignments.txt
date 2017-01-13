@@ -1,0 +1,43 @@
+ERGÄNZUNGEN ZU DEN ASSIGNMENTS:
+===============================
+Assignment 1:
+Unsere Website isithombe (bedeutet in Zulu "Foto/Bild") ist eine Plattform, auf der die registrierten User ihre eigenen Bilder hochladen und darüber verkaufen können.
+
+Assignment 2:
+keine Ergänzung
+
+Assignment 3:
+Da unser Produkt immer ein Bild ist, haben wir auf eine Produktliste verzichtet. Dafür haben wir aber eine Liste mit durchsuchbaren Tags erstellt, welche die Suche von Bildern zu einer bestimmten Kategorie erleichtert.
+Grundsätzlich läuft bei uns alles über die Hauptseite und die Unterseiten sind bloss weiterführende Seiten aus der Hauptseite. Deshalb haben wir auf eine Seitennavigation verzichtet.
+
+Assignment 4:
+unser Webhoster ist hoststar.ch. Als Basissite wird maestro02.ch verwendet, welche von einem Teammitglied bereits verwendet wird.
+
+Assignment 5:
+Da wir elektronische Produkte in Form von Bildern anbieten, werden keine Lieferadressen und Herkunfsländer benötigt, da das Shipping in Form eines Downloads stattfindet.
+Auf den Mailversand der Kaufbestätigung nach dem Zahlungsprozess haben wir verzichtet, da die "Auslieferung" automatisiert direkt nach dem Kauf per Download vorgenommen wird.
+Auf verschiedene Zahlungsoptionen haben wir verzichtet, da wir den gesamten Zahlungsprozess über Paypal vornehmen und dadurch ein automatisiertes Shipping anbieten können. Die Zahlung per Rechnung oder Vorauskasse würde für den Sitebetreiber nur unverhältnismässig grösseren administrativen Aufwand benötigen, was wir bei dieser Site nicht wollen. Speziell, wenn die Site wächst, könnte dies zu Problemen führen.
+
+Assignment 6:
+Da der Zahlungsprozess über Paypal läuft, erhält der User die Zahlungsbestätigung von Paypal. Deshalb haben wir darauf verzichtet.
+Die Form-Validation haben wir vollständig mit HTML5-Features umgesetzt und nicht mit JavaScript. Z.B. die Mailprüfung wird vervollständigt mit der Mailconfirmation, welche dem zu registrierenden User zugestellt wird.
+Auf das vergrössern von Bildern haben wir verzichtet, damit die Wahrscheinlichkeit verwenden der Bilder ohne Kauf zu reduzieren.
+
+Assignment 7:
+keine Ergänzung
+
+Assignment 8:
+Der eingeloggte User sieht seinen eingeloggten Usernamen immer, wenn er auf das User-Icon klickt. Wir haben dies dort hinterlegt, um weitere Funktionen anzubieten.
+
+Assignment 9:
+Da wir elektronische Produkte in Form von Bildern anbieten, kann entsprechend die Anzahl eines Produkts im Warenkorb nicht erhöht werden.
+
+Assignment 10:
+Wir bieten zwei verschiedene Suchfunktionen an: eine für die Tags und eine (oben auf der Site) für die Suche nach Bildernamen.
+
+Assignment 11:
+Grundsätzlich haben wir MVC implementiert. Zusätzlich haben wir ein paar weitere Ordner für spezielle Funktionen/Bereiche. Im Ordner Gallery werden zum Beispiel die Bilder und deren Thumbnails abgelegt. Im Ordner db befinden sich die Daten für die Datenbank. Im Ordner includes befinden sich spezielle Funktionen, welche in viele Sites eingefügt werden. vendor beinhaltet das Paypal-SDK, welches für den Zahlungsprozess notwendig ist. swiftmailer beinhaltet das Mailing-SDK und der Ordner mailer die Mailing-Funktionsaufrufe und deren Views. Diese haben wir bewusst nicht in die übrige MVC-Struktur übertragen, da dies nicht eine Typische Site ist sondern eine Funktion die verwendet wird.
+Der Ordner assets beinhaltet sogenannte Grundressourcen wie Logos, CSS-Stylesheets, verwendete Icons und die JavaScript-Files. All diese Dateien gehören unserer Meinung nach nicht in eine klassische MVC-Struktur und deshalb haben wir diese als weitere Ressourcen abgelegt.
+
+Assignment 12:
+Da die Objekte auf der Site sich grundsätzlich an der verfügbaren Grösse anpassen, und so für fast alle Bildschirmgrössen akzeptabel aussehen, haben wir nur ein spezielles Mobile-CSS erstellt, welches die Tagliste in ein Menü (plus ein paar kleinere weitere Anpassungen) ändert, sobald die Bildgrösse für Mobiles erreicht wird.
