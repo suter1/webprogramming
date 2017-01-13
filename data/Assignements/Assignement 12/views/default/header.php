@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css"
           integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/logo/icon_isithombe_web.ico">
-    <meta charset="UTF-8"/>
-    <title>Insert title here</title>
+    <meta charset="UTF-8" />
+    <meta content="initial-scale-1.0" name="viewport" />
+    <title>isithombe</title>
 </head>
 <body>
     <div class="flex-container">
@@ -41,5 +42,11 @@
             <div class="equalHW eq">
                 <?php require_once("views/default/basket.php") ?>
             </div>
+            <?php
+            if(!is_null(current_user()) && current_user()->isAdmin()){
+                echo "<div class='equalHW eq'><a href='/admin'><button style='width: auto;'>Admin</button></a></div>";
+            }
+            ?>
+            <div id="menu-icon" onclick="toggleNav();"></div>
         </div>
     </header>

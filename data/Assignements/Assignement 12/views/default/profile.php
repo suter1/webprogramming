@@ -1,4 +1,4 @@
-<span class="toggle"><i class="fa fa-user-circle" aria-hidden="true"></i>
+<span class="toggle"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
 	<div class="toggle_div hide">
 		<div class="arrow-up"></div>
 		<div class="popup">
@@ -26,7 +26,7 @@
 			$login_html .= "<label for='password'>" . $locpassword->getValue() . "</label>";
 			$login_html .= "<input type='password' required='required' name='password' />";
 			$login_html .= "<div class='eqWrap'><div class='eq equalHW'><input type='submit' value='". $loclogin->getValue() ."'></div>";
-			$login_html .= "<div class='eq equalHW'><button onclick='/register'>" . $locregister->getValue() . "</button></div>";
+			$login_html .= "<div class='eq equalHW'><a href='/register'><button type='button'>" . $locregister->getValue() . "</button></a></div>";
 			$login_html .= "</div>";
 			$login_html .= "</form>";
 			echo $login_html;
@@ -34,3 +34,12 @@
 		</div>
 	</div>
 </span>
+<div>
+    <?php
+    $html = "";
+        if(isset($_SESSION['logged_in'])){
+            $html .= "<span>" . current_user()->getUsername() . "</span>";
+        }
+        echo $html;
+    ?>
+</div>

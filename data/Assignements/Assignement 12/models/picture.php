@@ -16,6 +16,8 @@ class Picture extends Model {
 	private $created_at;
 	private $uploaded_at;
 	private $owner_id;
+	private $description;
+	private $deleted;
 
 	function __construct($values) {
 		parent::__construct();
@@ -33,6 +35,8 @@ class Picture extends Model {
 		$this->created_at = $values['created_at'];
 		$this->uploaded_at = $values['uploaded_at'];
 		$this->owner_id = $values['owner_id'];
+		$this->description = $values['description'];
+		$this->deleted = $values['deleted'];
 	}
 
 	static function getTableName() {
@@ -71,7 +75,21 @@ class Picture extends Model {
 	 * @return mixed
 	 */
 	public function getPrice() {
-		return $this->price;
+		$special_offer = SpecialOffer::getCurrent();
+		$in_array = false;
+		if (!is_null($special_offer)) {
+			foreach ($special_offer->pictures() as $picture) {
+				if ($this->getId() === $picture->getId()) {
+					$in_array = true;
+					break;
+				}
+			}
+		}
+		if (!is_null($special_offer) && $in_array) {
+			return $this->price * 0.5;
+		} else {
+			return $this->price;
+		}
 	}
 
 	/**
@@ -135,6 +153,27 @@ class Picture extends Model {
 	 */
 	public function getOwnerId() {
 		return $this->owner_id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOwner() {
+		return User::find_by(['id' => $this->getOwnerId()]);
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function isDeleted() {
+		return $this->deleted;
 	}
 
 	protected function has_and_belongs_to_many() {

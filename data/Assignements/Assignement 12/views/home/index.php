@@ -1,5 +1,5 @@
-<?php require_once("views/default/header.php") ?>
-<?php require_once("views/default/navigation.php") ?>
+<?php require_once("views/default/default_header.php"); ?>
+
 <section class="section images">
 	<?php
 	$pictures_html = "";
