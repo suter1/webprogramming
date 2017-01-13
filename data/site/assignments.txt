@@ -1,43 +1,43 @@
-ERGÄNZUNGEN ZU DEN ASSIGNMENTS:
+ERGÃ„NZUNGEN ZU DEN ASSIGNMENTS:
 ===============================
 Assignment 1:
-Unsere Website isithombe (bedeutet in Zulu "Foto/Bild") ist eine Plattform, auf der die registrierten User ihre eigenen Bilder hochladen und darüber verkaufen können.
+Unsere Website isithombe (bedeutet in Zulu "Foto/Bild") ist eine Plattform, auf der die registrierten User ihre eigenen Bilder hochladen und darÃ¼ber verkaufen kÃ¶nnen.
 
 Assignment 2:
-keine Ergänzung
+keine ErgÃ¤nzung
 
 Assignment 3:
-Da unser Produkt immer ein Bild ist, haben wir auf eine Produktliste verzichtet. Dafür haben wir aber eine Liste mit durchsuchbaren Tags erstellt, welche die Suche von Bildern zu einer bestimmten Kategorie erleichtert.
-Grundsätzlich läuft bei uns alles über die Hauptseite und die Unterseiten sind bloss weiterführende Seiten aus der Hauptseite. Deshalb haben wir auf eine Seitennavigation verzichtet.
+Da unser Produkt immer ein Bild ist, haben wir auf eine Produktliste verzichtet. DafÃ¼r haben wir aber eine Liste mit durchsuchbaren Tags erstellt, welche die Suche von Bildern zu einer bestimmten Kategorie erleichtert.
+GrundsÃ¤tzlich lÃ¤uft bei uns alles Ã¼ber die Hauptseite und die Unterseiten sind bloss weiterfÃ¼hrende Seiten aus der Hauptseite. Deshalb haben wir auf eine Seitennavigation verzichtet.
 
 Assignment 4:
 unser Webhoster ist hoststar.ch. Als Basissite wird maestro02.ch verwendet, welche von einem Teammitglied bereits verwendet wird.
 
 Assignment 5:
-Da wir elektronische Produkte in Form von Bildern anbieten, werden keine Lieferadressen und Herkunfsländer benötigt, da das Shipping in Form eines Downloads stattfindet.
-Auf den Mailversand der Kaufbestätigung nach dem Zahlungsprozess haben wir verzichtet, da die "Auslieferung" automatisiert direkt nach dem Kauf per Download vorgenommen wird.
-Auf verschiedene Zahlungsoptionen haben wir verzichtet, da wir den gesamten Zahlungsprozess über Paypal vornehmen und dadurch ein automatisiertes Shipping anbieten können. Die Zahlung per Rechnung oder Vorauskasse würde für den Sitebetreiber nur unverhältnismässig grösseren administrativen Aufwand benötigen, was wir bei dieser Site nicht wollen. Speziell, wenn die Site wächst, könnte dies zu Problemen führen.
+Da wir elektronische Produkte in Form von Bildern anbieten, werden keine Lieferadressen und HerkunfslÃ¤nder benÃ¶tigt, da das Shipping in Form eines Downloads stattfindet.
+Auf den Mailversand der KaufbestÃ¤tigung nach dem Zahlungsprozess haben wir verzichtet, da die "Auslieferung" automatisiert direkt nach dem Kauf per Download vorgenommen wird.
+Auf verschiedene Zahlungsoptionen haben wir verzichtet, da wir den gesamten Zahlungsprozess Ã¼ber Paypal vornehmen und dadurch ein automatisiertes Shipping anbieten kÃ¶nnen. Die Zahlung per Rechnung oder Vorauskasse wÃ¼rde fÃ¼r den Sitebetreiber nur unverhÃ¤ltnismÃ¤ssig grÃ¶sseren administrativen Aufwand benÃ¶tigen, was wir bei dieser Site nicht wollen. Speziell, wenn die Site wÃ¤chst, kÃ¶nnte dies zu Problemen fÃ¼hren.
 
 Assignment 6:
-Da der Zahlungsprozess über Paypal läuft, erhält der User die Zahlungsbestätigung von Paypal. Deshalb haben wir darauf verzichtet.
-Die Form-Validation haben wir vollständig mit HTML5-Features umgesetzt und nicht mit JavaScript. Z.B. die Mailprüfung wird vervollständigt mit der Mailconfirmation, welche dem zu registrierenden User zugestellt wird.
-Auf das vergrössern von Bildern haben wir verzichtet, damit die Wahrscheinlichkeit verwenden der Bilder ohne Kauf zu reduzieren.
+Da der Zahlungsprozess Ã¼ber Paypal lÃ¤uft, erhÃ¤lt der User die ZahlungsbestÃ¤tigung von Paypal. Deshalb haben wir darauf verzichtet.
+Die Form-Validation haben wir vollstÃ¤ndig mit HTML5-Features umgesetzt und nicht mit JavaScript. Z.B. die MailprÃ¼fung wird vervollstÃ¤ndigt mit der Mailconfirmation, welche dem zu registrierenden User zugestellt wird.
+Auf das vergrÃ¶ssern von Bildern haben wir verzichtet, damit die Wahrscheinlichkeit verwenden der Bilder ohne Kauf zu reduzieren.
 
 Assignment 7:
-keine Ergänzung
+keine ErgÃ¤nzung
 
 Assignment 8:
 Der eingeloggte User sieht seinen eingeloggten Usernamen immer, wenn er auf das User-Icon klickt. Wir haben dies dort hinterlegt, um weitere Funktionen anzubieten.
 
 Assignment 9:
-Da wir elektronische Produkte in Form von Bildern anbieten, kann entsprechend die Anzahl eines Produkts im Warenkorb nicht erhöht werden.
+Da wir elektronische Produkte in Form von Bildern anbieten, kann entsprechend die Anzahl eines Produkts im Warenkorb nicht erhÃ¶ht werden.
 
 Assignment 10:
-Wir bieten zwei verschiedene Suchfunktionen an: eine für die Tags und eine (oben auf der Site) für die Suche nach Bildernamen.
+Wir bieten zwei verschiedene Suchfunktionen an: eine fÃ¼r die Tags und eine (oben auf der Site) fÃ¼r die Suche nach Bildernamen.
 
 Assignment 11:
-Grundsätzlich haben wir MVC implementiert. Zusätzlich haben wir ein paar weitere Ordner für spezielle Funktionen/Bereiche. Im Ordner Gallery werden zum Beispiel die Bilder und deren Thumbnails abgelegt. Im Ordner db befinden sich die Daten für die Datenbank. Im Ordner includes befinden sich spezielle Funktionen, welche in viele Sites eingefügt werden. vendor beinhaltet das Paypal-SDK, welches für den Zahlungsprozess notwendig ist. swiftmailer beinhaltet das Mailing-SDK und der Ordner mailer die Mailing-Funktionsaufrufe und deren Views. Diese haben wir bewusst nicht in die übrige MVC-Struktur übertragen, da dies nicht eine Typische Site ist sondern eine Funktion die verwendet wird.
-Der Ordner assets beinhaltet sogenannte Grundressourcen wie Logos, CSS-Stylesheets, verwendete Icons und die JavaScript-Files. All diese Dateien gehören unserer Meinung nach nicht in eine klassische MVC-Struktur und deshalb haben wir diese als weitere Ressourcen abgelegt.
+GrundsÃ¤tzlich haben wir MVC implementiert. ZusÃ¤tzlich haben wir ein paar weitere Ordner fÃ¼r spezielle Funktionen/Bereiche. Im Ordner Gallery werden zum Beispiel die Bilder und deren Thumbnails abgelegt. Im Ordner db befinden sich die Daten fÃ¼r die Datenbank. Im Ordner includes befinden sich spezielle Funktionen, welche in viele Sites eingefÃ¼gt werden. vendor beinhaltet das Paypal-SDK, welches fÃ¼r den Zahlungsprozess notwendig ist. swiftmailer beinhaltet das Mailing-SDK und der Ordner mailer die Mailing-Funktionsaufrufe und deren Views. Diese haben wir bewusst nicht in die Ã¼brige MVC-Struktur Ã¼bertragen, da dies nicht eine Typische Site ist sondern eine Funktion die verwendet wird.
+Der Ordner assets beinhaltet sogenannte Grundressourcen wie Logos, CSS-Stylesheets, verwendete Icons und die JavaScript-Files. All diese Dateien gehÃ¶ren unserer Meinung nach nicht in eine klassische MVC-Struktur und deshalb haben wir diese als weitere Ressourcen abgelegt.
 
 Assignment 12:
-Da die Objekte auf der Site sich grundsätzlich an der verfügbaren Grösse anpassen, und so für fast alle Bildschirmgrössen akzeptabel aussehen, haben wir nur ein spezielles Mobile-CSS erstellt, welches die Tagliste in ein Menü (plus ein paar kleinere weitere Anpassungen) ändert, sobald die Bildgrösse für Mobiles erreicht wird.
+Da die Objekte auf der Site sich grundsÃ¤tzlich an der verfÃ¼gbaren GrÃ¶sse anpassen, und so fÃ¼r fast alle BildschirmgrÃ¶ssen akzeptabel aussehen, haben wir nur ein spezielles Mobile-CSS erstellt, welches die Tagliste in ein MenÃ¼ (plus ein paar kleinere weitere Anpassungen) Ã¤ndert, sobald die BildgrÃ¶sse fÃ¼r Mobiles erreicht wird.
